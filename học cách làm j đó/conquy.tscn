@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxghl7p3bg0h8"]
+
+[ext_resource type="Script" path="res://Area2D.gd" id="1_m0hle"]
+[ext_resource type="Texture2D" uid="uid://excucaiadvbg" path="res://Forest of Illusion Files/Layers/Enemies Pack FIles/Sprites/Bettle/bettle1.png" id="2_pk2qh"]
+[ext_resource type="Texture2D" uid="uid://dlj2ib4h1e1" path="res://Forest of Illusion Files/Layers/Enemies Pack FIles/Sprites/Bettle/bettle2.png" id="3_chh43"]
+[ext_resource type="Texture2D" uid="uid://22xnkromgae0" path="res://Forest of Illusion Files/Layers/Enemies Pack FIles/Sprites/Bettle/bettle3.png" id="4_m1lv4"]
+[ext_resource type="Texture2D" uid="uid://cp81ksokx8cs3" path="res://Forest of Illusion Files/Layers/Enemies Pack FIles/Sprites/Bettle/bettle4.png" id="5_wkr5u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ih55k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m4mqs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pk2qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_chh43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_m1lv4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wkr5u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_m0hle")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ih55k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(0.944444, 0.910256)
+sprite_frames = SubResource("SpriteFrames_m4mqs")
+animation = &"idle"
+autoplay = "idle"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://1adtbc33dq76"]
+
+[ext_resource type="Script" path="res://cảnh_hả.gd" id="1_b4xc7"]
+[ext_resource type="Script" path="res://quit.gd" id="1_iku6o"]
+[ext_resource type="PackedScene" uid="uid://bnfuvxol6tn7f" path="res://nền.tscn" id="3_681m5"]
+
+[node name="cảnh hả" type="Node2D"]
+script = ExtResource("1_b4xc7")
+
+[node name="pờ lay" type="Button" parent="."]
+offset_left = 384.0
+offset_top = 112.0
+offset_right = 769.0
+offset_bottom = 283.0
+text = "Play "
+
+[node name="quit" type="Button" parent="."]
+offset_left = 384.0
+offset_top = 340.0
+offset_right = 768.0
+offset_bottom = 503.0
+tooltip_text = "này là nút thoát nhe "
+text = "Quit"
+script = ExtResource("1_iku6o")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_681m5")]
+
+[connection signal="pressed" from="pờ lay" to="." method="_on_pờ_lay_pressed"]
+[connection signal="pressed" from="quit" to="quit" method="_on_pressed"]

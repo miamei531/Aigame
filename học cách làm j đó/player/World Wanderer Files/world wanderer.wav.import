@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://da7xkl0pshxqi"
+path="res://.godot/imported/world wanderer.wav-c82198b4a330f541befd5528d528caa5.sample"
+
+[deps]
+
+source_file="res://player/World Wanderer Files/world wanderer.wav"
+dest_files=["res://.godot/imported/world wanderer.wav-c82198b4a330f541befd5528d528caa5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dpskowmyvxlw2"
+path="res://.godot/imported/world wanderer.ogg-9dc0f552cc32f0392f387cdabfc10c1f.oggvorbisstr"
+
+[deps]
+
+source_file="res://player/World Wanderer Files/world wanderer.ogg"
+dest_files=["res://.godot/imported/world wanderer.ogg-9dc0f552cc32f0392f387cdabfc10c1f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

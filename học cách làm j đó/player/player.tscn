@@ -1,0 +1,343 @@
+[gd_scene load_steps=44 format=3 uid="uid://c30143yiiiuj6"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_ga5do"]
+[ext_resource type="Texture2D" uid="uid://b6lkccvdf4dnu" path="res://player/Dancing Girl Files/sprites/Balancing/balancing1.png" id="2_h4ccf"]
+[ext_resource type="Texture2D" uid="uid://bp2y8deawlo1s" path="res://player/Dancing Girl Files/sprites/Balancing/balancing2.png" id="3_ow7g7"]
+[ext_resource type="Texture2D" uid="uid://de6do8ifef35b" path="res://player/Dancing Girl Files/sprites/Balancing/balancing3.png" id="4_j6kgu"]
+[ext_resource type="Texture2D" uid="uid://dbv4uldv5lqrv" path="res://player/Dancing Girl Files/sprites/Balancing/balancing4.png" id="5_q4f01"]
+[ext_resource type="Texture2D" uid="uid://cjkjmlb5x2t2y" path="res://player/Dancing Girl Files/sprites/Balancing/balancing5.png" id="6_unpqc"]
+[ext_resource type="Texture2D" uid="uid://ce54gk05rivoj" path="res://player/Dancing Girl Files/sprites/Balancing/balancing6.png" id="7_egg5p"]
+[ext_resource type="Texture2D" uid="uid://dol68etdpplvr" path="res://player/Dancing Girl Files/sprites/Balancing/balancing7.png" id="8_xvrn7"]
+[ext_resource type="Texture2D" uid="uid://cwkauvm7t6avw" path="res://player/Dancing Girl Files/sprites/Balancing/balancing8.png" id="9_0ls77"]
+[ext_resource type="Texture2D" uid="uid://ihut7qeqwyq1" path="res://player/Dancing Girl Files/sprites/hips/hips1.png" id="10_thih2"]
+[ext_resource type="Texture2D" uid="uid://cnvcnk7b6sw8r" path="res://dohoa/cucai.png" id="10_uxm4o"]
+[ext_resource type="Texture2D" uid="uid://bw6quxdkmrh07" path="res://dohoa/cucai1.png" id="11_n30qf"]
+[ext_resource type="Texture2D" uid="uid://cb3ndw4xj3rap" path="res://player/Dancing Girl Files/sprites/hips/hips2.png" id="11_s3gop"]
+[ext_resource type="Texture2D" uid="uid://bdx7iltuhbn0r" path="res://player/Dancing Girl Files/sprites/hips/hips3.png" id="12_6a6r2"]
+[ext_resource type="Texture2D" uid="uid://dsaoc5mnbeqkm" path="res://player/Dancing Girl Files/sprites/hips/hips4.png" id="13_0hp1c"]
+[ext_resource type="Texture2D" uid="uid://bxbsgdarplcgh" path="res://player/Dancing Girl Files/sprites/hips/hips5.png" id="14_uvcsg"]
+[ext_resource type="Texture2D" uid="uid://cros5fmksfgms" path="res://player/Dancing Girl Files/sprites/hips/hips6.png" id="15_7mm8a"]
+[ext_resource type="Texture2D" uid="uid://csnm76hmfqy3j" path="res://player/Dancing Girl Files/sprites/hips/hips7.png" id="16_mgrew"]
+[ext_resource type="Texture2D" uid="uid://pmy41cu7rnt1" path="res://player/Dancing Girl Files/sprites/hips/hips8.png" id="17_klg1e"]
+[ext_resource type="Texture2D" uid="uid://c6wp85onx4uod" path="res://player/Dancing Girl Files/sprites/Skip/skip1.png" id="18_kjm2q"]
+[ext_resource type="Texture2D" uid="uid://iqajnxcf0pgq" path="res://player/Dancing Girl Files/sprites/Skip/skip2.png" id="19_hvfw6"]
+[ext_resource type="Texture2D" uid="uid://bnr7ib7pjlpy2" path="res://player/Dancing Girl Files/sprites/Skip/skip3.png" id="20_2fgyx"]
+[ext_resource type="Texture2D" uid="uid://de8n84x0o3agu" path="res://player/Dancing Girl Files/sprites/Skip/skip4.png" id="21_mrkfh"]
+[ext_resource type="Texture2D" uid="uid://ckfu55o7gkfaa" path="res://player/Dancing Girl Files/sprites/Skip/skip5.png" id="22_e5ymh"]
+[ext_resource type="Texture2D" uid="uid://cu27sc2hjqqfg" path="res://player/Dancing Girl Files/sprites/Skip/skip6.png" id="23_8g4u6"]
+[ext_resource type="Texture2D" uid="uid://xpktssu3sn7q" path="res://player/Dancing Girl Files/sprites/Skip/skip7.png" id="24_66qsv"]
+[ext_resource type="Texture2D" uid="uid://chgbr4se5mcgw" path="res://player/Dancing Girl Files/sprites/Skip/skip8.png" id="25_mwyi8"]
+[ext_resource type="Texture2D" uid="uid://ba0gyjuo7cd6k" path="res://player/Dancing Girl Files/sprites/slide/slide1.png" id="26_bsskl"]
+[ext_resource type="Texture2D" uid="uid://bq1ojgltueq2r" path="res://player/Dancing Girl Files/sprites/slide/slide2.png" id="27_gffaj"]
+[ext_resource type="Texture2D" uid="uid://df6xu32v7d2to" path="res://player/Dancing Girl Files/sprites/slide/slide3.png" id="28_7veum"]
+[ext_resource type="Texture2D" uid="uid://bvv7mgnc75kbs" path="res://player/Dancing Girl Files/sprites/slide/slide4.png" id="29_c1u38"]
+[ext_resource type="Texture2D" uid="uid://v83j5vfqachk" path="res://player/Dancing Girl Files/sprites/slide/slide5.png" id="30_4o0fa"]
+[ext_resource type="Texture2D" uid="uid://cbnsgoogop38l" path="res://player/Dancing Girl Files/sprites/slide/slide6.png" id="31_v4ubx"]
+[ext_resource type="Texture2D" uid="uid://bo6stsx3m2c6j" path="res://player/Dancing Girl Files/sprites/slide/slide7.png" id="32_ucxp8"]
+[ext_resource type="Texture2D" uid="uid://dblg76qx3p0gy" path="res://player/Dancing Girl Files/sprites/slide/slide8.png" id="33_hetkd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8c2aa"]
+size = Vector2(20, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o736m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h4ccf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ow7g7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j6kgu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q4f01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_unpqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_egg5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_xvrn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0ls77")
+}],
+"loop": true,
+"name": &"balancing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_uxm4o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_n30qf")
+}],
+"loop": true,
+"name": &"cucai",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_thih2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_s3gop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6a6r2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_0hp1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_uvcsg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_7mm8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_mgrew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_klg1e")
+}],
+"loop": true,
+"name": &"hips",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_kjm2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_hvfw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_2fgyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_mrkfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_e5ymh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_8g4u6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_66qsv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_mwyi8")
+}],
+"loop": true,
+"name": &"skip",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_bsskl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_gffaj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_7veum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_c1u38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_4o0fa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_v4ubx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_ucxp8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_hetkd")
+}],
+"loop": true,
+"name": &"slide ",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ifeg3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"skip"]
+}
+
+[sub_resource type="Animation" id="Animation_a6sao"]
+resource_name = "balancing"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"balancing"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_sbmff"]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"skip"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_d6nwa"]
+resource_name = "jump"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"skip"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_8dnw8"]
+resource_name = "skip"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"skip"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rehni"]
+_data = {
+"RESET": SubResource("Animation_ifeg3"),
+"balancing": SubResource("Animation_a6sao"),
+"fall": SubResource("Animation_sbmff"),
+"jump": SubResource("Animation_d6nwa"),
+"skip": SubResource("Animation_8dnw8")
+}
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_ga5do")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_8c2aa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.5, -1.5)
+scale = Vector2(4.55, 5.65)
+sprite_frames = SubResource("SpriteFrames_o736m")
+animation = &"skip"
+frame = 1
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationTree")
+libraries = {
+"": SubResource("AnimationLibrary_rehni")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]

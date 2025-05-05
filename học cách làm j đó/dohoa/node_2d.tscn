@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://deoujoh73b31b"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_lvues"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0352941, 0, 0.764706, 1)
+position = Vector2(576.75, 323.75)
+scale = Vector2(1150.5, 648.5)
+texture = SubResource("CanvasTexture_lvues")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1144.0
+offset_bottom = 656.0
+theme_override_colors/font_color = Color(0, 0, 0.0509804, 1)
+theme_override_font_sizes/font_size = 100
+text = "XANH DƯƠNG"
+horizontal_alignment = 1
+vertical_alignment = 1
