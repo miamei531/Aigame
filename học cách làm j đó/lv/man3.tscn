@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgw4xvdi1lw3o"]
+
+[ext_resource type="Script" path="res://lv/main.gd" id="1_muk3k"]
+[ext_resource type="PackedScene" uid="uid://b5kumtevl5tmy" path="res://player/plr2.tscn" id="1_quevf"]
+[ext_resource type="PackedScene" uid="uid://dx23s6v2l6qyt" path="res://latvat/node_2d.tscn" id="2_4vjlo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1h3bw"]
+size = Vector2(1146, 74)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_muk3k")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 600)
+shape = SubResource("RectangleShape2D_1h3bw")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_quevf")]
+position = Vector2(312, 464)
+
+[node name="Node2D" parent="." instance=ExtResource("2_4vjlo")]
+position = Vector2(296, 16)
+
+[node name="Targetletter" type="Label" parent="."]
+offset_left = 56.0
+offset_top = 64.0
+offset_right = 96.0
+offset_bottom = 133.0
+theme_override_font_sizes/font_size = 50
+text = "a"

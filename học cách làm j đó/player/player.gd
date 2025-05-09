@@ -41,3 +41,5 @@ func handle_input():
 		if new_index >= 0 and new_index < positions.size():
 			current_pos_index = new_index
 			position.x = positions[current_pos_index]
+func Main():
+	pass

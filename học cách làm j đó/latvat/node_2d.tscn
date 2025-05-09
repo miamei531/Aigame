@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx23s6v2l6qyt"]
+
+[ext_resource type="Script" path="res://Node2D.gd" id="1_5la5r"]
+[ext_resource type="PackedScene" uid="uid://cyuuixp6bwvus" path="res://latvat/letter.tscn" id="2_cbhbp"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_5la5r")
+letter_scene = ExtResource("2_cbhbp")
