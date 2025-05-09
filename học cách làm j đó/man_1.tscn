@@ -1,16 +1,16 @@
 [gd_scene load_steps=22 format=3 uid="uid://dclv6oce6kr2l"]
 
-[ext_resource type="PackedScene" uid="uid://c30143yiiiuj6" path="res://player/player.tscn" id="1_bgbam"]
-[ext_resource type="Script" path="res://main.gd" id="1_f47dh"]
-[ext_resource type="Texture2D" uid="uid://clbbpeam4qbxj" path="res://Forest of Illusion Files/Layers/tiles.png" id="1_ut5bo"]
-[ext_resource type="PackedScene" uid="uid://bnfuvxol6tn7f" path="res://nền.tscn" id="2_ngxof"]
-[ext_resource type="PackedScene" uid="uid://dxghl7p3bg0h8" path="res://conquy.tscn" id="5_s5gcv"]
-[ext_resource type="PackedScene" uid="uid://npbpvbv1xkv4" path="res://lv/static_body_2d.tscn" id="6_mcnbf"]
-[ext_resource type="PackedScene" uid="uid://dbb88a083yyel" path="res://dong_ho.tscn" id="7_1vkyp"]
-[ext_resource type="Texture2D" uid="uid://cshblewm7mc71" path="res://dohoa/carot.png" id="8_ws24f"]
+[ext_resource type="Script" path="res://main.gd" id="1_gdlmi"]
+[ext_resource type="Texture2D" uid="uid://clbbpeam4qbxj" path="res://Forest of Illusion Files/Layers/tiles.png" id="2_252nv"]
+[ext_resource type="PackedScene" uid="uid://bnfuvxol6tn7f" path="res://nền.tscn" id="3_0etc4"]
+[ext_resource type="PackedScene" uid="uid://c30143yiiiuj6" path="res://player/player.tscn" id="4_5gqb4"]
+[ext_resource type="PackedScene" uid="uid://dxghl7p3bg0h8" path="res://conquy.tscn" id="5_xajp5"]
+[ext_resource type="PackedScene" uid="uid://npbpvbv1xkv4" path="res://lv/static_body_2d.tscn" id="6_7668p"]
+[ext_resource type="PackedScene" uid="uid://dbb88a083yyel" path="res://dong_ho.tscn" id="7_wcnvh"]
+[ext_resource type="Texture2D" uid="uid://cshblewm7mc71" path="res://dohoa/carot.png" id="8_1v12s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_px7fg"]
-texture = ExtResource("1_ut5bo")
+texture = ExtResource("2_252nv")
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
@@ -242,7 +242,7 @@ size = Vector2(64, 24)
 [sub_resource type="CanvasTexture" id="CanvasTexture_qxfnl"]
 
 [node name="world" type="Node2D"]
-script = ExtResource("1_f47dh")
+script = ExtResource("1_gdlmi")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ggslj")
@@ -255,23 +255,23 @@ offset_top = 496.0
 offset_right = 1152.0
 offset_bottom = 600.0
 
-[node name="bg" parent="." instance=ExtResource("2_ngxof")]
+[node name="bg" parent="." instance=ExtResource("3_0etc4")]
 
 [node name="player" type="Node2D" parent="."]
 
-[node name="player" parent="player" instance=ExtResource("1_bgbam")]
+[node name="player" parent="player" instance=ExtResource("4_5gqb4")]
 position = Vector2(32, 296)
 rotation = 0.0208175
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Area2D" parent="." instance=ExtResource("5_s5gcv")]
+[node name="Area2D" parent="." instance=ExtResource("5_xajp5")]
 position = Vector2(1216, 440)
 
-[node name="Area2D2" parent="." instance=ExtResource("5_s5gcv")]
+[node name="Area2D2" parent="." instance=ExtResource("5_xajp5")]
 position = Vector2(1368, 448)
 
-[node name="StaticBody2D" parent="." instance=ExtResource("6_mcnbf")]
+[node name="StaticBody2D" parent="." instance=ExtResource("6_7668p")]
 position = Vector2(504, 352)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -317,7 +317,7 @@ texture = SubResource("CanvasTexture_nyq64")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D4"]
 
-[node name="Node2D" parent="." instance=ExtResource("7_1vkyp")]
+[node name="Node2D" parent="." instance=ExtResource("7_wcnvh")]
 position = Vector2(32, 32)
 
 [node name="Area2D3" type="Area2D" parent="."]
@@ -336,7 +336,7 @@ texture = SubResource("CanvasTexture_pi4c6")
 [node name="Carot" type="Sprite2D" parent="."]
 position = Vector2(1084, 280)
 scale = Vector2(7.6, 8)
-texture = ExtResource("8_ws24f")
+texture = ExtResource("8_1v12s")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 752.0
