@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6wnus6o7gi0a"]
+
+[ext_resource type="Script" path="res://man_2/Player_man_2.gd" id="1_cdnrn"]
+[ext_resource type="Texture2D" uid="uid://bw6quxdkmrh07" path="res://dohoa/cucai1.png" id="2_u5h1b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rdq16"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u5h1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_u5h1b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmb37"]
+size = Vector2(116, 115)
+
+[node name="PlayerMan2" type="CharacterBody2D"]
+position = Vector2(-124, 0)
+script = ExtResource("1_cdnrn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(43, -47.5)
+scale = Vector2(5.3, 5.75)
+sprite_frames = SubResource("SpriteFrames_rdq16")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(43, -50.5)
+shape = SubResource("RectangleShape2D_fmb37")
