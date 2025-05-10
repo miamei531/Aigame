@@ -25,10 +25,5 @@ script = ExtResource("1_iku6o")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("3_681m5")]
 
-[node name="Button" type="Button" parent="."]
-offset_right = 57.0
-offset_bottom = 55.0
-
 [connection signal="pressed" from="pờ lay" to="." method="_on_pờ_lay_pressed"]
 [connection signal="pressed" from="quit" to="quit" method="_on_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
