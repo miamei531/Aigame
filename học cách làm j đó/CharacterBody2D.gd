@@ -8,6 +8,7 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var facing_direction = 1  # 1 = phải, -1 = trái, 
 @onready var target_letter_label = get_node("/root/Main/TargetLetterLabel")
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -35,8 +36,8 @@ func _physics_process(delta):
 			#print("Sai rồi!")
 
 func _on_area_2d_body_entered(body):
-
-	if body.has_meta("letter"):
+	print("vào vùng")
+	if body.has_method("lt"):
 		var letter_cham_vao = body.get("letter")
 		print("Chạm vào chữ: ", letter_cham_vao)
 
@@ -47,4 +48,6 @@ func _on_area_2d_body_entered(body):
 			body.queue_free()
 		else:
 			print("Sai rồi!")
+	pass
+func main():
 	pass

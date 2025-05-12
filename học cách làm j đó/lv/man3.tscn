@@ -29,3 +29,11 @@ offset_right = 96.0
 offset_bottom = 133.0
 theme_override_font_sizes/font_size = 50
 text = "a"
+
+[node name="diem" type="Label" parent="."]
+offset_left = 1008.0
+offset_top = 48.0
+offset_right = 1136.0
+offset_bottom = 144.0
+theme_override_font_sizes/font_size = 50
+text = "0"
