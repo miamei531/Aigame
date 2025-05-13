@@ -1,30 +1,37 @@
 extends CharacterBody2D
 
-
-const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var facing_direction = 1  # 1 = phải, -1 = trái, 
-@onready var target_letter_label = get_node("/root/Main/TargetLetterLabel")
+
+var platform_positions = [200, 400, 600, 800]
+var current_index = 0
+
+func _ready():
+	# Đặt nhân vật vào vị trí đầu tiên
+	global_position.x = platform_positions[current_index]
 
 func _physics_process(delta):
-	# Add the gravity.
+	# Gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	else:
+		velocity.y = 0
 
-	# Handle jump.
+	# Jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	# Di chuyển trái
+	if Input.is_action_just_pressed("ui_left"):
+		if current_index > 0:
+			current_index -= 1
+			global_position.x = platform_positions[current_index]
+
+	# Di chuyển phải
+	if Input.is_action_just_pressed("ui_right"):
+		if current_index < platform_positions.size() - 1:
+			current_index += 1
+			global_position.x = platform_positions[current_index]
 
 	move_and_slide()
 #func _on_body_entered(body):

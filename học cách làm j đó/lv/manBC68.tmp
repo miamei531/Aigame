@@ -17,10 +17,10 @@ position = Vector2(576, 600)
 shape = SubResource("RectangleShape2D_1h3bw")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_quevf")]
-position = Vector2(88, 536)
+position = Vector2(312, 464)
 
 [node name="Node2D" parent="." instance=ExtResource("2_4vjlo")]
-position = Vector2(8, 0)
+position = Vector2(296, 16)
 
 [node name="Targetletter" type="Label" parent="."]
 offset_left = 56.0
