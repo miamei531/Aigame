@@ -15,6 +15,11 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmb37"]
@@ -25,9 +30,12 @@ position = Vector2(-124, 0)
 script = ExtResource("1_cdnrn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 position = Vector2(43, -47.5)
 scale = Vector2(5.3, 5.75)
 sprite_frames = SubResource("SpriteFrames_rdq16")
+frame = 1
+frame_progress = 0.206122
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(43, -50.5)
