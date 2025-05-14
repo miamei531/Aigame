@@ -1403,7 +1403,7 @@ sources/0 = SubResource("TileSetAtlasSource_8t15u")
 script = ExtResource("1_2axho")
 
 [node name="PlayerMan2" parent="." instance=ExtResource("2_jglgw")]
-position = Vector2(536, 480)
+position = Vector2(856, 488)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, 16)
@@ -1422,3 +1422,9 @@ layer_0/tile_data = PackedInt32Array(1114151, 196608, 23, 1179687, 196608, 24, 1
 position = Vector2(576, 152)
 scale = Vector2(3.6, 1.73542)
 texture = ExtResource("4_1y1l4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 25.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

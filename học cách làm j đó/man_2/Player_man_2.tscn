@@ -1,10 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6wnus6o7gi0a"]
+[gd_scene load_steps=6 format=3 uid="uid://c6wnus6o7gi0a"]
 
 [ext_resource type="Script" path="res://man_2/Player_man_2.gd" id="1_cdnrn"]
+[ext_resource type="Texture2D" uid="uid://cshblewm7mc71" path="res://dohoa/carot.png" id="2_7qas6"]
 [ext_resource type="Texture2D" uid="uid://bw6quxdkmrh07" path="res://dohoa/cucai1.png" id="2_u5h1b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rdq16"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7qas6")
+}],
+"loop": true,
+"name": &"back",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_u5h1b")
@@ -13,12 +22,7 @@ animations = [{
 "texture": ExtResource("2_u5h1b")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
+"name": &"front",
 "speed": 5.0
 }]
 
@@ -34,8 +38,7 @@ z_index = 1
 position = Vector2(43, -47.5)
 scale = Vector2(5.3, 5.75)
 sprite_frames = SubResource("SpriteFrames_rdq16")
-frame = 1
-frame_progress = 0.206122
+animation = &"front"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(43, -50.5)

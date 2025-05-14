@@ -1,6 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://gpjsfnwenuwf"]
+[gd_scene load_steps=11 format=3 uid="uid://gpjsfnwenuwf"]
 
 [ext_resource type="Texture2D" uid="uid://cn7wty8nvblr3" path="res://man_2/assets/Idle.png" id="1_dmdfu"]
+
+[sub_resource type="GDScript" id="GDScript_225py"]
+script/source = "extends CharacterBody2D
+
+
+
+func _on_animated_sprite_2d_script_changed():
+	$Sprite.flip_h = true# Replace with function body.
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rg7ji"]
 atlas = ExtResource("1_dmdfu")
@@ -54,12 +63,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4hqb"]
+size = Vector2(22.4102, 20)
 
 [node name="Cow" type="CharacterBody2D"]
+position = Vector2(8, -8)
+scale = Vector2(12.6302, 10.3227)
+script = SubResource("GDScript_225py")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hb8xw")
 frame_progress = 0.895574
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.2051, 0)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_f4hqb")
+
+[connection signal="script_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_script_changed"]
