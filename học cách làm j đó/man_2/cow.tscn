@@ -77,7 +77,6 @@ flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.2051, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_f4hqb")
 
 [connection signal="script_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_script_changed"]
