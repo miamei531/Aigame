@@ -50,6 +50,7 @@ func _process(_delta):
 		show_dialogue(chat)
 		player.turn= true
 	if Input.is_action_just_pressed("ui_down") and player.position.y == 480:
+		remove_items_in_area()
 		if player.position== player.positions_ngang[ans]:
 			check=true
 
@@ -171,3 +172,21 @@ func chuc_mung():
 	await get_tree().create_timer(3).timeout
 	get_tree().paused = false
 	end_notice.visible=false
+
+# Hàm xóa tất cả vật phẩm trong khu vực người chơi
+func remove_items_in_area():
+	var khu_vuc = get_player_area()  # Lấy khu vực mà người chơi đang đứng
+	for item in spawned_items:
+		if is_instance_valid(item) and item.position in khu_vuc:
+			item.queue_free()  # Xóa vật phẩm
+			spawned_items.erase(item)  # Loại bỏ vật phẩm khỏi danh sách
+
+# Hàm trả về khu vực dựa trên vị trí của người chơi
+func get_player_area():
+	# Tùy vào vị trí người chơi, chọn khu vực thích hợp
+	if player.position.x < 400:  # Khu 1
+		return khu_1_positions
+	elif player.position.x < 800:  # Khu 2
+		return khu_2_positions
+	else:  # Khu 3
+		return khu_3_positions
