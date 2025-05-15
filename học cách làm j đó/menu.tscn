@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxog5hq36j021"]
+[gd_scene load_steps=4 format=3 uid="uid://bxog5hq36j021"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_h6f8b"]
 [ext_resource type="AudioStream" uid="uid://csm4cnhphitay" path="res://audio/StockTune-Playground Melodic Jingles_1747297500.mp3" id="2_cc71j"]
+[ext_resource type="Texture2D" uid="uid://cq83a8f4pjsp8" path="res://dohoa/9285857.jpg" id="3_rw3bu"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_h6f8b")
@@ -14,17 +15,17 @@ offset_bottom = 347.0
 text = "MÀN 1"
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 454.0
-offset_top = 261.0
-offset_right = 630.0
-offset_bottom = 346.0
+offset_left = 480.0
+offset_top = 256.0
+offset_right = 656.0
+offset_bottom = 341.0
 text = "MÀN 2"
 
 [node name="Button3" type="Button" parent="."]
-offset_left = 731.0
-offset_top = 262.0
-offset_right = 907.0
-offset_bottom = 347.0
+offset_left = 744.0
+offset_top = 256.0
+offset_right = 920.0
+offset_bottom = 341.0
 text = "MÀN 3"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -36,6 +37,15 @@ offset_top = 24.0
 offset_right = 1112.0
 offset_bottom = 96.0
 text = "setting"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="9285857" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(576, 328)
+scale = Vector2(0.384, 0.324)
+texture = ExtResource("3_rw3bu")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

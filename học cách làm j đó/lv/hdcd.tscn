@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5vb0cxcu04ew"]
+
+[ext_resource type="PackedScene" uid="uid://deoujoh73b31b" path="res://dohoa/node_2d.tscn" id="1_hggks"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_hggks")]
+position = Vector2(-8, 0)

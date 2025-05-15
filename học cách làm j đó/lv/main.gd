@@ -2,6 +2,7 @@ extends Node2D
 @onready var sound_correct = $khen # âm thanh khuyến khích
 @onready var sound_wrong = $sai   
 @onready var bgms = $nen
+@onready var hd = $hd
 func _ready():
 	var mini_scene = preload("res://latvat/letter.tscn").instantiate()
 	mini_scene.diem_label = $DiemLabel  # truyền Label từ scene chính vào
@@ -14,4 +15,5 @@ func _process(delta):
 func up_date_music_start():
 	if !bgms.playing :
 		bgms.play()
+		hd.play()
 		print("nhạc chạy")
