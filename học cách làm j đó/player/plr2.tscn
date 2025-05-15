@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5kumtevl5tmy"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_vejpn"]
-[ext_resource type="Texture2D" uid="uid://btvaff8qciy3q" path="res://icon.svg" id="2_owv13"]
+[ext_resource type="Texture2D" uid="uid://d3xdf04ne68qh" path="res://dohoa/Baskets/round basket.png" id="2_hyva0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7gqwh"]
 size = Vector2(88, 72)
@@ -17,9 +17,9 @@ position = Vector2(12, -4)
 shape = SubResource("RectangleShape2D_7gqwh")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-position = Vector2(-14, 0)
-scale = Vector2(1.21875, 1)
-texture = ExtResource("2_owv13")
+position = Vector2(-20, 32)
+scale = Vector2(0.666667, 0.6875)
+texture = ExtResource("2_hyva0")
 
 [node name="Area2D" type="Area2D" parent="."]
 

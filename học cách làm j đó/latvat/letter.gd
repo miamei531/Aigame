@@ -25,18 +25,19 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.has_method("main"):
-		if target_letter_label != null:
-			if letter == target_letter_label.text:
-				print("Đúng rồi!")
-				if diem_label != null:
-					diem_label.text = str(int(diem_label.text) + 1)
+		if int(diem_label.text) < 6:
+			if target_letter_label != null:
+				if letter == target_letter_label.text:
+					print("Đúng rồi!")
+					if diem_label != null:
+						diem_label.text = str(int(diem_label.text) + 1)
+					else:
+						print("Lỗi: diem_label chưa được gán!")
 				else:
-					print("Lỗi: diem_label chưa được gán!")
-			else:
-				print("Sai rồi!")
-				print("Mục tiêu:", target_letter_label.text)
-				print("Chữ:", letter)
-
+					print("Sai rồi!")
+					print("Mục tiêu:", target_letter_label.text)
+					print("Chữ:", letter)
+	
 		print("hehe")
 		queue_free()
 func lt():
