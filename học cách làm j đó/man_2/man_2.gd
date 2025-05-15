@@ -3,6 +3,7 @@ extends Node2D
 @onready var dialogue_timer: Timer = $chat_time
 @onready var player = $PlayerMan2
 @onready var timer = $Timer
+@onready var end_notice= $end_of_round
 var mob_scenes = [
 	preload("res://man_2/cow.tscn"),
 	preload("res://man_2/chicken.tscn"),
@@ -14,12 +15,14 @@ var count_index= 0
 # Called when the node enters the scene tree for the first time.
 var chat=""
 var dem=0
+var check = false
+var ans
 func _ready():
-	print("Game started!")  # Kiểm tra đơn giản
+	end_notice.visible= false
 	randomize()
 	spawn_unique_mob()
 	spawn_items()
-	var ans=randi_range(0,2)
+	ans=randi_range(0,2)
 	var loai = "bò" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "gà"
 	var food = " bó rơm" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " hạt thóc"
 	chat = "Bé hãy cho con " + loai + " ăn " + str(count[ans]) + food+" nhé."
@@ -28,28 +31,36 @@ func _ready():
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	print("aaa",ans)
 	if Input.is_action_just_pressed("ui_up") :	
 		dem+=1
 	print(dem)
 	if dem >1 and player.position.distance_to(Vector2(536, 320)) < 2:
 		timer.stop() 
+		chuc_mung()
 		timer.start()
 		dem=0
 		spawn_unique_mob()
 		spawn_items()
-		var ans=randi_range(0,2)
+		ans= randi_range(0,2)
 		dialogue_label.visible = false
 		var loai = "bò" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "gà"
 		var food = " bó rơm" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " hạt thóc"
 		chat = "Bé hãy cho con " + loai + " ăn " + str(count[ans]) + food+" nhé."
 		show_dialogue(chat)
 		player.turn= true
-		
+	if Input.is_action_just_pressed("ui_down") and player.position.y == 480:
+		if player.position== player.positions_ngang[ans]:
+			check=true
 
 func _on_timer_timeout():
+	chuc_mung()
+	dem=0
+	player.position = Vector2(536, 320)
+	player.turn = true
 	spawn_unique_mob()
 	spawn_items()
-	var ans=randi_range(0,2)
+	ans=randi_range(0,2)
 	dialogue_label.visible = false
 	var loai = "bò" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "gà"
 	var food = " bó rơm" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " hạt thóc"
@@ -142,4 +153,21 @@ func clear_spawned_items():
 func show_dialogue(text: String):
 	dialogue_label.text = text
 	dialogue_label.visible = true
-	
+
+# Hàm chúc mừng khi check = true
+func chuc_mung():
+	# Hiển thị thông báo chúc mừng
+	if check:
+		end_notice.visible= true
+		var chuc_mung_text = "Chúc mừng bé! bé đã cho ăn xong rồi!"
+		end_notice.text=chuc_mung_text
+		check = false
+
+	else:
+		end_notice.visible= true
+		var chuc_mung_text = "Cố lên lần tới sẽ làm được"
+		end_notice.text=chuc_mung_text
+	get_tree().paused = true
+	await get_tree().create_timer(3).timeout
+	get_tree().paused = false
+	end_notice.visible=false

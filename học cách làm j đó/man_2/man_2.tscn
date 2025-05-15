@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccr85uh6ffbl2"]
+[gd_scene load_steps=13 format=3 uid="uid://ccr85uh6ffbl2"]
 
 [ext_resource type="Script" path="res://man_2/man_2.gd" id="1_2axho"]
 [ext_resource type="PackedScene" uid="uid://c6wnus6o7gi0a" path="res://man_2/Player_man_2.tscn" id="2_jglgw"]
@@ -1402,6 +1402,9 @@ sources/0 = SubResource("TileSetAtlasSource_8t15u")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pedos"]
 bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.560784)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mnx42"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+
 [node name="Man2" type="Node2D"]
 script = ExtResource("1_2axho")
 
@@ -1439,6 +1442,18 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_pedos")
 text = "aaaaaaaaaaaaaaa"
 
 [node name="Timer" type="Timer" parent="chat"]
+
+[node name="end_of_round" type="Label" parent="."]
+z_index = 2
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 1160.0
+offset_bottom = 656.0
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_mnx42")
+text = "aaaaaa"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="chat/Timer" to="." method="_on_timer_timeout"]
