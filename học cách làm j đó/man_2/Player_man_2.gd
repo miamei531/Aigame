@@ -5,11 +5,16 @@ var positions_ngang=[Vector2(216,480),Vector2(536,480),Vector2(856,480)]
 var current_index = 0
 var check = 0
 var is_facing_front = true
+var turn = false
 func _ready():
 	position = positions[current_index]
 	$AnimatedSprite2D.play("front")
 
 func _process(_delta):
+	if turn:
+		$AnimatedSprite2D.play("front")   # quay lưng lại
+		is_facing_front = true
+		turn=false
 	if Input.is_action_just_pressed("ui_up") and check == 0 :
 		jump_to_next_position()
 	if Input.is_action_just_pressed("ui_left") and position.y == 480:

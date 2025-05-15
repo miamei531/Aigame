@@ -24,21 +24,36 @@ func _ready():
 	var food = " bó rơm" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " hạt thóc"
 	chat = "Bé hãy cho con " + loai + " ăn " + str(count[ans]) + food+" nhé."
 	show_dialogue(chat)
-	if(player.position==Vector2(536, 480)):
-		dem+=1
+
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if Input.is_action_just_pressed("ui_up") :	
+		dem+=1
 	print(dem)
-	if(dem!=0):
-		if(player.position==Vector2(536, 320)):
-			timer.stop() 
+	if dem >1 and player.position.distance_to(Vector2(536, 320)) < 2:
+		timer.stop() 
+		timer.start()
+		dem=0
+		spawn_unique_mob()
+		spawn_items()
+		var ans=randi_range(0,2)
+		dialogue_label.visible = false
+		var loai = "bò" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "gà"
+		var food = " bó rơm" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " hạt thóc"
+		chat = "Bé hãy cho con " + loai + " ăn " + str(count[ans]) + food+" nhé."
+		show_dialogue(chat)
+		player.turn= true
+		
 
 func _on_timer_timeout():
 	spawn_unique_mob()
 	spawn_items()
 	var ans=randi_range(0,2)
 	dialogue_label.visible = false
+	var loai = "bò" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "gà"
+	var food = " bó rơm" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " hạt thóc"
+	chat = "Bé hãy cho con " + loai + " ăn " + str(count[ans]) + food+" nhé."
 	show_dialogue(chat)
 	
 # Spawn mob duy nhất
