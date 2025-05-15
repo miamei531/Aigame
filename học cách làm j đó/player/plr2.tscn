@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5kumtevl5tmy"]
+[gd_scene load_steps=7 format=3 uid="uid://b5kumtevl5tmy"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_vejpn"]
 [ext_resource type="Texture2D" uid="uid://d3xdf04ne68qh" path="res://dohoa/Baskets/round basket.png" id="2_hyva0"]
+[ext_resource type="AudioStream" uid="uid://cp16s8elfbh4g" path="res://audio/wrong-47985.mp3" id="3_lysm5"]
+[ext_resource type="AudioStream" uid="uid://b3ifbqit7ifav" path="res://audio/correct-choice-43861.mp3" id="4_gfvq4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7gqwh"]
 size = Vector2(88, 72)
@@ -26,5 +28,11 @@ texture = ExtResource("2_hyva0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-8, 0)
 shape = SubResource("CircleShape2D_indwy")
+
+[node name="sai" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lysm5")
+
+[node name="dung" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gfvq4")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

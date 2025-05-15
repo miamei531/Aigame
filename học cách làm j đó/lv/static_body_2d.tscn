@@ -12,7 +12,8 @@ position = Vector2(92, 8)
 shape = SubResource("RectangleShape2D_6bq7c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.129412, 0.0941176, 0.0862745, 1)
+modulate = Color(0, 0.670588, 0.352941, 1)
+self_modulate = Color(0.0313726, 0.737255, 0, 1)
 position = Vector2(96, 7.75)
 scale = Vector2(1248, 16.5)
 texture = SubResource("CanvasTexture_rejyr")

@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyuuixp6bwvus"]
+[gd_scene load_steps=5 format=3 uid="uid://cyuuixp6bwvus"]
 
 [ext_resource type="Script" path="res://latvat/letter.gd" id="1_7tsq1"]
+[ext_resource type="AudioStream" uid="uid://cp16s8elfbh4g" path="res://audio/wrong-47985.mp3" id="2_qarkk"]
+[ext_resource type="AudioStream" uid="uid://b3ifbqit7ifav" path="res://audio/correct-choice-43861.mp3" id="3_21yyp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qq4y5"]
 size = Vector2(98, 66)
@@ -22,5 +24,11 @@ vertical_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(48, 0)
 shape = SubResource("RectangleShape2D_qq4y5")
+
+[node name="sai" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qarkk")
+
+[node name="dung" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_21yyp")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

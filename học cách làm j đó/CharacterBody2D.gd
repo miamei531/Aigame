@@ -55,6 +55,7 @@ func _on_area_2d_body_entered(body):
 			body.queue_free()
 		else:
 			print("Sai rồi!")
+			$sai.play()
 	pass
 func main():
 	pass

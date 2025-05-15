@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var letter := "a"
+@export var letter := "m"
 @export var speed := 100.0
 @export var target_letter_label: Label = null 
 @export var diem_label: Label = null
@@ -25,21 +25,27 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.has_method("main"):
-		if int(diem_label.text) < 6:
 			if target_letter_label != null:
 				if letter == target_letter_label.text:
 					print("Đúng rồi!")
-					if diem_label != null:
-						diem_label.text = str(int(diem_label.text) + 1)
-					else:
-						print("Lỗi: diem_label chưa được gán!")
-				else:
+
+					if diem_label.text < '6':
+						if diem_label != null:
+							diem_label.text = str(int(diem_label.text) + 1)
+						else:
+							print("Lỗi: diem_label chưa được gán!")
+						$dung.play()
+						await get_tree().create_timer(1).timeout
+				elif diem_label.text !='0':
 					print("Sai rồi!")
+					diem_label.text = str(int(diem_label.text) - 1)
 					print("Mục tiêu:", target_letter_label.text)
 					print("Chữ:", letter)
+					$sai.play()
+					await get_tree().create_timer(1).timeout
 	
-		print("hehe")
-		queue_free()
+	print("hehe")
+	queue_free()
 func lt():
 	pass
 	

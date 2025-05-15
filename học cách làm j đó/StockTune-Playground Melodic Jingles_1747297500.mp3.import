@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bxhqy04x17gd1"
+path="res://.godot/imported/StockTune-Playground Melodic Jingles_1747297500.mp3-60e6c10fe48db64275c51e2e56f4db31.mp3str"
+
+[deps]
+
+source_file="res://StockTune-Playground Melodic Jingles_1747297500.mp3"
+dest_files=["res://.godot/imported/StockTune-Playground Melodic Jingles_1747297500.mp3-60e6c10fe48db64275c51e2e56f4db31.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

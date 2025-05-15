@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bb2ro6egtqvoh"
+path="res://.godot/imported/8190ceb23fed0eacc1c6009a5227c50e (1).mp3-9b48af1d8afad0c38fb92db1e44a2830.mp3str"
+
+[deps]
+
+source_file="res://audio/8190ceb23fed0eacc1c6009a5227c50e (1).mp3"
+dest_files=["res://.godot/imported/8190ceb23fed0eacc1c6009a5227c50e (1).mp3-9b48af1d8afad0c38fb92db1e44a2830.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
