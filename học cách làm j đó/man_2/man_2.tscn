@@ -1450,13 +1450,12 @@ text = "aaaaaaaaaaaaaaa"
 [node name="Timer" type="Timer" parent="chat"]
 
 [node name="end_of_round" type="Label" parent="."]
-visible = false
 z_index = 2
 offset_left = -8.0
 offset_top = -8.0
 offset_right = 1160.0
 offset_bottom = 656.0
-theme_override_font_sizes/font_size = 52
+theme_override_font_sizes/font_size = 90
 theme_override_styles/normal = SubResource("StyleBoxFlat_mnx42")
 text = "aaaaaa"
 horizontal_alignment = 1
