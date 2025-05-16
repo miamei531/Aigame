@@ -327,6 +327,7 @@ position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_8c2aa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(2.5, -1.5)
 scale = Vector2(4.55, 5.65)
 sprite_frames = SubResource("SpriteFrames_o736m")

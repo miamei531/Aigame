@@ -1,12 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://ccr85uh6ffbl2"]
+[gd_scene load_steps=16 format=3 uid="uid://n4qhp3j5sv6p"]
 
 [ext_resource type="Script" path="res://man_2/man_2.gd" id="1_2axho"]
-[ext_resource type="PackedScene" uid="uid://c6wnus6o7gi0a" path="res://man_2/Player_man_2.tscn" id="2_jglgw"]
+[ext_resource type="PackedScene" uid="uid://bv5ouvbd2f1r2" path="res://man_2/Player_man_2.tscn" id="2_jglgw"]
 [ext_resource type="Texture2D" uid="uid://b75elxsttv1ns" path="res://man_2/assets/Hills.png" id="3_k7vs2"]
 [ext_resource type="Texture2D" uid="uid://ctekeseafs2ae" path="res://man_2/assets/Inside Barn(Night).png" id="4_1y1l4"]
 [ext_resource type="Texture2D" uid="uid://dbhylj0te8ov5" path="res://man_2/assets/FA - Structures & Item.png" id="4_wwbdh"]
-[ext_resource type="AudioStream" uid="uid://4o2yithoe3ug" path="res://man_2/assets/46871cc0e78b14513476957ca92df99e.mp3" id="6_g1vwi"]
-[ext_resource type="AudioStream" uid="uid://ciu0yvokqyehc" path="res://man_2/assets/8472f50b1b34864eafcfabb80ac83934.mp3" id="7_ckyrb"]
+[ext_resource type="AudioStream" uid="uid://7qi233rigavl" path="res://man_2/46871cc0e78b14513476957ca92df99e.mp3" id="6_g1vwi"]
+[ext_resource type="AudioStream" uid="uid://b5tht3i028mto" path="res://man_2/8472f50b1b34864eafcfabb80ac83934.mp3" id="7_ckyrb"]
 [ext_resource type="AudioStream" uid="uid://csm4cnhphitay" path="res://audio/StockTune-Playground Melodic Jingles_1747297500.mp3" id="8_qlusb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aiukp"]
@@ -1450,12 +1450,13 @@ text = "aaaaaaaaaaaaaaa"
 [node name="Timer" type="Timer" parent="chat"]
 
 [node name="end_of_round" type="Label" parent="."]
+visible = false
 z_index = 2
 offset_left = -8.0
 offset_top = -8.0
 offset_right = 1160.0
 offset_bottom = 656.0
-theme_override_font_sizes/font_size = 90
+theme_override_font_sizes/font_size = 52
 theme_override_styles/normal = SubResource("StyleBoxFlat_mnx42")
 text = "aaaaaa"
 horizontal_alignment = 1

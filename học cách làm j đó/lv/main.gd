@@ -14,6 +14,7 @@ const THOI_GIAN_GIOI_HAN = 180.0  # 3 phút = 180 giây
 var choi_xong = false
 
 func _ready():
+	$Button.grab_focus()
 	$Sprite2D.visible = false
 	var mini_scene = preload("res://latvat/letter.tscn").instantiate()
 	mini_scene.diem_label = diem_label  # truyền Label từ scene chính vào
@@ -33,6 +34,8 @@ func _process(delta):
 
 	if thoi_gian_choi >= THOI_GIAN_GIOI_HAN or diem_so.text == "6":
 		ket_thuc_man_choi()
+	#if Input.is_action_just_pressed("ui_down"):
+		
 
 func up_date_music_start():
 	if !bgms.playing:
@@ -50,9 +53,13 @@ func ket_thuc_man_choi():
 	var thoi_gian_da_choi = int(thoi_gian_choi)
 	var phut = thoi_gian_da_choi / 60
 	var giay = thoi_gian_da_choi % 60
-	var time_str = "%02d:%02d" % [phut, giay]
+	var time_str = "%00d:%02d" % [phut, giay]
 
 	ket_thuc_label.text = "Tổng kết\nSố chữ: %s\nThời gian: %s" % [tong_diem, time_str]
 	ket_thuc_label.visible = true
 	$Sprite2D.visible = true
 	print("Kết thúc màn chơi")
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://menu.tscn")

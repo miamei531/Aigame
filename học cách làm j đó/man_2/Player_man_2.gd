@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var positions = [Vector2(536, 320), Vector2(536, 480)]
-var positions_ngang=[Vector2(216,480),Vector2(536,480),Vector2(856,480)]
+var positions = [Vector2(536, 320), Vector2(536, 460)]
+var positions_ngang=[Vector2(216,460),Vector2(536,460),Vector2(856,460)]
 var current_index = 0
 var check = 0
 var is_facing_front = true
@@ -17,11 +17,11 @@ func _process(_delta):
 		turn=false
 	if Input.is_action_just_pressed("ui_up") and check == 0 :
 		jump_to_next_position()
-	if Input.is_action_just_pressed("ui_left") and position.y == 480:
+	if Input.is_action_just_pressed("ui_left") and position.y == 460:
 		jump_to_left()
-	if Input.is_action_just_pressed("ui_right") and position.y == 480:
+	if Input.is_action_just_pressed("ui_right") and position.y == 460:
 		jump_to_right()
-	if Input.is_action_just_pressed("ui_down") and position.y == 480:
+	if Input.is_action_just_pressed("ui_down") and position.y == 460:
 		$AnimatedSprite2D.play("back")   # quay lưng lại
 		is_facing_front = false
 

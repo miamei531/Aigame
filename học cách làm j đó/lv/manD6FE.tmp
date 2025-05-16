@@ -31,12 +31,11 @@ position = Vector2(88, 536)
 position = Vector2(8, 0)
 
 [node name="Targetletter" type="Label" parent="."]
-modulate = Color(1, 0.12549, 0.0862745, 1)
 offset_left = 1008.0
-offset_top = 136.0
-offset_right = 1056.0
-offset_bottom = 219.0
-theme_override_font_sizes/font_size = 60
+offset_top = 160.0
+offset_right = 1104.0
+offset_bottom = 256.0
+theme_override_font_sizes/font_size = 40
 text = "a"
 
 [node name="diem" type="Label" parent="."]
@@ -67,10 +66,10 @@ text = "/ 6"
 [node name="Label2" type="Label" parent="."]
 offset_left = 576.0
 offset_top = 160.0
-offset_right = 1128.0
+offset_right = 1111.0
 offset_bottom = 215.0
 theme_override_font_sizes/font_size = 40
-text = "Bé hãy thu thập 6 chữ      nhé"
+text = "Bé hãy thu thập 6 chữ    nhé"
 
 [node name="Sprite2D" type="Sprite2D" parent="Label2"]
 modulate = Color(0.00784314, 0.00784314, 0.00784314, 0.6)
@@ -140,7 +139,6 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 modulate = Color(0.0745098, 0.0745098, 0.0745098, 0.792157)
 z_index = 1
 position = Vector2(589.5, 332.5)
@@ -148,7 +146,6 @@ scale = Vector2(1179, 667)
 texture = SubResource("CanvasTexture_kcvk7")
 
 [node name="Button" type="Button" parent="."]
-visible = false
 z_index = 2
 offset_left = 496.0
 offset_top = 456.0

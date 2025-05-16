@@ -213,7 +213,7 @@ position = Vector2(1368, 448)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("6_7668p")]
 modulate = Color(0, 0.501961, 0.278431, 1)
-position = Vector2(496, 352)
+position = Vector2(504, 352)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
@@ -272,7 +272,6 @@ scale = Vector2(64, 24)
 texture = SubResource("CanvasTexture_pi4c6")
 
 [node name="Carot" type="Sprite2D" parent="."]
-texture_filter = 1
 position = Vector2(1084, 280)
 scale = Vector2(7.6, 8)
 texture = ExtResource("8_1v12s")
@@ -365,7 +364,6 @@ theme_override_font_sizes/font_size = 30
 text = "Tung Vong"
 
 [node name="Sprite2D5" type="Sprite2D" parent="."]
-visible = false
 modulate = Color(0.156863, 0.156863, 0.156863, 0.580392)
 position = Vector2(575.75, 331.75)
 scale = Vector2(1152.5, 664.5)

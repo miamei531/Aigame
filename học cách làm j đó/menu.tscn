@@ -8,11 +8,11 @@
 script = ExtResource("1_h6f8b")
 
 [node name="Button" type="Button" parent="."]
+texture_filter = 1
 offset_left = 192.0
-offset_top = 256.0
-offset_right = 382.0
-offset_bottom = 347.0
-text = "MÀN 1"
+offset_top = 240.0
+offset_right = 392.0
+offset_bottom = 344.0
 
 [node name="Button2" type="Button" parent="."]
 offset_left = 480.0

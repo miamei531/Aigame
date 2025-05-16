@@ -36,18 +36,17 @@ var correct_color: Color
 var game_running := true
 
 func _ready():
-	print($player/player.position)
 	label_tong_diem.visible = false
 	label_ky_luc.visible = false
 	label_tung_vong.visible = false
 	thong_bao_dung.visible = false
 	thong_bao_sai.visible = false
-	$Sprite2D5.visible = false
 	up_date_music_start()
 	randomize()
 	await start_game()
 
 func _process(delta):
+	print($player/player.position)
 	if not game_running or not can_countdown:
 		return
 
@@ -126,11 +125,17 @@ func end_round():
 	game_running = false
 	can_countdown = false
 
-	var player_box = get_player_box()
+	var player_x = player.position.x
 	var round_score := 0
+	var success := false
+	var tolerance := 20.0  # khoảng sai số chấp nhận được (pixels)
 
-	if player_box != null and player_box.modulate == correct_color:
-		# Đáp án đúng
+	for box in boxes:
+		if box.modulate == correct_color and abs(player_x - box.position.x) <= tolerance:
+			success = true
+			break
+
+	if success:
 		print("✅ Bạn an toàn!")
 		thong_bao_dung.visible = true
 		sound_correct.play()
@@ -138,7 +143,6 @@ func end_round():
 		await get_tree().create_timer(1).timeout
 		thong_bao_dung.visible = false
 	else:
-		# Đáp án sai hoặc không đứng trên box nào
 		print("❌ Sai rồi, rơi xuống!")
 		if platform:
 			platform.queue_free()
@@ -157,13 +161,15 @@ func end_round():
 	print("🔢 Điểm vòng này:", round_score, "| Tổng điểm:", score)
 	platform_gone = true
 
-func get_player_box() -> Sprite2D:
+func get_closest_box(player_x: float) -> Sprite2D:
+	var closest = boxes[0]
+	var min_dist = abs(boxes[0].position.x - player_x)
 	for box in boxes:
-		var box_left = box.position.x - box.texture.get_width() / 2
-		var box_right = box.position.x + box.texture.get_width() / 2
-		if player.position.x >= box_left and player.position.x <= box_right:
-			return box
-	return null
+		var dist = abs(box.position.x - player_x)
+		if dist < min_dist:
+			min_dist = dist
+			closest = box
+	return closest
 
 func show_end_summary():
 	label_tong_diem.text = "📊 Tổng điểm: " + str(score)
@@ -175,8 +181,7 @@ func show_end_summary():
 
 	label_tong_diem.visible = true
 	label_ky_luc.visible = true
-	label_tung_vong.visible = true
-	$Sprite2D5.visible = true
+	label_tung_vong.visible = false
 
 	game_running = false
 	can_countdown = false
