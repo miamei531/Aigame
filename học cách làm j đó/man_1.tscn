@@ -200,7 +200,7 @@ offset_bottom = 880.0
 [node name="player" type="Node2D" parent="."]
 
 [node name="player" parent="player" instance=ExtResource("4_5gqb4")]
-position = Vector2(59, 182)
+position = Vector2(40, 232)
 rotation = 0.0208175
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -266,7 +266,7 @@ position = Vector2(0, 360)
 shape = SubResource("RectangleShape2D_elhgk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D3/CollisionShape2D"]
-modulate = Color(0.188235, 1, 1, 0)
+modulate = Color(0.188235, 1, 1, 1)
 position = Vector2(-1.90735e-06, 4.76837e-07)
 scale = Vector2(64, 24)
 texture = SubResource("CanvasTexture_pi4c6")
@@ -340,7 +340,6 @@ stream = ExtResource("13_02y3p")
 stream = ExtResource("14_g1fi6")
 
 [node name="tongdiem" type="Label" parent="."]
-z_index = 2
 offset_left = 400.0
 offset_top = 80.0
 offset_right = 552.0
@@ -349,7 +348,6 @@ theme_override_font_sizes/font_size = 30
 text = "Tổng điểm"
 
 [node name="kỷ lục" type="Label" parent="."]
-z_index = 2
 offset_left = 400.0
 offset_top = 120.0
 offset_right = 493.0
@@ -358,7 +356,6 @@ theme_override_font_sizes/font_size = 30
 text = "Kỷ Lục"
 
 [node name="tungvong" type="Label" parent="."]
-z_index = 2
 offset_left = 400.0
 offset_top = 160.0
 offset_right = 553.0
@@ -368,20 +365,6 @@ text = "Tung Vong"
 
 [node name="Sprite2D5" type="Sprite2D" parent="."]
 modulate = Color(0.156863, 0.156863, 0.156863, 0.580392)
-<<<<<<< HEAD
-z_index = -1
-z_as_relative = false
-=======
-z_index = 1
->>>>>>> c7bc414d30f8268795f70b2d55d1e4ab107a226d
 position = Vector2(575.75, 331.75)
 scale = Vector2(1152.5, 664.5)
 texture = SubResource("CanvasTexture_tdhud")
-
-[node name="Button" type="Button" parent="."]
-offset_left = 456.0
-offset_top = 464.0
-offset_right = 604.0
-offset_bottom = 541.0
-theme_override_font_sizes/font_size = 50
-text = "Thoát"

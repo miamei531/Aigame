@@ -26,20 +26,20 @@ var dem = 0
 var check = false
 var ans
 var nhat = true
-<<<<<<< HEAD
-=======
+#<<<<<<< HEAD
+#=======
 
-func _ready():
-	end_notice.visible= false
-	randomize()
-	spawn_unique_mob()
-	spawn_items()
-	ans=randi_range(0,2)
-	var loai = "bò" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "gà"
-	var food = " bó rơm" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " hạt thóc"
-	chat = "Bé hãy cho con " + loai + " ăn " + str(count[ans]) + food+" nhé."
-	show_dialogue(chat)
->>>>>>> c7bc414d30f8268795f70b2d55d1e4ab107a226d
+#func _ready():
+	#end_notice.visible= false
+	#randomize()
+	#spawn_unique_mob()
+	#spawn_items()
+	#ans=randi_range(0,2)
+	#var loai = "bò" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "gà"
+	#var food = " bó rơm" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " hạt thóc"
+	#chat = "Bé hãy cho con " + loai + " ăn " + str(count[ans]) + food+" nhé."
+	#show_dialogue(chat)
+#>>>>>>> c7bc414d30f8268795f70b2d55d1e4ab107a226d
 
 var total_rounds = 10
 var current_round = 1
