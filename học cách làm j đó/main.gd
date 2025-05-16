@@ -36,6 +36,7 @@ var correct_color: Color
 var game_running := true
 
 func _ready():
+	print($player/player.position)
 	label_tong_diem.visible = false
 	label_ky_luc.visible = false
 	label_tung_vong.visible = false
@@ -125,11 +126,11 @@ func end_round():
 	game_running = false
 	can_countdown = false
 
-	var player_x = player.position.x
-	var closest_box = get_closest_box(player_x)
+	var player_box = get_player_box()
 	var round_score := 0
 
-	if closest_box.modulate == correct_color:
+	if player_box != null and player_box.modulate == correct_color:
+		# Đáp án đúng
 		print("✅ Bạn an toàn!")
 		thong_bao_dung.visible = true
 		sound_correct.play()
@@ -137,6 +138,7 @@ func end_round():
 		await get_tree().create_timer(1).timeout
 		thong_bao_dung.visible = false
 	else:
+		# Đáp án sai hoặc không đứng trên box nào
 		print("❌ Sai rồi, rơi xuống!")
 		if platform:
 			platform.queue_free()
@@ -155,15 +157,13 @@ func end_round():
 	print("🔢 Điểm vòng này:", round_score, "| Tổng điểm:", score)
 	platform_gone = true
 
-func get_closest_box(player_x: float) -> Sprite2D:
-	var closest = boxes[0]
-	var min_dist = abs(boxes[0].position.x - player_x)
+func get_player_box() -> Sprite2D:
 	for box in boxes:
-		var dist = abs(box.position.x - player_x)
-		if dist < min_dist:
-			min_dist = dist
-			closest = box
-	return closest
+		var box_left = box.position.x - box.texture.get_width() / 2
+		var box_right = box.position.x + box.texture.get_width() / 2
+		if player.position.x >= box_left and player.position.x <= box_right:
+			return box
+	return null
 
 func show_end_summary():
 	label_tong_diem.text = "📊 Tổng điểm: " + str(score)

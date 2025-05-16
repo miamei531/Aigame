@@ -18,6 +18,7 @@ var dem=0
 var check = false
 var ans
 var nhat = true
+
 func _ready():
 	end_notice.visible= false
 	randomize()

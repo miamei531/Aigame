@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgw4xvdi1lw3o"]
+[gd_scene load_steps=11 format=3 uid="uid://bgw4xvdi1lw3o"]
 
 [ext_resource type="Script" path="res://lv/main.gd" id="1_muk3k"]
 [ext_resource type="PackedScene" uid="uid://b5kumtevl5tmy" path="res://player/plr2.tscn" id="1_quevf"]
@@ -12,6 +12,8 @@
 size = Vector2(1146, 74)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_t45hq"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kcvk7"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_muk3k")
@@ -49,7 +51,7 @@ text = "0"
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="9277762" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(584, 336)
+position = Vector2(585, 335)
 scale = Vector2(0.392, 0.336)
 texture = ExtResource("4_gpym1")
 
@@ -113,3 +115,32 @@ offset_bottom = 109.0
 theme_override_font_sizes/font_size = 50
 text = "0
 "
+
+[node name="diemso" type="Label" parent="."]
+visible = false
+offset_left = 500.0
+offset_top = 246.0
+offset_right = 650.0
+offset_bottom = 301.0
+theme_override_font_sizes/font_size = 40
+text = "điểm số"
+
+[node name="ketthuc" type="Label" parent="."]
+z_index = 2
+offset_left = 508.0
+offset_top = 220.0
+offset_right = 656.0
+offset_bottom = 275.0
+theme_override_font_sizes/font_size = 40
+text = "ketthuc"
+
+[node name="Label3" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0745098, 0.0745098, 0.0745098, 0.792157)
+z_index = 1
+position = Vector2(589.5, 332.5)
+scale = Vector2(1179, 667)
+texture = SubResource("CanvasTexture_kcvk7")
