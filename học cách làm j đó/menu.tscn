@@ -1,32 +1,77 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxog5hq36j021"]
+[gd_scene load_steps=16 format=3 uid="uid://bxog5hq36j021"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_h6f8b"]
 [ext_resource type="AudioStream" uid="uid://csm4cnhphitay" path="res://audio/StockTune-Playground Melodic Jingles_1747297500.mp3" id="2_cc71j"]
+[ext_resource type="Texture2D" uid="uid://58ebk53mqm70" path="res://dohoa/pixilart-drawing.png" id="2_l8u3x"]
 [ext_resource type="Texture2D" uid="uid://cq83a8f4pjsp8" path="res://dohoa/9285857.jpg" id="3_rw3bu"]
+[ext_resource type="Texture2D" uid="uid://bygbtvosxf2qx" path="res://dohoa/pixilart-drawing (1).png" id="3_sxcxg"]
+[ext_resource type="Texture2D" uid="uid://hcsqgne7ped2" path="res://dohoa/pixilart-drawing (2).png" id="4_kewcq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbnlf"]
+texture = ExtResource("2_l8u3x")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vs4s"]
+texture = ExtResource("2_l8u3x")
+modulate_color = Color(0.341176, 0.341176, 0.341176, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vg48j"]
+texture = ExtResource("2_l8u3x")
+modulate_color = Color(0.47451, 0.47451, 0.47451, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4nvvx"]
+texture = ExtResource("3_sxcxg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ppjgh"]
+texture = ExtResource("3_sxcxg")
+modulate_color = Color(0.376471, 0.376471, 0.376471, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6aplx"]
+texture = ExtResource("3_sxcxg")
+modulate_color = Color(0.47451, 0.47451, 0.47451, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ivg8f"]
+texture = ExtResource("4_kewcq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k3yn7"]
+texture = ExtResource("4_kewcq")
+modulate_color = Color(0.403922, 0.403922, 0.403922, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ou7p2"]
+texture = ExtResource("4_kewcq")
+modulate_color = Color(0.47451, 0.47451, 0.47451, 1)
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_h6f8b")
 
 [node name="Button" type="Button" parent="."]
 texture_filter = 1
-offset_left = 192.0
-offset_top = 240.0
+offset_left = 208.0
+offset_top = 248.0
 offset_right = 392.0
-offset_bottom = 344.0
+offset_bottom = 408.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_wbnlf")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7vs4s")
+theme_override_styles/focus = SubResource("StyleBoxTexture_vg48j")
 
 [node name="Button2" type="Button" parent="."]
+texture_filter = 1
 offset_left = 480.0
-offset_top = 256.0
+offset_top = 248.0
 offset_right = 656.0
-offset_bottom = 341.0
-text = "MÀN 2"
+offset_bottom = 408.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_4nvvx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ppjgh")
+theme_override_styles/focus = SubResource("StyleBoxTexture_6aplx")
 
 [node name="Button3" type="Button" parent="."]
+texture_filter = 1
 offset_left = 744.0
-offset_top = 256.0
+offset_top = 248.0
 offset_right = 920.0
-offset_bottom = 341.0
-text = "MÀN 3"
+offset_bottom = 408.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_ivg8f")
+theme_override_styles/hover = SubResource("StyleBoxTexture_k3yn7")
+theme_override_styles/focus = SubResource("StyleBoxTexture_ou7p2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_cc71j")
@@ -43,7 +88,7 @@ text = "setting"
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="9285857" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(576, 328)
+position = Vector2(576, 320)
 scale = Vector2(0.384, 0.324)
 texture = ExtResource("3_rw3bu")
 

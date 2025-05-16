@@ -14,7 +14,7 @@ const THOI_GIAN_GIOI_HAN = 180.0  # 3 phút = 180 giây
 var choi_xong = false
 
 func _ready():
-	$Button.grab_focus()
+	$Button.visible = false
 	$Sprite2D.visible = false
 	var mini_scene = preload("res://latvat/letter.tscn").instantiate()
 	mini_scene.diem_label = diem_label  # truyền Label từ scene chính vào
@@ -48,7 +48,7 @@ func ket_thuc_man_choi():
 	
 	bgms.stop()
 	hd.stop()
-	
+	$Button.visible = true
 	var tong_diem = diem_so.text
 	var thoi_gian_da_choi = int(thoi_gian_choi)
 	var phut = thoi_gian_da_choi / 60
