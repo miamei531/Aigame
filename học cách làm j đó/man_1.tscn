@@ -365,6 +365,16 @@ text = "Tung Vong"
 
 [node name="Sprite2D5" type="Sprite2D" parent="."]
 modulate = Color(0.156863, 0.156863, 0.156863, 0.580392)
+z_index = -1
+z_as_relative = false
 position = Vector2(575.75, 331.75)
 scale = Vector2(1152.5, 664.5)
 texture = SubResource("CanvasTexture_tdhud")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 456.0
+offset_top = 464.0
+offset_right = 604.0
+offset_bottom = 541.0
+theme_override_font_sizes/font_size = 50
+text = "Thoát"

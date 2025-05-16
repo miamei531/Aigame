@@ -1,10 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccr85uh6ffbl2"]
+[gd_scene load_steps=16 format=3 uid="uid://ccr85uh6ffbl2"]
 
 [ext_resource type="Script" path="res://man_2/man_2.gd" id="1_2axho"]
 [ext_resource type="PackedScene" uid="uid://c6wnus6o7gi0a" path="res://man_2/Player_man_2.tscn" id="2_jglgw"]
 [ext_resource type="Texture2D" uid="uid://b75elxsttv1ns" path="res://man_2/assets/Hills.png" id="3_k7vs2"]
 [ext_resource type="Texture2D" uid="uid://ctekeseafs2ae" path="res://man_2/assets/Inside Barn(Night).png" id="4_1y1l4"]
 [ext_resource type="Texture2D" uid="uid://dbhylj0te8ov5" path="res://man_2/assets/FA - Structures & Item.png" id="4_wwbdh"]
+[ext_resource type="AudioStream" uid="uid://4o2yithoe3ug" path="res://man_2/assets/46871cc0e78b14513476957ca92df99e.mp3" id="6_g1vwi"]
+[ext_resource type="AudioStream" uid="uid://ciu0yvokqyehc" path="res://man_2/assets/8472f50b1b34864eafcfabb80ac83934.mp3" id="7_ckyrb"]
+[ext_resource type="AudioStream" uid="uid://csm4cnhphitay" path="res://audio/StockTune-Playground Melodic Jingles_1747297500.mp3" id="8_qlusb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aiukp"]
 texture = ExtResource("3_k7vs2")
@@ -1455,6 +1458,21 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_mnx42")
 text = "aaaaaa"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="sound_chuc_mung_dung" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("6_g1vwi")
+volume_db = 15.0
+
+[node name="sound_chuc_mung_sai" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("7_ckyrb")
+volume_db = 15.0
+
+[node name="nen" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_qlusb")
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="chat/Timer" to="." method="_on_timer_timeout"]
