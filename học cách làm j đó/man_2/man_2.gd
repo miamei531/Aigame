@@ -17,6 +17,7 @@ var chat=""
 var dem=0
 var check = false
 var ans
+var nhat = true
 func _ready():
 	end_notice.visible= false
 	randomize()
@@ -40,6 +41,7 @@ func _process(_delta):
 		chuc_mung()
 		timer.start()
 		dem=0
+		nhat= true
 		spawn_unique_mob()
 		spawn_items()
 		ans= randi_range(0,2)
@@ -49,12 +51,15 @@ func _process(_delta):
 		chat = "Bé hãy cho con " + loai + " ăn " + str(count[ans]) + food+" nhé."
 		show_dialogue(chat)
 		player.turn= true
-	if Input.is_action_just_pressed("ui_down") and player.position.y == 480:
-		remove_items_in_area()
-		if player.position== player.positions_ngang[ans]:
-			check=true
+	if Input.is_action_just_pressed("ui_down") and player.position.y == 460:
+		if nhat:
+			remove_items_in_area()
+			nhat=false
+			if player.position== player.positions_ngang[ans]:
+				check=true
 
 func _on_timer_timeout():
+	nhat = true
 	chuc_mung()
 	dem=0
 	player.position = Vector2(536, 320)
@@ -73,43 +78,36 @@ func spawn_unique_mob():
 	# Xoá mob cũ nếu còn tồn tại
 	if current_mob and is_instance_valid(current_mob):
 		current_mob.queue_free()
-
 	# Random mob mới
 	var mob_scene = mob_scenes[randi() % mob_scenes.size()]
 	var mob = mob_scene.instantiate()
-
 	# Đặt vị trí mob
 	mob.position = Vector2(800, 280)
 	add_child(mob)
 	current_mob = mob
-
 	# Xoá tất cả các item đã spawn
 	clear_spawned_items()
 
 # Mỗi khu chứa 9 vị trí
 var khu_1_positions = [
-	Vector2(196, 500), Vector2(216, 500), Vector2(236, 500),
-	Vector2(196, 520), Vector2(216, 520), Vector2(236, 520),
-	Vector2(196, 540), Vector2(216, 540), Vector2(236, 540)
+	Vector2(166, 490), Vector2(216, 490), Vector2(266, 490),
+	Vector2(166, 545), Vector2(216, 545), Vector2(266, 545),
+	Vector2(166, 600), Vector2(216, 600), Vector2(266, 600)
 ]
-
 var khu_2_positions = [
-	Vector2(516, 500), Vector2(536, 500), Vector2(556, 500),
-	Vector2(516, 520), Vector2(536, 520), Vector2(556, 520),
-	Vector2(516, 540), Vector2(536, 540), Vector2(556, 540)
+	Vector2(486, 490), Vector2(536, 490), Vector2(586, 490),
+	Vector2(486, 545), Vector2(536, 545), Vector2(586, 545),
+	Vector2(486, 600), Vector2(536, 600), Vector2(586, 600)
 ]
-
 var khu_3_positions = [
-	Vector2(836, 500), Vector2(856, 500), Vector2(876, 500),
-	Vector2(836, 520), Vector2(856, 520), Vector2(876, 520),
-	Vector2(836, 540), Vector2(856, 540), Vector2(876, 540)
+	Vector2(806, 490), Vector2(856, 490), Vector2(906, 490),
+	Vector2(806, 545), Vector2(856, 545), Vector2(906, 545),
+	Vector2(806, 600), Vector2(856, 600), Vector2(906, 600)
 ]
-
 var items_scenes = [
-	preload("res://man_2/cow.tscn"),
-	preload("res://man_2/chicken.tscn"),
+	preload("res://man_2/rom.tscn"),
+	preload("res://man_2/HAT.tscn"),
 ]
-
 # Spawn items
 func spawn_items():
 	var item_scene
@@ -117,44 +115,39 @@ func spawn_items():
 		item_scene = items_scenes[0]
 	else:
 		item_scene = items_scenes[1]
-
 	var khu_vuc = [khu_1_positions, khu_2_positions, khu_3_positions]
-
+	var a=[1,2,3,4,5,6,7,8,9]
 	for khu in khu_vuc:
 		var temp_positions = khu.duplicate()
-		var item_count = randi_range(1, 9)
+		var idx=randi() % a.size()
+		var item_count = a[idx]
+		a.remove_at(idx)
 		count[count_index]= item_count
 		count_index +=1
 		for i in range(item_count):
 			if temp_positions.is_empty():
 				break
-
 			var index = randi() % temp_positions.size()
 			var pos = temp_positions[index]
 			temp_positions.remove_at(index)
-
 			# Spawn item
 			var item = item_scene.instantiate()
 			add_child(item)
 			item.position = pos
-
 			# Lưu item vào danh sách spawned_items để xóa sau
 			spawned_items.append(item)
-
 # Xóa tất cả item đã spawn
 func clear_spawned_items():
 	# Duyệt qua tất cả item đã spawn và xóa chúng
 	for item in spawned_items:
 		if is_instance_valid(item):
 			item.queue_free()
-	
 	# Làm rỗng danh sách spawned_items
 	spawned_items.clear()
 	count_index= 0
 func show_dialogue(text: String):
 	dialogue_label.text = text
 	dialogue_label.visible = true
-
 # Hàm chúc mừng khi check = true
 func chuc_mung():
 	# Hiển thị thông báo chúc mừng
@@ -163,7 +156,6 @@ func chuc_mung():
 		var chuc_mung_text = "Chúc mừng bé! bé đã cho ăn xong rồi!"
 		end_notice.text=chuc_mung_text
 		check = false
-
 	else:
 		end_notice.visible= true
 		var chuc_mung_text = "Cố lên lần tới sẽ làm được"
@@ -172,16 +164,13 @@ func chuc_mung():
 	await get_tree().create_timer(3).timeout
 	get_tree().paused = false
 	end_notice.visible=false
-
 # Hàm xóa tất cả vật phẩm trong khu vực người chơi
 func remove_items_in_area():
-	var khu_vuc = get_player_area()  # Lấy khu vực mà người chơi đang đứng
-	for item in spawned_items:
+	var khu_vuc = get_player_area()
+	for item in spawned_items.duplicate():
 		if is_instance_valid(item) and item.position in khu_vuc:
-			item.queue_free()  # Xóa vật phẩm
-			spawned_items.erase(item)  # Loại bỏ vật phẩm khỏi danh sách
-
-# Hàm trả về khu vực dựa trên vị trí của người chơi
+			item.queue_free()
+			spawned_items.erase(item)
 func get_player_area():
 	# Tùy vào vị trí người chơi, chọn khu vực thích hợp
 	if player.position.x < 400:  # Khu 1
