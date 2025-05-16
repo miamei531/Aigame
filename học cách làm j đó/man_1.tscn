@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dclv6oce6kr2l"]
+[gd_scene load_steps=29 format=3 uid="uid://dclv6oce6kr2l"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_gdlmi"]
 [ext_resource type="Texture2D" uid="uid://clbbpeam4qbxj" path="res://Forest of Illusion Files/Layers/tiles.png" id="2_252nv"]
@@ -179,6 +179,8 @@ size = Vector2(64, 24)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_qxfnl"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_tdhud"]
+
 [node name="world" type="Node2D"]
 script = ExtResource("1_gdlmi")
 
@@ -336,3 +338,33 @@ stream = ExtResource("13_02y3p")
 
 [node name="khen" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_g1fi6")
+
+[node name="tongdiem" type="Label" parent="."]
+offset_left = 400.0
+offset_top = 80.0
+offset_right = 552.0
+offset_bottom = 122.0
+theme_override_font_sizes/font_size = 30
+text = "Tổng điểm"
+
+[node name="kỷ lục" type="Label" parent="."]
+offset_left = 400.0
+offset_top = 120.0
+offset_right = 493.0
+offset_bottom = 162.0
+theme_override_font_sizes/font_size = 30
+text = "Kỷ Lục"
+
+[node name="tungvong" type="Label" parent="."]
+offset_left = 400.0
+offset_top = 160.0
+offset_right = 553.0
+offset_bottom = 202.0
+theme_override_font_sizes/font_size = 30
+text = "Tung Vong"
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+modulate = Color(0.156863, 0.156863, 0.156863, 0.580392)
+position = Vector2(575.75, 331.75)
+scale = Vector2(1152.5, 664.5)
+texture = SubResource("CanvasTexture_tdhud")

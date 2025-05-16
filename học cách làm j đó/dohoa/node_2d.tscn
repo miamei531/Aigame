@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://deoujoh73b31b"]
+[gd_scene load_steps=9 format=3 uid="uid://deoujoh73b31b"]
 
 [ext_resource type="AudioStream" uid="uid://mui8h1f3yjnt" path="res://audio/871e2e84616519f29b5ff6cbe7f57eeb.mp3" id="1_5fwu1"]
+[ext_resource type="Script" path="res://dohoa/node_2d.gd" id="1_q20kv"]
 [ext_resource type="AudioStream" uid="uid://3y43ncjxtsgi" path="res://audio/99052cb47defefe4cf2c11738d4deb77.mp3" id="2_f2fu3"]
+[ext_resource type="AudioStream" uid="uid://cscy0jd0btsqq" path="res://audio/9ca43d1f3d4da6bcfcba6ac886fea598.mp3" id="2_okovx"]
 [ext_resource type="AudioStream" uid="uid://qqsbwoqqx6yx" path="res://audio/1903c9e68715871de27850ca42965721.mp3" id="3_d7f86"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_lvues"]
@@ -11,6 +13,10 @@
 [sub_resource type="CanvasTexture" id="CanvasTexture_1drsm"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_q20kv")
+
+[node name="sansang" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_okovx")
 
 [node name="xanh" type="Sprite2D" parent="."]
 visible = false
@@ -22,8 +28,8 @@ texture = SubResource("CanvasTexture_lvues")
 [node name="Button" type="Button" parent="."]
 offset_left = 520.0
 offset_top = 432.0
-offset_right = 616.0
-offset_bottom = 496.0
+offset_right = 648.0
+offset_bottom = 504.0
 
 [node name="màu trắng" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_5fwu1")
@@ -45,17 +51,8 @@ position = Vector2(576.75, 323.75)
 scale = Vector2(1150.5, 648.5)
 texture = SubResource("CanvasTexture_1drsm")
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_right = 1144.0
-offset_bottom = 656.0
-theme_override_colors/font_color = Color(0.988235, 0.992157, 1, 1)
-theme_override_font_sizes/font_size = 100
-text = "XANH DƯƠNG"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Label2" type="Label" parent="."]
+visible = false
 offset_right = 1144.0
 offset_bottom = 656.0
 theme_override_colors/font_color = Color(0.988235, 0.992157, 1, 1)
@@ -71,5 +68,18 @@ offset_bottom = 656.0
 theme_override_colors/font_color = Color(0.988235, 0.992157, 1, 1)
 theme_override_font_sizes/font_size = 100
 text = "MÀU TRẮNG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1144.0
+offset_bottom = 656.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "XANH DƯƠNG"
 horizontal_alignment = 1
 vertical_alignment = 1
