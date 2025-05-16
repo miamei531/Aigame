@@ -52,6 +52,7 @@ sources/0 = SubResource("TileSetAtlasSource_gv1bp")
 [node name="Hat" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
 scale = Vector2(1.16553, 1.90269)
 tile_set = SubResource("TileSet_6yi6r")
 format = 2

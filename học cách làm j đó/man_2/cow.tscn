@@ -71,6 +71,7 @@ scale = Vector2(12.6302, 10.3227)
 script = SubResource("GDScript_225py")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_hb8xw")
 frame_progress = 0.895574
 flip_h = true

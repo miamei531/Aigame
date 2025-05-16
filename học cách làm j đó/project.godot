@@ -10,20 +10,7 @@ config_version=5
 
 [application]
 
-config/name="học cách làm j đó"
+config/name="Aigame"
 run/main_scene="res://cảnh_hả.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
-
-[autoload]
-
-Game="*res://global/game.gd"
-Utils="*res://global/utils.gd"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/jup/plugin.cfg")
-
-[rendering]
-
-textures/canvas_textures/default_texture_filter=0
