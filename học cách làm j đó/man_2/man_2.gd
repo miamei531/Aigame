@@ -24,7 +24,7 @@ var check = false
 var ans
 var nhat = true
 func _ready():
-	$Button.visible = false
+	$Label.visible= false
 	end_notice.visible= false
 	randomize()
 	spawn_unique_mob()
@@ -42,9 +42,8 @@ func _process(_delta):
 	if round > max_round:
 		print('bbbbb')
 		finish()
-		get_tree().paused=true
 	print("aaa",ans)
-	if Input.is_action_just_pressed("ui_up") :	
+	if Input.is_action_just_pressed("ui_up") :
 		dem+=1
 	print(dem)
 	if dem >1 and player.position.distance_to(Vector2(536, 320)) < 2:
@@ -175,7 +174,7 @@ func chuc_mung():
 	else:
 		end_notice.visible= true
 		var chuc_mung_text = "Cố lên lần tới sẽ làm được"
-		$Button.visible = true
+	#	$Label.visible = true
 		sai.play()
 		end_notice.text=chuc_mung_text
 	get_tree().paused = true
@@ -205,5 +204,7 @@ func finish():
 		result_text += "Không sao cả, bé hãy cố gắng lần sau nhé!"
 	end_notice.text=result_text
 	end_notice.visible=true
-	if Input.is_action_just_pressed("ui_select"):
+	$Label.visible =true
+	if Input.is_action_just_pressed("ui_select") :
 		get_tree().change_scene_to_file("res://menu.tscn")
+
