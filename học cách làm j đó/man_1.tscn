@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dclv6oce6kr2l"]
+[gd_scene load_steps=30 format=3 uid="uid://dclv6oce6kr2l"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_gdlmi"]
 [ext_resource type="Texture2D" uid="uid://clbbpeam4qbxj" path="res://Forest of Illusion Files/Layers/tiles.png" id="2_252nv"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://bqygqo3ff3fe5" path="res://audio/6bdbb7e34f9e5efd4f0dac15272164e7.mp3" id="12_cgy2b"]
 [ext_resource type="AudioStream" uid="uid://msjj6myo1wn1" path="res://audio/9d4edda89b7972433e8f04c58f5b4a96.mp3" id="13_02y3p"]
 [ext_resource type="AudioStream" uid="uid://cdmrnq6leoy6t" path="res://audio/f1a25c574a8d603d5c872884d3dabb66 (1).mp3" id="14_g1fi6"]
+[ext_resource type="PackedScene" uid="uid://0a37jatid74j" path="res://latvat/button.tscn" id="15_7g1tx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_px7fg"]
 texture = ExtResource("2_252nv")
@@ -370,3 +371,9 @@ modulate = Color(0.156863, 0.156863, 0.156863, 0.580392)
 position = Vector2(575.75, 331.75)
 scale = Vector2(1152.5, 664.5)
 texture = SubResource("CanvasTexture_tdhud")
+
+[node name="Button" parent="." instance=ExtResource("15_7g1tx")]
+offset_left = 480.0
+offset_top = 304.0
+offset_right = 600.0
+offset_bottom = 352.0

@@ -36,6 +36,7 @@ var correct_color: Color
 var game_running := true
 
 func _ready():
+	$Button.visible = false
 	label_tong_diem.visible = false
 	label_ky_luc.visible = false
 	label_tung_vong.visible = false
@@ -182,6 +183,7 @@ func show_end_summary():
 	label_tong_diem.visible = true
 	label_ky_luc.visible = true
 	label_tung_vong.visible = false
+	$Button.visible = true
 
 	game_running = false
 	can_countdown = false

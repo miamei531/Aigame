@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://n4qhp3j5sv6p"]
+[gd_scene load_steps=17 format=3 uid="uid://n4qhp3j5sv6p"]
 
 [ext_resource type="Script" path="res://man_2/man_2.gd" id="1_2axho"]
 [ext_resource type="PackedScene" uid="uid://bv5ouvbd2f1r2" path="res://man_2/Player_man_2.tscn" id="2_jglgw"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://7qi233rigavl" path="res://man_2/46871cc0e78b14513476957ca92df99e.mp3" id="6_g1vwi"]
 [ext_resource type="AudioStream" uid="uid://b5tht3i028mto" path="res://man_2/8472f50b1b34864eafcfabb80ac83934.mp3" id="7_ckyrb"]
 [ext_resource type="AudioStream" uid="uid://csm4cnhphitay" path="res://audio/StockTune-Playground Melodic Jingles_1747297500.mp3" id="8_qlusb"]
+[ext_resource type="PackedScene" uid="uid://0a37jatid74j" path="res://latvat/button.tscn" id="9_cichy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aiukp"]
 texture = ExtResource("3_k7vs2")
@@ -1476,6 +1477,10 @@ volume_db = 15.0
 process_mode = 3
 stream = ExtResource("8_qlusb")
 autoplay = true
+
+[node name="Button" parent="." instance=ExtResource("9_cichy")]
+offset_top = 440.0
+offset_bottom = 488.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="chat/Timer" to="." method="_on_timer_timeout"]

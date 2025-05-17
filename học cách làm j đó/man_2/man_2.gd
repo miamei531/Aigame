@@ -24,6 +24,7 @@ var check = false
 var ans
 var nhat = true
 func _ready():
+	$Button.visible = false
 	end_notice.visible= false
 	randomize()
 	spawn_unique_mob()
@@ -174,6 +175,7 @@ func chuc_mung():
 	else:
 		end_notice.visible= true
 		var chuc_mung_text = "Cố lên lần tới sẽ làm được"
+		$Button.visible = true
 		sai.play()
 		end_notice.text=chuc_mung_text
 	get_tree().paused = true

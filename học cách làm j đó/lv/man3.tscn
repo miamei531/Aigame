@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgw4xvdi1lw3o"]
+[gd_scene load_steps=12 format=3 uid="uid://bgw4xvdi1lw3o"]
 
 [ext_resource type="Script" path="res://lv/main.gd" id="1_muk3k"]
 [ext_resource type="PackedScene" uid="uid://b5kumtevl5tmy" path="res://player/plr2.tscn" id="1_quevf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cshblewm7mc71" path="res://dohoa/carot.png" id="5_7j0f7"]
 [ext_resource type="AudioStream" uid="uid://csm4cnhphitay" path="res://audio/StockTune-Playground Melodic Jingles_1747297500.mp3" id="6_2gn4b"]
 [ext_resource type="AudioStream" uid="uid://gvlv8bs2r6k3" path="res://audio/d8812169c1df5bcc096cf74e45fa5009.mp3" id="7_hsn82"]
+[ext_resource type="PackedScene" uid="uid://0a37jatid74j" path="res://latvat/button.tscn" id="8_e5mas"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1h3bw"]
 size = Vector2(1146, 74)
@@ -31,12 +32,12 @@ position = Vector2(88, 536)
 position = Vector2(8, 0)
 
 [node name="Targetletter" type="Label" parent="."]
-modulate = Color(1, 0.12549, 0.0862745, 1)
+modulate = Color(1, 0.960784, 0.760784, 1)
 offset_left = 1008.0
-offset_top = 136.0
-offset_right = 1056.0
-offset_bottom = 219.0
-theme_override_font_sizes/font_size = 60
+offset_top = 128.0
+offset_right = 1064.0
+offset_bottom = 232.0
+theme_override_font_sizes/font_size = 70
 text = "a"
 
 [node name="diem" type="Label" parent="."]
@@ -98,6 +99,7 @@ theme_override_font_sizes/font_size = 100
 text = "Thử lại em nhé !"
 
 [node name="Carot" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(1074.5, 294.5)
 scale = Vector2(9.05, 8.65)
 texture = ExtResource("5_7j0f7")
@@ -128,10 +130,10 @@ text = "điểm số"
 
 [node name="ketthuc" type="Label" parent="."]
 z_index = 2
-offset_left = 456.0
-offset_top = 208.0
-offset_right = 604.0
-offset_bottom = 263.0
+offset_left = 472.0
+offset_top = 272.0
+offset_right = 620.0
+offset_bottom = 327.0
 theme_override_font_sizes/font_size = 40
 text = "ketthuc"
 
@@ -147,13 +149,8 @@ position = Vector2(589.5, 332.5)
 scale = Vector2(1179, 667)
 texture = SubResource("CanvasTexture_kcvk7")
 
-[node name="Button" type="Button" parent="."]
-visible = false
-z_index = 2
+[node name="Button" parent="." instance=ExtResource("8_e5mas")]
 offset_left = 496.0
-offset_top = 456.0
-offset_right = 656.0
-offset_bottom = 512.0
-text = "Quay lại"
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+offset_top = 432.0
+offset_right = 616.0
+offset_bottom = 480.0

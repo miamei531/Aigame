@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://0a37jatid74j"]
+
+[ext_resource type="Script" path="res://Button.gd" id="1_pjqe2"]
+
+[node name="Button" type="Button"]
+offset_left = 528.0
+offset_top = 320.0
+offset_right = 648.0
+offset_bottom = 368.0
+text = "Quay về"
+script = ExtResource("1_pjqe2")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
