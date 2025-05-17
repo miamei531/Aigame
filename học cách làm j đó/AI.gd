@@ -1,7 +1,6 @@
 extends Node
 
 func _ready():
-	await get_tree().create_timer(0.5).timeout
 	var exe_path := ""
 
 	if OS.has_feature("editor"):

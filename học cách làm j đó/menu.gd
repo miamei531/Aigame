@@ -4,6 +4,7 @@ extends Node2D
 var selected_index := 0
 
 func _ready():
+	await get_tree().create_timer(3).timeout
 	update_button_focus()
 
 func _process(delta):
