@@ -196,7 +196,7 @@ func get_player_area():
 	else:  # Khu 3
 		return khu_3_positions
 func finish():
-	var result_text=""
+	var result_text="📊 Tổng điểm:"+ str(correct_answers) +"\n"
 	if correct_answers > max_round / 2:
 		result_text += "Hoan hô! Bé thật giỏi!"
 	else:
