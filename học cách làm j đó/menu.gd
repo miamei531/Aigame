@@ -20,6 +20,7 @@ func _process(delta):
 
 	# Chọn bằng phím Space
 	if Input.is_action_just_pressed("ui_accept"):
+		await get_tree().create_timer(0.5)
 		buttons[selected_index].emit_signal("pressed")
 
 func update_button_focus():

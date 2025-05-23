@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://ce54gk05rivoj" path="res://player/Dancing Girl Files/sprites/Balancing/balancing6.png" id="7_egg5p"]
 [ext_resource type="Texture2D" uid="uid://dol68etdpplvr" path="res://player/Dancing Girl Files/sprites/Balancing/balancing7.png" id="8_xvrn7"]
 [ext_resource type="Texture2D" uid="uid://cwkauvm7t6avw" path="res://player/Dancing Girl Files/sprites/Balancing/balancing8.png" id="9_0ls77"]
+[ext_resource type="Texture2D" uid="uid://8rckawk21ewh" path="res://dohoa/Vector/Characters/character_green_idle.svg" id="10_3s77g"]
 [ext_resource type="Texture2D" uid="uid://ihut7qeqwyq1" path="res://player/Dancing Girl Files/sprites/hips/hips1.png" id="10_thih2"]
-[ext_resource type="Texture2D" uid="uid://cnvcnk7b6sw8r" path="res://dohoa/cucai.png" id="10_uxm4o"]
-[ext_resource type="Texture2D" uid="uid://bw6quxdkmrh07" path="res://dohoa/cucai1.png" id="11_n30qf"]
 [ext_resource type="Texture2D" uid="uid://cb3ndw4xj3rap" path="res://player/Dancing Girl Files/sprites/hips/hips2.png" id="11_s3gop"]
+[ext_resource type="Texture2D" uid="uid://pxwyqjp33526" path="res://dohoa/Vector/Characters/character_green_front.svg" id="11_y0u4i"]
 [ext_resource type="Texture2D" uid="uid://bdx7iltuhbn0r" path="res://player/Dancing Girl Files/sprites/hips/hips3.png" id="12_6a6r2"]
 [ext_resource type="Texture2D" uid="uid://dsaoc5mnbeqkm" path="res://player/Dancing Girl Files/sprites/hips/hips4.png" id="13_0hp1c"]
 [ext_resource type="Texture2D" uid="uid://bxbsgdarplcgh" path="res://player/Dancing Girl Files/sprites/hips/hips5.png" id="14_uvcsg"]
@@ -72,10 +72,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_uxm4o")
+"texture": ExtResource("10_3s77g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_n30qf")
+"texture": ExtResource("11_y0u4i")
 }],
 "loop": true,
 "name": &"cucai",
@@ -328,11 +328,10 @@ shape = SubResource("RectangleShape2D_8c2aa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(2.5, -1.5)
-scale = Vector2(4.55, 5.65)
+position = Vector2(-2, -32)
+scale = Vector2(1.5625, 1.40625)
 sprite_frames = SubResource("SpriteFrames_o736m")
 animation = &"skip"
-frame = 1
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

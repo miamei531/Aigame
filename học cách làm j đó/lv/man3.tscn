@@ -131,9 +131,9 @@ text = "điểm số"
 [node name="ketthuc" type="Label" parent="."]
 z_index = 2
 offset_left = 472.0
-offset_top = 272.0
+offset_top = 273.0
 offset_right = 620.0
-offset_bottom = 327.0
+offset_bottom = 328.0
 theme_override_font_sizes/font_size = 40
 text = "ketthuc"
 
