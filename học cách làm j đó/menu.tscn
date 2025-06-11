@@ -1,54 +1,85 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxog5hq36j021"]
+[gd_scene load_steps=24 format=3 uid="uid://bxog5hq36j021"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_h6f8b"]
 [ext_resource type="AudioStream" uid="uid://csm4cnhphitay" path="res://audio/StockTune-Playground Melodic Jingles_1747297500.mp3" id="2_cc71j"]
-[ext_resource type="Texture2D" uid="uid://58ebk53mqm70" path="res://dohoa/pixilart-drawing.png" id="2_l8u3x"]
-[ext_resource type="Texture2D" uid="uid://cq83a8f4pjsp8" path="res://dohoa/9285857.jpg" id="3_rw3bu"]
-[ext_resource type="Texture2D" uid="uid://bygbtvosxf2qx" path="res://dohoa/pixilart-drawing (1).png" id="3_sxcxg"]
-[ext_resource type="Texture2D" uid="uid://hcsqgne7ped2" path="res://dohoa/pixilart-drawing (2).png" id="4_kewcq"]
+[ext_resource type="Texture2D" uid="uid://dfpq7411oiq0a" path="res://dohoa/Spritesheets/494820436_1048500647408628_8012935812552322247_n.png" id="2_dxqaa"]
+[ext_resource type="Shader" path="res://bo nút.gdshader" id="2_fp5po"]
+[ext_resource type="Texture2D" uid="uid://by1ry76ykctfi" path="res://dohoa/Spritesheets/504332428_729845829541217_6671927301257117307_n.png" id="3_ob3vq"]
+[ext_resource type="Texture2D" uid="uid://duhtrueeuoeio" path="res://dohoa/Spritesheets/494576201_1771073496814393_6487802105468765430_n.png" id="5_h6c6p"]
+[ext_resource type="Texture2D" uid="uid://cby06kcqvlhhy" path="res://dohoa/Vector/Enemies/saw_rest.svg" id="8_nucwx"]
+[ext_resource type="Texture2D" uid="uid://djffw8wwcj6tu" path="res://dohoa/Sprites/Backgrounds/Double/background_clouds.png" id="8_oxivr"]
+[ext_resource type="Texture2D" uid="uid://dr8qn2m7h74a5" path="res://dohoa/Vector/Enemies/saw_a.svg" id="9_evh1w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_udi2q"]
+shader = ExtResource("2_fp5po")
+shader_parameter/radius = 32.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbnlf"]
-texture = ExtResource("2_l8u3x")
+texture = ExtResource("2_dxqaa")
+region_rect = Rect2(374.845, 0, 1344.32, 1365)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7vs4s"]
-texture = ExtResource("2_l8u3x")
+texture = ExtResource("2_dxqaa")
+region_rect = Rect2(367.033, 0, 1351.91, 1365)
 modulate_color = Color(0.341176, 0.341176, 0.341176, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vg48j"]
-texture = ExtResource("2_l8u3x")
+texture = ExtResource("2_dxqaa")
+region_rect = Rect2(367.033, 0, 1348.11, 1365)
 modulate_color = Color(0.47451, 0.47451, 0.47451, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4nvvx"]
-texture = ExtResource("3_sxcxg")
+texture = ExtResource("3_ob3vq")
+region_rect = Rect2(363.235, 0, 1374.69, 1365)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ppjgh"]
-texture = ExtResource("3_sxcxg")
+texture = ExtResource("3_ob3vq")
+region_rect = Rect2(363.235, 0, 1370.9, 1365)
 modulate_color = Color(0.376471, 0.376471, 0.376471, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6aplx"]
-texture = ExtResource("3_sxcxg")
+texture = ExtResource("3_ob3vq")
+region_rect = Rect2(370.83, 0, 1363.3, 1365)
 modulate_color = Color(0.47451, 0.47451, 0.47451, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ivg8f"]
-texture = ExtResource("4_kewcq")
+texture = ExtResource("5_h6c6p")
+region_rect = Rect2(351.843, 0, 1370.9, 1365)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k3yn7"]
-texture = ExtResource("4_kewcq")
+texture = ExtResource("5_h6c6p")
+region_rect = Rect2(359.438, 0, 1367.1, 1365)
 modulate_color = Color(0.403922, 0.403922, 0.403922, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ou7p2"]
-texture = ExtResource("4_kewcq")
+texture = ExtResource("5_h6c6p")
+region_rect = Rect2(351.843, 0, 1370.9, 1365)
 modulate_color = Color(0.47451, 0.47451, 0.47451, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f8wkm"]
+texture = ExtResource("8_nucwx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_27he7"]
+texture = ExtResource("9_evh1w")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cmnga"]
+texture = ExtResource("9_evh1w")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1o2h3"]
+texture = ExtResource("9_evh1w")
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_h6f8b")
 
 [node name="Button" type="Button" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_udi2q")
 offset_left = 208.0
 offset_top = 248.0
 offset_right = 392.0
 offset_bottom = 408.0
+size_flags_stretch_ratio = 0.0
+theme_override_constants/outline_size = 15
 theme_override_styles/normal = SubResource("StyleBoxTexture_wbnlf")
 theme_override_styles/hover = SubResource("StyleBoxTexture_7vs4s")
 theme_override_styles/focus = SubResource("StyleBoxTexture_vg48j")
@@ -81,16 +112,20 @@ offset_left = 1040.0
 offset_top = 24.0
 offset_right = 1112.0
 offset_bottom = 96.0
-text = "setting"
+theme_override_styles/normal = SubResource("StyleBoxTexture_f8wkm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_27he7")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_cmnga")
+theme_override_styles/focus = SubResource("StyleBoxTexture_1o2h3")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="9285857" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(576, 320)
-scale = Vector2(0.384, 0.324)
-texture = ExtResource("3_rw3bu")
+texture_filter = 1
+position = Vector2(576, 328)
+scale = Vector2(2.28125, 1.28125)
+texture = ExtResource("8_oxivr")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

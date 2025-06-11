@@ -332,6 +332,7 @@ position = Vector2(-2, -32)
 scale = Vector2(1.5625, 1.40625)
 sprite_frames = SubResource("SpriteFrames_o736m")
 animation = &"skip"
+frame = 1
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

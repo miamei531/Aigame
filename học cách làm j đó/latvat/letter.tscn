@@ -12,13 +12,12 @@ position = Vector2(144, 40)
 script = ExtResource("1_7tsq1")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -16.0
-offset_top = -32.0
-offset_right = 88.0
-offset_bottom = 37.0
+offset_top = -40.0
+offset_right = 104.0
+offset_bottom = 56.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 70
 horizontal_alignment = 1
 vertical_alignment = 1
 

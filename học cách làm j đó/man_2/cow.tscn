@@ -1,61 +1,22 @@
-[gd_scene load_steps=11 format=3 uid="uid://bt0st6okql0kq"]
+[gd_scene load_steps=5 format=3 uid="uid://bt0st6okql0kq"]
 
-[ext_resource type="Texture2D" uid="uid://cn7wty8nvblr3" path="res://man_2/assets/Idle.png" id="1_dmdfu"]
+[ext_resource type="Texture2D" uid="uid://dv4sflunc1bb" path="res://dohoa/Vector/Enemies/frog_idle.svg" id="1_63wed"]
 
 [sub_resource type="GDScript" id="GDScript_225py"]
 script/source = "extends CharacterBody2D
 
 
 
-func _on_animated_sprite_2d_script_changed():
-	$Sprite.flip_h = true# Replace with function body.
+#func _on_animated_sprite_2d_script_changed():
+	#$Sprite.flip_h = true# Replace with function body.
 "
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rg7ji"]
-atlas = ExtResource("1_dmdfu")
-region = Rect2(0, 16, 64, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yn0ha"]
-atlas = ExtResource("1_dmdfu")
-region = Rect2(64, 16, 64, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xisan"]
-atlas = ExtResource("1_dmdfu")
-region = Rect2(128, 16, 64, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5dfk"]
-atlas = ExtResource("1_dmdfu")
-region = Rect2(192, 16, 64, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f4ytf"]
-atlas = ExtResource("1_dmdfu")
-region = Rect2(256, 16, 64, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c6qu6"]
-atlas = ExtResource("1_dmdfu")
-region = Rect2(320, 16, 64, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hb8xw"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rg7ji")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yn0ha")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xisan")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l5dfk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f4ytf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c6qu6")
+"texture": ExtResource("1_63wed")
 }],
 "loop": true,
 "name": &"default",
@@ -72,12 +33,13 @@ script = SubResource("GDScript_225py")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(-0.950103, -2.32497)
+scale = Vector2(0.188041, 0.217966)
 sprite_frames = SubResource("SpriteFrames_hb8xw")
-frame_progress = 0.895574
-flip_h = true
+frame_progress = 0.381389
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.2051, 0)
+position = Vector2(-1.90021, 0)
 shape = SubResource("RectangleShape2D_f4hqb")
 
 [connection signal="script_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_script_changed"]
