@@ -1,0 +1,130 @@
+[gd_scene load_steps=3 format=3 uid="uid://brnpaju50tkwo"]
+
+[ext_resource type="Script" path="res://broad.gd" id="1_l6h5y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3sgyv"]
+size = Vector2(64, 66)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_l6h5y")
+
+[node name="Area2D1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D1"]
+position = Vector2(160, 96)
+shape = SubResource("RectangleShape2D_3sgyv")
+
+[node name="Label" type="Label" parent="Area2D1"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Area2D5" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5"]
+position = Vector2(416, 96)
+shape = SubResource("RectangleShape2D_3sgyv")
+
+[node name="Label" type="Label" parent="Area2D5"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(352, 96)
+shape = SubResource("RectangleShape2D_3sgyv")
+
+[node name="Label" type="Label" parent="Area2D2"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Area2D3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(288, 96)
+shape = SubResource("RectangleShape2D_3sgyv")
+
+[node name="Label" type="Label" parent="Area2D3/CollisionShape2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Area2D4" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+position = Vector2(224, 96)
+shape = SubResource("RectangleShape2D_3sgyv")
+
+[node name="Label" type="Label" parent="Area2D4"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Area2D6" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D6"]
+position = Vector2(160, 160)
+shape = SubResource("RectangleShape2D_3sgyv")
+
+[node name="Label" type="Label" parent="Area2D6"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Area2D7" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D7"]
+position = Vector2(416, 160)
+shape = SubResource("RectangleShape2D_3sgyv")
+
+[node name="Label" type="Label" parent="Area2D7"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Area2D8" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D8"]
+position = Vector2(352, 160)
+shape = SubResource("RectangleShape2D_3sgyv")
+
+[node name="Label" type="Label" parent="Area2D8"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Area2D9" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D9"]
+position = Vector2(288, 160)
+shape = SubResource("RectangleShape2D_3sgyv")
+
+[node name="Label" type="Label" parent="Area2D9"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Area2D10" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D10"]
+position = Vector2(224, 160)
+shape = SubResource("RectangleShape2D_3sgyv")
+
+[node name="Label" type="Label" parent="Area2D10"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Area2D11" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D11"]
+position = Vector2(96, 128)
+shape = SubResource("RectangleShape2D_3sgyv")
+
+[node name="Label" type="Label" parent="Area2D11"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label" type="Label" parent="Area2D11/Label"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Area2D12" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D12"]
+position = Vector2(480, 128)
+shape = SubResource("RectangleShape2D_3sgyv")
