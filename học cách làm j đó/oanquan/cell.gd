@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var cell_index: int = 0
-signal cell_pressed(index: int)
+#signal cell_pressed(index: int)
 
 func _ready():
 	$Area2D.input_event.connect(_on_area_input)
