@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://blsc7tbbpxpvu"]
 
-[ext_resource type="Texture2D" uid="uid://d1wl1nwyd5e1a" path="res://dohoa/Sprites/Backgrounds/Default/background_fade_mushrooms.png" id="1_ivxv2"]
 [ext_resource type="Script" path="res://oanquan/cell.gd" id="1_t30qx"]
+[ext_resource type="Texture2D" uid="uid://bjvo3exgd3suf" path="res://oanquan/dohoaoanquan/ô ô ăn quan.png" id="2_6djhv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thcw6"]
 size = Vector2(62, 32)
@@ -16,9 +16,9 @@ position = Vector2(-2, -3)
 shape = SubResource("RectangleShape2D_thcw6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, -2)
-scale = Vector2(0.255859, 0.142578)
-texture = ExtResource("1_ivxv2")
+position = Vector2(-4, 20)
+scale = Vector2(0.0667877, 0.0493648)
+texture = ExtResource("2_6djhv")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -13.0

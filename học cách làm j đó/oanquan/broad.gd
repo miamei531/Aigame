@@ -21,7 +21,13 @@ func _ready():
 		var display_index = i
 		if i >= 6:
 			display_index = 11 - i + 6
-		cell.position = Vector2(80 + (display_index % 6) * 70, 200 + y * 100)
+		var screen_width =get_viewport_rect().size.x
+		var cell_width = 120
+		var cells_per_row = 6   
+		var total_width = cell_width * cells_per_row +100
+		var start_x = (screen_width - total_width) / 2
+
+		cell.position = Vector2(start_x + (display_index % 6) * cell_width +100 , 250 + y * 100)
 		add_child(cell)
 		cell_nodes.append(cell)
 		_update_cell_label(cell, i)
@@ -69,7 +75,13 @@ func _play_turn(index: int, clockwise: bool) -> void:
 	var num = cells[index]
 	cells[index] = 0
 	var idx = index
+	if _has_no_moves():
+		_refill_cells()
 
+	# Thêm đoạn kiểm tra kết thúc game tại đây
+	if _is_game_over():
+		_show_game_over()
+		return
 	# RẢI QUÂN CÓ HIỆU ỨNG
 	while num > 0:
 		idx = (idx + (1 if clockwise else -1) + 12) % 12
@@ -200,3 +212,48 @@ func _highlight_selected():
 		var label = cell_nodes[selected_index].get_node("Label")
 		if label:
 			label.modulate = Color.YELLOW
+# === KẾT GAME===
+func _is_game_over() -> bool:
+	# Nếu cả hai ô quan đều trống
+	if cells[0] == 0 and cells[6] == 0:
+		# Và cả hai người chơi không còn quân để đi
+		var p1_empty = true
+		for i in range(1, 6):
+			if cells[i] > 0:
+				p1_empty = false
+				break
+
+		var p2_empty = true
+		for i in range(7, 12):
+			if cells[i] > 0:
+				p2_empty = false
+				break
+
+		if p1_empty and p2_empty:
+			return true
+
+	# Nếu một người chơi không còn quân, người còn lại không thể cho mượn nữa
+	if _has_no_moves():
+		var score_ref = score_p1 if current_player == 1 else score_p2
+		if score_ref < 5:
+			return true
+
+	return false
+func _show_game_over():
+	var winner = ""
+	if score_p1 > score_p2:
+		winner = "Người chơi 1 thắng!"
+	elif score_p2 > score_p1:
+		winner = "Người chơi 2 thắng!"
+	else:
+		winner = "Hòa!"
+
+	var popup = Label.new()
+	popup.text = "Trò chơi kết thúc!\n" + winner
+	popup.position = Vector2(get_viewport_rect().size.x / 2 - 100, get_viewport_rect().size.y / 2 - 50)
+	popup.set("theme_override_colors/font_color", Color.RED)
+	popup.add_theme_font_size_override("font_size", 24)
+	add_child(popup)
+
+	# Ngăn không cho tiếp tục chơi
+	set_process_unhandled_input(false)
