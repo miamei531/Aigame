@@ -10,6 +10,8 @@ var current_player := 1
 var waiting_for_direction := false
 var score_p1 := 0
 var score_p2 := 0
+var debt_p1 := 0
+var debt_p2 := 0
 
 
 # === 2. KHỞI TẠO BÀN CHƠI ===
@@ -72,16 +74,10 @@ func _move_selection(offset: int):
 
 # === 5. CHƠI MỘT LƯỢT ===
 func _play_turn(index: int, clockwise: bool) -> void:
+	# Nếu game chưa kết thúc thì bắt đầu lượt chơi
 	var num = cells[index]
 	cells[index] = 0
 	var idx = index
-	if _has_no_moves():
-		_refill_cells()
-
-	# Thêm đoạn kiểm tra kết thúc game tại đây
-	if _is_game_over():
-		_show_game_over()
-		return
 	_update_cell_label(cell_nodes[idx], idx)
 
 	# RẢI QUÂN CÓ HIỆU ỨNG
@@ -107,7 +103,6 @@ func _play_turn(index: int, clockwise: bool) -> void:
 				await get_tree().create_timer(0.5).timeout
 		else:
 			break
-
 	# KIỂM TRA ĂN
 	while true:
 		var next = (idx + (1 if clockwise else -1) + 12) % 12
@@ -125,8 +120,13 @@ func _play_turn(index: int, clockwise: bool) -> void:
 				idx = next_next
 		else:
 			break
+	
 	current_player = 2 if current_player == 1 else 1
-	# CẬP NHẬT
+	# Kiểm tra kết thúc game tại đây
+	if _is_game_over():
+		_show_game_over()
+		return
+	# Cập nhật nếu còn chơi tiếp
 	if _has_no_moves():
 		_refill_cells()
 	for i in range(12):
@@ -135,15 +135,22 @@ func _play_turn(index: int, clockwise: bool) -> void:
 
 # === 6. ĂN QUÂN ===
 func _eat(i: int):
-	if current_player == 1:
-		score_p1 += cells[i]
-	else:
-		score_p2 += cells[i]
+	var earned = cells[i]
 	cells[i] = 0
-	$diem1.text = str(++score_p1)
-	$diem2.text = str(++score_p2)
-	_update_cell_label(cell_nodes[i], i)
 
+	if current_player == 1:
+		var repay = min(debt_p1, earned)
+		debt_p1 -= repay
+		score_p1 += earned - repay
+	else:
+		var repay = min(debt_p2, earned)
+		debt_p2 -= repay
+		score_p2 += earned - repay
+
+	$diem1.text = str(score_p1)
+	$diem2.text = str(score_p2)
+	_update_cell_label(cell_nodes[i], i)
+	
 # === 7. HẾT QUÂN PHẢI RẢI LẠI ===
 func _has_no_moves() -> bool:
 	var range_start = 1 if current_player == 1 else 7
@@ -156,12 +163,13 @@ func _refill_cells():
 	var range_start = 1 if current_player == 1 else 7
 	var score_ref = score_p1 if current_player == 1 else score_p2
 	if score_ref < 5:
+		var borrow = 5 - score_ref
 		if current_player == 1:
-			var borrow = 5 - score_p1
+			debt_p1 += borrow
 			score_p1 = 0
 			score_p2 = max(score_p2 - borrow, 0)
 		else:
-			var borrow = 5 - score_p2
+			debt_p2 += borrow
 			score_p2 = 0
 			score_p1 = max(score_p1 - borrow, 0)
 	else:
@@ -169,9 +177,13 @@ func _refill_cells():
 			score_p1 -= 5
 		else:
 			score_p2 -= 5
+
+	$diem1.text = str(score_p1)
+	$diem2.text = str(score_p2)
 	for i in range(range_start, range_start + 5):
 		cells[i] = 1
 		_update_cell_label(cell_nodes[i], i)
+
 
 # === 8. TỰ ĐỘNG CHỌN Ô ===
 func _auto_select_valid_cell():
@@ -197,44 +209,35 @@ func _update_cell_label(cell_node: Node, i: int):
 	var label = cell_node.get_node("Label")
 	if label:
 		label.text = str(cells[i])
-		label.modulate = Color.WHITE
+		label.modulate = Color.BLACK
 
 # === 11. TÔ SÁNG Ô ===
 func _highlight_selected():
 	for i in range(12):
 		var label = cell_nodes[i].get_node("Label")
 		if label:
-			label.modulate = Color.WHITE
+			label.modulate = Color.BLACK
 	if cell_nodes[selected_index]:
 		var label = cell_nodes[selected_index].get_node("Label")
 		if label:
-			label.modulate = Color.YELLOW
+			label.modulate = Color.DARK_RED
 # === KẾT GAME===
 func _is_game_over() -> bool:
 	# Nếu cả hai ô quan đều trống
 	if cells[0] == 0 and cells[6] == 0:
-		# Và cả hai người chơi không còn quân để đi
-		var p1_empty = true
-		for i in range(1, 6):
-			if cells[i] > 0:
-				p1_empty = false
-				break
-
-		var p2_empty = true
-		for i in range(7, 12):
-			if cells[i] > 0:
-				p2_empty = false
-				break
-
-		if p1_empty and p2_empty:
-			return true
-
+		return true
+	# Cả hai người chơi không còn quân để đi
+	var check= true
+	for i in range(5):
+		if cells[1 + i] > 0 or cells[7 + i] > 0:
+			check = false
+	if check:
+		return true
 	# Nếu một người chơi không còn quân, người còn lại không thể cho mượn nữa
 	if _has_no_moves():
-		var score_ref = score_p1 if current_player == 1 else score_p2
+		var score_ref = score_p1 + score_p2
 		if score_ref < 5:
 			return true
-
 	return false
 func _show_game_over():
 	var winner = ""
