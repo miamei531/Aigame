@@ -5,7 +5,7 @@ const CELL_SCENE := preload("res://oanquan/cell.tscn")
 
 var cells: Array[int] = [0, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 5]
 var cell_nodes: Array[Node] = []
-var selected_index := 0
+var selected_index := 1
 var current_player := 1
 var waiting_for_direction := false
 var score_p1 := 0
@@ -82,18 +82,19 @@ func _play_turn(index: int, clockwise: bool) -> void:
 	if _is_game_over():
 		_show_game_over()
 		return
+	_update_cell_label(cell_nodes[idx], idx)
+
 	# RẢI QUÂN CÓ HIỆU ỨNG
 	while num > 0:
 		idx = (idx + (1 if clockwise else -1) + 12) % 12
 		cells[idx] += 1
 		num -= 1
 		_update_cell_label(cell_nodes[idx], idx)
-		await get_tree().create_timer(0.15).timeout
-
+		await get_tree().create_timer(0.5).timeout
 	# NẾU Ô TIẾP THEO CÓ QUÂN 
 	while true:
 		var next_idx = (idx + (1 if clockwise else -1) + 12) % 12
-		if cells[next_idx] > 0:
+		if cells[next_idx] > 0 and next_idx !=0 and next_idx !=6:
 			num = cells[next_idx]
 			cells[next_idx] = 0
 			_update_cell_label(cell_nodes[next_idx], next_idx)
@@ -103,7 +104,7 @@ func _play_turn(index: int, clockwise: bool) -> void:
 				cells[idx] += 1
 				num -= 1
 				_update_cell_label(cell_nodes[idx], idx)
-				await get_tree().create_timer(0.15).timeout
+				await get_tree().create_timer(0.5).timeout
 		else:
 			break
 
@@ -112,28 +113,24 @@ func _play_turn(index: int, clockwise: bool) -> void:
 		var next = (idx + (1 if clockwise else -1) + 12) % 12
 		var next_next = (next + (1 if clockwise else -1) + 12) % 12
 
-		if cells[next] == 0 and cells[next_next] > 0:
+		if cells[next] == 0 and cells[next_next] > 0 and next !=0 and next !=6: 
 			if next_next == 0 or next_next == 6:
 				if cells[next_next] >= 5:
 					_eat(next_next)
-					break
+					idx = next_next
 				else:
 					break
 			else:
 				_eat(next_next)
 				idx = next_next
-				continue
 		else:
 			break
-
+	current_player = 2 if current_player == 1 else 1
 	# CẬP NHẬT
-	for i in range(12):
-		_update_cell_label(cell_nodes[i], i)
-
 	if _has_no_moves():
 		_refill_cells()
-
-	current_player = 2 if current_player == 1 else 1
+	for i in range(12):
+		_update_cell_label(cell_nodes[i], i)
 	_auto_select_valid_cell()
 
 # === 6. ĂN QUÂN ===
