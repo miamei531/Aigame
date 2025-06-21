@@ -16,20 +16,36 @@ var debt_p2 := 0
 
 # === 2. KHỞI TẠO BÀN CHƠI ===
 func _ready():
+	var screen_width = get_viewport_rect().size.x
+	var screen_height = get_viewport_rect().size.y
+
+	var cell_size = Vector2(100, 100)
+	var spacing = 10
+
+	var row_top_y = 220
+	var row_bottom_y = 330
+
+	# Tổng chiều rộng: 5 ô Dân + 2 ô Quan + khoảng cách
+	var total_cells = 7   # 5 ô Dân + 2 Quan (xem như 7 ô dài)
+	var total_width = total_cells * cell_size.x + (total_cells - 1) * spacing
+	var start_x = (screen_width - total_width) / 2
+
 	for i in range(12):
 		var cell = CELL_SCENE.instantiate()
 		cell.cell_index = i
-		var y = int(i / 6)
-		var display_index = i
-		if i >= 6:
-			display_index = 11 - i + 6
-		var screen_width =get_viewport_rect().size.x
-		var cell_width = 120
-		var cells_per_row = 6   
-		var total_width = cell_width * cells_per_row +100
-		var start_x = (screen_width - total_width) / 2
+		var pos = Vector2()
 
-		cell.position = Vector2(start_x + (display_index % 6) * cell_width +100 , 250 + y * 100)
+		match i:
+			0:  # Quan trái
+				pos = Vector2(start_x, (row_top_y + row_bottom_y) / 2)
+			6:  # Quan phải
+				pos = Vector2(start_x + 6 * (cell_size.x + spacing), (row_top_y + row_bottom_y) / 2)
+			1,2,3,4,5:
+				pos = Vector2(start_x + (i) * (cell_size.x + spacing), row_bottom_y)
+			7,8,9,10,11:
+				pos = Vector2(start_x + (12 - i) * (cell_size.x + spacing), row_top_y)
+
+		cell.position = pos
 		add_child(cell)
 		cell_nodes.append(cell)
 		_update_cell_label(cell, i)
@@ -220,7 +236,7 @@ func _highlight_selected():
 	if cell_nodes[selected_index]:
 		var label = cell_nodes[selected_index].get_node("Label")
 		if label:
-			label.modulate = Color.DARK_RED
+			label.modulate = Color.RED
 # === KẾT GAME===
 func _is_game_over() -> bool:
 	# Nếu cả hai ô quan đều trống

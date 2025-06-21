@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://blsc7tbbpxpvu"]
+[gd_scene load_steps=5 format=3 uid="uid://blsc7tbbpxpvu"]
 
 [ext_resource type="Script" path="res://oanquan/cell.gd" id="1_t30qx"]
 [ext_resource type="Texture2D" uid="uid://bjvo3exgd3suf" path="res://oanquan/dohoaoanquan/ô ô ăn quan.png" id="2_6djhv"]
+[ext_resource type="Texture2D" uid="uid://gvcymei7e0k" path="res://oanquan/dohoaoanquan/bàn cờ ô ăn quan.png" id="3_qpf3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thcw6"]
-size = Vector2(62, 32)
+size = Vector2(103, 80)
 
 [node name="Cell" type="Node2D"]
 script = ExtResource("1_t30qx")
@@ -12,17 +13,25 @@ script = ExtResource("1_t30qx")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-2, -3)
+position = Vector2(52.5, 64)
 shape = SubResource("RectangleShape2D_thcw6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4, 20)
-scale = Vector2(0.0667877, 0.0493648)
+visible = false
+position = Vector2(48, 56)
+scale = Vector2(0.0754991, 0.0696915)
 texture = ExtResource("2_6djhv")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -13.0
-offset_top = -44.0
-offset_right = 7.0
-offset_bottom = -21.0
+offset_right = 104.0
+offset_bottom = 120.0
 text = "dd"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BànCờÔĂnQuan" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(48, 16)
+scale = Vector2(0.294, 0.294)
+texture = ExtResource("3_qpf3q")

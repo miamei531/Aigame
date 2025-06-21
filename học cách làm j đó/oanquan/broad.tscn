@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://brnpaju50tkwo"]
+[gd_scene load_steps=4 format=3 uid="uid://brnpaju50tkwo"]
 
 [ext_resource type="Script" path="res://oanquan/broad.gd" id="1_l6h5y"]
 [ext_resource type="Texture2D" uid="uid://bd84wklajxrwq" path="res://oanquan/dohoaoanquan/grass field (less detailed).png" id="2_hb32x"]
+[ext_resource type="Texture2D" uid="uid://gvcymei7e0k" path="res://oanquan/dohoaoanquan/bàn cờ ô ăn quan.png" id="3_q7uim"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_l6h5y")
@@ -12,6 +13,8 @@ offset_top = 73.0
 offset_right = 312.0
 offset_bottom = 145.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
+metadata/_edit_use_anchors_ = true
 
 [node name="diem2" type="Label" parent="."]
 offset_left = 992.0
@@ -19,14 +22,16 @@ offset_top = 552.0
 offset_right = 1104.0
 offset_bottom = 624.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 64.0
-offset_top = 80.0
+offset_top = 72.0
 offset_right = 296.0
-offset_bottom = 160.0
+offset_bottom = 152.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Điểm người chơi 1: "
+metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 832.0
@@ -42,6 +47,11 @@ text = "Điểm người chơi 2:"
 
 [node name="GrassField(lessDetailed)" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 z_index = -1
-position = Vector2(572, 320)
+position = Vector2(576, 304)
 scale = Vector2(0.627027, 0.461428)
 texture = ExtResource("2_hb32x")
+
+[node name="BànCờÔĂnQuan" type="Sprite2D" parent="."]
+position = Vector2(576, 352)
+scale = Vector2(0.313884, 0.293557)
+texture = ExtResource("3_q7uim")
