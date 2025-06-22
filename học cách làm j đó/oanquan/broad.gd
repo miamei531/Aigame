@@ -12,6 +12,7 @@ var score_p1 := 0
 var score_p2 := 0
 var debt_p1 := 0
 var debt_p2 := 0
+var pieces_by_cell := []  # Mỗi phần tử là một Array chứa các Piece của ô tương ứng
 
 
 # === 2. KHỞI TẠO BÀN CHƠI ===
@@ -28,6 +29,10 @@ func _ready():
 	var total_cells = 7   # 5 ô Dân + 2 Quan (xem như 7 ô dài)
 	var total_width = total_cells * cell_size.x + (total_cells - 1) * spacing
 	var start_x = (screen_width - total_width) / 2
+
+	pieces_by_cell.resize(12)
+	for i in range(12):
+		pieces_by_cell[i] = []
 
 	for i in range(12):
 		var cell = CELL_SCENE.instantiate()
@@ -48,7 +53,7 @@ func _ready():
 		cell_nodes.append(cell)
 		_update_cell_label(cell, i)
 		if i not in [0,6]:
-			_spawn_pieces(cell_nodes[i])
+			_spawn_pieces(cell_nodes[i],i)
 		# Di chuyển Label xuống dưới nếu là ô 7-11
 		if i in [7,8,9,10,11]:
 			var label = cell.get_node("Label")
@@ -105,6 +110,7 @@ func _play_turn(index: int, clockwise: bool) -> void:
 		idx = (idx + (1 if clockwise else -1) + 12) % 12
 		cells[idx] += 1
 		num -= 1
+		await _move_one_piece(cell_nodes[index], cell_nodes[idx])
 		_update_cell_label(cell_nodes[idx], idx)
 		await get_tree().create_timer(0.5).timeout
 	# NẾU Ô TIẾP THEO CÓ QUÂN 
@@ -119,6 +125,7 @@ func _play_turn(index: int, clockwise: bool) -> void:
 				idx = (idx + (1 if clockwise else -1) + 12) % 12
 				cells[idx] += 1
 				num -= 1
+				await _move_one_piece(cell_nodes[next_idx], cell_nodes[idx])
 				_update_cell_label(cell_nodes[idx], idx)
 				await get_tree().create_timer(0.5).timeout
 		else:
@@ -169,6 +176,12 @@ func _eat(i: int):
 
 	$diem1.text = str(score_p1)
 	$diem2.text = str(score_p2)
+		# Xóa toàn bộ quân trong ô đó
+	var area := cell_nodes[i].get_node("Area2D")
+	for piece in pieces_by_cell[i]:
+		area.remove_child(piece)
+		piece.queue_free()
+	pieces_by_cell[i].clear()
 	_update_cell_label(cell_nodes[i], i)
 	
 # === 7. HẾT QUÂN PHẢI RẢI LẠI ===
@@ -279,7 +292,7 @@ func _show_game_over():
 	set_process_unhandled_input(false)
 # ĐỒ HỌA ỰAAAAAAAAAA
 # SPAWN QUÂN LÚC BẮT ĐẦU
-func _spawn_pieces(cell_node: Node):
+func _spawn_pieces(cell_node: Node, index : int):
 	var area := cell_node.get_node("Area2D")
 	if not area:
 		return
@@ -299,4 +312,32 @@ func _spawn_pieces(cell_node: Node):
 			piece.position = offset
 
 			area.add_child(piece)
+			pieces_by_cell[index].append(piece)
+# RÃI QUÂN
+func _move_one_piece(from_cell: Node, to_cell: Node) -> void:
+	var from_index = from_cell.cell_index
+	var to_index = to_cell.cell_index
 
+	if pieces_by_cell[from_index].is_empty(): return
+
+	var piece = pieces_by_cell[from_index].pop_back()
+	var from_area = from_cell.get_node("Area2D")
+	var to_area = to_cell.get_node("Area2D")
+
+	from_area.remove_child(piece)
+	add_child(piece)
+	piece.global_position = from_area.global_position + piece.position
+	var shape := to_area.get_node("CollisionShape2D").shape as RectangleShape2D
+	if shape is RectangleShape2D:
+		var offset = Vector2(
+			randf_range(-shape.extents.x, shape.extents.x),
+			randf_range(-shape.extents.y, shape.extents.y) + 30
+		)
+		var target = to_area.to_global(offset)
+
+		await create_tween().tween_property(piece, "global_position", target, 0.25).finished
+
+		remove_child(piece)
+		to_area.add_child(piece)
+		piece.position = to_area.to_local(target)
+		pieces_by_cell[to_index].append(piece)
