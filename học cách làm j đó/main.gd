@@ -30,7 +30,7 @@ var timer := 15.0
 var platform_gone := false
 var safe_positions = [300, 550, 800]
 var safe_x := 0
-var box_positions = [Vector2(304, 464), Vector2(544, 464), Vector2(784, 464)]
+var box_positions = [Vector2(296.5, 465.5), Vector2(540, 469), Vector2(781.5, 467.5)]
 var colors = [Color.RED, Color.BLUE, Color.WHITE]
 var correct_color: Color
 var game_running := true
