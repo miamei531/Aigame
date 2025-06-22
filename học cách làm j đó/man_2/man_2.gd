@@ -1,6 +1,6 @@
 extends Node2D
 @onready var dialogue_label: Label = $chat
-@onready var dialogue_timer: Timer = $chat_time
+#onready var dialogue_timer: Timer = $chat_time
 @onready var player = $PlayerMan2
 @onready var timer = $Timer
 @onready var end_notice= $end_of_round

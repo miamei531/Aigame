@@ -2,8 +2,8 @@ extends Node2D
 
 # === 1. HẰNG SỐ VÀ BIẾN TOÀN CỤC ===
 const CELL_SCENE := preload("res://oanquan/cell.tscn")
-
-var cells: Array[int] = [0, 5, 5, 5, 5, 5, 0, 5, 5, 5, 5, 5]
+const PIECE_SCENE := preload("res://oanquan/piece.tscn")
+var cells: Array[int] = [10, 5, 5, 5, 5, 5, 10, 5, 5, 5, 5, 5]
 var cell_nodes: Array[Node] = []
 var selected_index := 1
 var current_player := 1
@@ -20,8 +20,7 @@ func _ready():
 	var screen_height = get_viewport_rect().size.y
 
 	var cell_size = Vector2(100, 100)
-	var spacing = 10
-
+	var spacing = 15
 	var row_top_y = 220
 	var row_bottom_y = 330
 
@@ -41,15 +40,20 @@ func _ready():
 			6:  # Quan phải
 				pos = Vector2(start_x + 6 * (cell_size.x + spacing), (row_top_y + row_bottom_y) / 2)
 			1,2,3,4,5:
-				pos = Vector2(start_x + (i) * (cell_size.x + spacing), row_bottom_y)
+				pos = Vector2(start_x + (i) * (cell_size.x + spacing), row_top_y)
 			7,8,9,10,11:
-				pos = Vector2(start_x + (12 - i) * (cell_size.x + spacing), row_top_y)
-
+				pos = Vector2(start_x + (12 - i) * (cell_size.x + spacing), row_bottom_y)
 		cell.position = pos
 		add_child(cell)
 		cell_nodes.append(cell)
 		_update_cell_label(cell, i)
-
+		if i not in [0,6]:
+			_spawn_pieces(cell_nodes[i])
+		# Di chuyển Label xuống dưới nếu là ô 7-11
+		if i in [7,8,9,10,11]:
+			var label = cell.get_node("Label")
+			if label:
+				label.position.y += 160   # Dịch xuống dưới 30 pixels (tùy bạn điều chỉnh)
 	_highlight_selected()
 
 # === 3. XỬ LÝ INPUT BÀN PHÍM ===
@@ -273,3 +277,26 @@ func _show_game_over():
 
 	# Ngăn không cho tiếp tục chơi
 	set_process_unhandled_input(false)
+# ĐỒ HỌA ỰAAAAAAAAAA
+# SPAWN QUÂN LÚC BẮT ĐẦU
+func _spawn_pieces(cell_node: Node):
+	var area := cell_node.get_node("Area2D")
+	if not area:
+		return
+	var collision_shape := area.get_node("CollisionShape2D")
+	if not collision_shape:
+		return
+	var shape = collision_shape.shape
+	if shape is RectangleShape2D:
+		var extents = shape.extents
+		for i in range(5):
+			var piece = PIECE_SCENE.instantiate()
+			var offset = Vector2(
+			randf_range(-extents.x, extents.x),
+			randf_range(-extents.y, extents.y)
+				)
+			offset.y += 30  # đẩy xuống 10 pixel
+			piece.position = offset
+
+			area.add_child(piece)
+

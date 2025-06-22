@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcgmmwfiscrpw"]
+[gd_scene load_steps=6 format=3 uid="uid://dcgmmwfiscrpw"]
 
 [ext_resource type="Script" path="res://man_2/chicken.gd" id="1_x8ae5"]
-[ext_resource type="Texture2D" uid="uid://bi1pkvqy6jskh" path="res://dohoa/Vector/Enemies/mouse_rest.svg" id="2_of2uc"]
-[ext_resource type="Texture2D" uid="uid://bm121gm3v3nvt" path="res://dohoa/Vector/Enemies/mouse_walk_a.svg" id="3_k6r5n"]
-[ext_resource type="Texture2D" uid="uid://djjtfg67w4v6p" path="res://dohoa/Sprites/Tiles/Default/block_planks.png" id="4_e2yv1"]
+[ext_resource type="Texture2D" uid="uid://drossalklgqnj" path="res://man_2/assets/(màn cho thú cưng ăn) chó.png" id="2_axq6h"]
+[ext_resource type="Texture2D" uid="uid://cm0wevdc5jmqu" path="res://man_2/assets/(màn cho thú cưng ăn) chó happi happi.png" id="3_ahmsn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrxbp"]
 
@@ -11,10 +10,10 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_of2uc")
+"texture": ExtResource("2_axq6h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_k6r5n")
+"texture": ExtResource("3_ahmsn")
 }],
 "loop": true,
 "name": &"default",
@@ -30,12 +29,8 @@ shape = SubResource("RectangleShape2D_xrxbp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-1.19209e-07, -9.52623)
-scale = Vector2(0.547686, 0.562312)
+position = Vector2(2.50371, -4.23388)
+scale = Vector2(0.0337023, 0.02948)
 sprite_frames = SubResource("SpriteFrames_gsmd7")
-frame_progress = 0.273077
-
-[node name="BlockPlanks" type="Sprite2D" parent="."]
-position = Vector2(9.53674e-07, 20.1109)
-scale = Vector2(0.704168, 0.430003)
-texture = ExtResource("4_e2yv1")
+frame_progress = 0.770483
+flip_h = true

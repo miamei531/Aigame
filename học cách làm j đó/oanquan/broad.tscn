@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://brnpaju50tkwo"]
 
 [ext_resource type="Script" path="res://oanquan/broad.gd" id="1_l6h5y"]
-[ext_resource type="Texture2D" uid="uid://bd84wklajxrwq" path="res://oanquan/dohoaoanquan/grass field (less detailed).png" id="2_hb32x"]
+[ext_resource type="Texture2D" uid="uid://cf63v42q4xrd5" path="res://oanquan/dohoaoanquan/z. grass field.png" id="2_fc7ew"]
 [ext_resource type="Texture2D" uid="uid://gvcymei7e0k" path="res://oanquan/dohoaoanquan/bàn cờ ô ăn quan.png" id="3_q7uim"]
 
 [node name="Node2D" type="Node2D"]
@@ -47,9 +47,9 @@ text = "Điểm người chơi 2:"
 
 [node name="GrassField(lessDetailed)" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 z_index = -1
-position = Vector2(576, 304)
-scale = Vector2(0.627027, 0.461428)
-texture = ExtResource("2_hb32x")
+position = Vector2(579.5, 325)
+scale = Vector2(0.624324, 0.623077)
+texture = ExtResource("2_fc7ew")
 
 [node name="BànCờÔĂnQuan" type="Sprite2D" parent="."]
 position = Vector2(576, 352)
