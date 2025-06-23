@@ -154,8 +154,8 @@ func _play_turn(index: int, clockwise: bool) -> void:
 		_show_game_over()
 		return
 	# Cập nhật nếu còn chơi tiếp
-	if _has_no_moves():
-		_refill_cells()
+	#if _has_no_moves():
+		#_refill_cells()
 	for i in range(12):
 		_update_cell_label(cell_nodes[i], i)
 	_auto_select_valid_cell()
@@ -211,15 +211,30 @@ func _refill_cells():
 		else:
 			score_p2 -= 5
 
+	# Cập nhật điểm hiển thị
 	$diem1.text = str(score_p1)
 	$diem2.text = str(score_p2)
+
+	# Reset lại các ô dân với 1 quân và tạo quân mới
 	for i in range(range_start, range_start + 5):
 		cells[i] = 1
 		_update_cell_label(cell_nodes[i], i)
 
+		# Xoá quân cũ nếu còn (tránh trùng hình ảnh)
+		var area = cell_nodes[i].get_node("Area2D")
+		for piece in pieces_by_cell[i]:
+			area.remove_child(piece)
+			piece.queue_free()
+		pieces_by_cell[i].clear()
+
+		# Thêm quân mới
+		_spawn_pieces(cell_nodes[i], i, 1)
+
 
 # === 8. TỰ ĐỘNG CHỌN Ô ===
 func _auto_select_valid_cell():
+	if _has_no_moves():
+		_refill_cells()
 	var range_start = 1 if current_player == 1 else 7
 	for i in range(range_start, range_start + 5):
 		if _is_valid_move(i):
@@ -292,7 +307,7 @@ func _show_game_over():
 	set_process_unhandled_input(false)
 # ĐỒ HỌA ỰAAAAAAAAAA
 # SPAWN QUÂN LÚC BẮT ĐẦU
-func _spawn_pieces(cell_node: Node, index : int):
+func _spawn_pieces(cell_node: Node, index: int, count: int = 5):
 	var area := cell_node.get_node("Area2D")
 	if not area:
 		return
@@ -302,15 +317,14 @@ func _spawn_pieces(cell_node: Node, index : int):
 	var shape = collision_shape.shape
 	if shape is RectangleShape2D:
 		var extents = shape.extents
-		for i in range(5):
+		for i in range(count):  # <-- tạo đúng số quân
 			var piece = PIECE_SCENE.instantiate()
 			var offset = Vector2(
-			randf_range(-extents.x, extents.x),
-			randf_range(-extents.y, extents.y)
-				)
-			offset.y += 30  # đẩy xuống 10 pixel
+				randf_range(-extents.x, extents.x),
+				randf_range(-extents.y, extents.y)
+			)
+			offset.y += 30
 			piece.position = offset
-
 			area.add_child(piece)
 			pieces_by_cell[index].append(piece)
 # RÃI QUÂN
