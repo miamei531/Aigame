@@ -74,9 +74,9 @@ script = ExtResource("1_h6f8b")
 [node name="Button" type="Button" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_udi2q")
-offset_left = 208.0
+offset_left = 104.0
 offset_top = 248.0
-offset_right = 392.0
+offset_right = 288.0
 offset_bottom = 408.0
 size_flags_stretch_ratio = 0.0
 theme_override_constants/outline_size = 15
@@ -86,9 +86,9 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_vg48j")
 
 [node name="Button2" type="Button" parent="."]
 texture_filter = 1
-offset_left = 480.0
+offset_left = 376.0
 offset_top = 248.0
-offset_right = 656.0
+offset_right = 552.0
 offset_bottom = 408.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_4nvvx")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ppjgh")
@@ -96,9 +96,9 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_6aplx")
 
 [node name="Button3" type="Button" parent="."]
 texture_filter = 1
-offset_left = 744.0
+offset_left = 648.0
 offset_top = 248.0
-offset_right = 920.0
+offset_right = 824.0
 offset_bottom = 408.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_ivg8f")
 theme_override_styles/hover = SubResource("StyleBoxTexture_k3yn7")
@@ -123,9 +123,15 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_1o2h3")
 
 [node name="9285857" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture_filter = 1
-position = Vector2(576, 328)
+position = Vector2(576, 312)
 scale = Vector2(2.28125, 1.28125)
 texture = ExtResource("8_oxivr")
+
+[node name="Button5" type="Button" parent="."]
+offset_left = 888.0
+offset_top = 248.0
+offset_right = 1072.0
+offset_bottom = 408.0
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
