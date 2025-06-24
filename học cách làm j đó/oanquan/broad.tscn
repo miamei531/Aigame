@@ -8,10 +8,10 @@
 script = ExtResource("1_l6h5y")
 
 [node name="diem1" type="Label" parent="."]
-offset_left = 216.0
-offset_top = 73.0
-offset_right = 312.0
-offset_bottom = 145.0
+offset_left = 302.0
+offset_top = 65.0
+offset_right = 398.0
+offset_bottom = 137.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0"
 metadata/_edit_use_anchors_ = true
@@ -25,10 +25,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 64.0
-offset_top = 72.0
-offset_right = 296.0
-offset_bottom = 152.0
+offset_left = 149.0
+offset_top = 64.0
+offset_right = 381.0
+offset_bottom = 144.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Điểm người chơi 1: "
 metadata/_edit_use_anchors_ = true
@@ -42,6 +42,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Điểm người chơi 2:"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
