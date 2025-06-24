@@ -13,6 +13,7 @@ var score_p2 := 0
 var debt_p1 := 0
 var debt_p2 := 0
 var pieces_by_cell := []  # Mỗi phần tử là một Array chứa các Piece của ô tương ứng
+var is_playing := false
 
 
 # === 2. KHỞI TẠO BÀN CHƠI ===
@@ -63,6 +64,8 @@ func _ready():
 
 # === 3. XỬ LÝ INPUT BÀN PHÍM ===
 func _unhandled_input(event: InputEvent):
+	if is_playing:
+		return
 	if event is InputEventKey and event.pressed:
 		if not waiting_for_direction:
 			if current_player == 2:
@@ -99,6 +102,7 @@ func _move_selection(offset: int):
 
 # === 5. CHƠI MỘT LƯỢT ===
 func _play_turn(index: int, clockwise: bool) -> void:
+	is_playing = true
 	# Nếu game chưa kết thúc thì bắt đầu lượt chơi
 	var num = cells[index]
 	cells[index] = 0
@@ -159,6 +163,7 @@ func _play_turn(index: int, clockwise: bool) -> void:
 	for i in range(12):
 		_update_cell_label(cell_nodes[i], i)
 	_auto_select_valid_cell()
+	is_playing = false
 
 # === 6. ĂN QUÂN ===
 func _eat(i: int):
