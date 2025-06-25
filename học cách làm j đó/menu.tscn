@@ -84,10 +84,10 @@ script = ExtResource("1_h6f8b")
 [node name="Button" type="Button" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_udi2q")
-offset_left = 104.0
-offset_top = 248.0
+offset_left = 40.0
+offset_top = 200.0
 offset_right = 288.0
-offset_bottom = 408.0
+offset_bottom = 448.0
 size_flags_stretch_ratio = 0.0
 theme_override_constants/outline_size = 15
 theme_override_styles/normal = SubResource("StyleBoxTexture_wbnlf")
@@ -96,20 +96,20 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_vg48j")
 
 [node name="Button2" type="Button" parent="."]
 texture_filter = 1
-offset_left = 336.0
-offset_top = 248.0
-offset_right = 520.0
-offset_bottom = 408.0
+offset_left = 320.0
+offset_top = 208.0
+offset_right = 560.0
+offset_bottom = 440.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_4nvvx")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ppjgh")
 theme_override_styles/focus = SubResource("StyleBoxTexture_6aplx")
 
 [node name="Button3" type="Button" parent="."]
 texture_filter = 1
-offset_left = 624.0
-offset_top = 248.0
-offset_right = 808.0
-offset_bottom = 408.0
+offset_left = 600.0
+offset_top = 208.0
+offset_right = 832.0
+offset_bottom = 440.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_ivg8f")
 theme_override_styles/hover = SubResource("StyleBoxTexture_k3yn7")
 theme_override_styles/focus = SubResource("StyleBoxTexture_ou7p2")
@@ -138,10 +138,10 @@ scale = Vector2(0.45, 0.444445)
 texture = ExtResource("9_owsj3")
 
 [node name="Button5" type="Button" parent="."]
-offset_left = 880.0
-offset_top = 248.0
-offset_right = 1064.0
-offset_bottom = 416.0
+offset_left = 872.0
+offset_top = 208.0
+offset_right = 1104.0
+offset_bottom = 440.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_q1yn2")
 theme_override_styles/hover = SubResource("StyleBoxTexture_5krt2")
 
