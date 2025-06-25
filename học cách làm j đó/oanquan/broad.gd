@@ -1,5 +1,6 @@
 extends Node2D
-
+@onready var QuanXanh = $QuanXanh
+@onready var QuanHong = $QuanHong
 # === 1. HẰNG SỐ VÀ BIẾN TOÀN CỤC ===
 const CELL_SCENE := preload("res://oanquan/cell.tscn")
 const PIECE_SCENE := preload("res://oanquan/piece.tscn")
@@ -140,12 +141,12 @@ func _play_turn(index: int, clockwise: bool) -> void:
 		var next_next = (next + (1 if clockwise else -1) + 12) % 12
 
 		if cells[next] == 0 and cells[next_next] > 0 and next !=0 and next !=6: 
-			if next_next == 0 or next_next == 6:
-				if cells[next_next] >= 5:
+			if (next_next == 0 and QuanHong) or (next_next == 6 and QuanXanh):
+				if cells[next_next] >= 15 :
 					_eat(next_next)
 					idx = next_next
 				else:
-					break
+					break 
 			else:
 				_eat(next_next)
 				idx = next_next
@@ -169,7 +170,6 @@ func _play_turn(index: int, clockwise: bool) -> void:
 func _eat(i: int):
 	var earned = cells[i]
 	cells[i] = 0
-
 	if current_player == 1:
 		var repay = min(debt_p1, earned)
 		debt_p1 -= repay
@@ -182,6 +182,12 @@ func _eat(i: int):
 	$diem1.text = str(score_p1)
 	$diem2.text = str(score_p2)
 		# Xóa toàn bộ quân trong ô đó
+	if (i == 6):
+		if QuanXanh:
+			remove_child(QuanXanh)
+	if (i == 0):
+		if QuanHong:
+			remove_child(QuanHong)
 	var area := cell_nodes[i].get_node("Area2D")
 	for piece in pieces_by_cell[i]:
 		area.remove_child(piece)

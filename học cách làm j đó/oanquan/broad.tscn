@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://brnpaju50tkwo"]
+[gd_scene load_steps=6 format=3 uid="uid://brnpaju50tkwo"]
 
 [ext_resource type="Script" path="res://oanquan/broad.gd" id="1_l6h5y"]
 [ext_resource type="Texture2D" uid="uid://cf63v42q4xrd5" path="res://oanquan/dohoaoanquan/z. grass field.png" id="2_fc7ew"]
 [ext_resource type="Texture2D" uid="uid://gvcymei7e0k" path="res://oanquan/dohoaoanquan/bàn cờ ô ăn quan.png" id="3_q7uim"]
+[ext_resource type="Texture2D" uid="uid://dqpqubt61vt7s" path="res://oanquan/dohoaoanquan/quan xanh dương.png" id="4_t48ju"]
+[ext_resource type="Texture2D" uid="uid://cyx6rqlexhjmg" path="res://oanquan/dohoaoanquan/quan hồng.png" id="5_1asdr"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_l6h5y")
@@ -42,17 +44,26 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Điểm người chơi 2:"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="GrassField(lessDetailed)" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 z_index = -1
-position = Vector2(579.5, 325)
-scale = Vector2(0.624324, 0.623077)
+position = Vector2(576, 324)
+scale = Vector2(0.624324, 0.625)
 texture = ExtResource("2_fc7ew")
 
 [node name="BànCờÔĂnQuan" type="Sprite2D" parent="."]
 position = Vector2(576, 352)
 scale = Vector2(0.313884, 0.293557)
 texture = ExtResource("3_q7uim")
+
+[node name="QuanXanh" type="Sprite2D" parent="."]
+position = Vector2(939, 340)
+scale = Vector2(0.0579217, 0.0534043)
+texture = ExtResource("4_t48ju")
+
+[node name="QuanHong" type="Sprite2D" parent="."]
+position = Vector2(219, 340)
+scale = Vector2(0.0644532, 0.0652343)
+texture = ExtResource("5_1asdr")

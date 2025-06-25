@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0uvrh7fjdgqb"
-path="res://.godot/imported/(màn ô ăn quan) icon ô ăn quan.png-c20bc3c0f6ef4d0aa8f8902c82870689.ctex"
+uid="uid://b6x8nxc8drkyk"
+path="res://.godot/imported/da-removebg-preview.png-e17841fa2449b215b8c3e06bc7f2aa36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://(màn ô ăn quan) icon ô ăn quan.png"
-dest_files=["res://.godot/imported/(màn ô ăn quan) icon ô ăn quan.png-c20bc3c0f6ef4d0aa8f8902c82870689.ctex"]
+source_file="res://oanquan/dohoaoanquan/da-removebg-preview.png"
+dest_files=["res://.godot/imported/da-removebg-preview.png-e17841fa2449b215b8c3e06bc7f2aa36.ctex"]
 
 [params]
 
