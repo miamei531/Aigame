@@ -422,6 +422,6 @@ texture = ExtResource("17_6lweb")
 
 [node name="(mànMàu)OceanView(cóLớpĐất+CóĐụcLỗ)" type="Sprite2D" parent="."]
 z_index = -4
-position = Vector2(571.5, 331)
-scale = Vector2(0.624324, 0.634615)
+position = Vector2(571.5, 314.5)
+scale = Vector2(0.624324, 0.666346)
 texture = ExtResource("18_4s0dw")

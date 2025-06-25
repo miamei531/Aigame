@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bxog5hq36j021"]
+[gd_scene load_steps=27 format=3 uid="uid://bxog5hq36j021"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_h6f8b"]
 [ext_resource type="AudioStream" uid="uid://csm4cnhphitay" path="res://audio/StockTune-Playground Melodic Jingles_1747297500.mp3" id="2_cc71j"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cby06kcqvlhhy" path="res://dohoa/Vector/Enemies/saw_rest.svg" id="8_nucwx"]
 [ext_resource type="Texture2D" uid="uid://djffw8wwcj6tu" path="res://dohoa/Sprites/Backgrounds/Double/background_clouds.png" id="8_oxivr"]
 [ext_resource type="Texture2D" uid="uid://dr8qn2m7h74a5" path="res://dohoa/Vector/Enemies/saw_a.svg" id="9_evh1w"]
+[ext_resource type="Texture2D" uid="uid://cp3m3ulkwgke5" path="res://oanquan/dohoaoanquan/(màn ô ăn quan) icon ô ăn quan.png" id="10_axuuh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_udi2q"]
 shader = ExtResource("2_fp5po")
@@ -67,6 +68,15 @@ texture = ExtResource("9_evh1w")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1o2h3"]
 texture = ExtResource("9_evh1w")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q1yn2"]
+texture = ExtResource("10_axuuh")
+region_rect = Rect2(605.573, 600.648, 1659.51, 1621.53)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5krt2"]
+texture = ExtResource("10_axuuh")
+region_rect = Rect2(621.797, 588.235, 1644.32, 1623.68)
+modulate_color = Color(0.341176, 0.341176, 0.341176, 1)
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_h6f8b")
@@ -129,9 +139,11 @@ texture = ExtResource("8_oxivr")
 
 [node name="Button5" type="Button" parent="."]
 offset_left = 880.0
-offset_top = 256.0
+offset_top = 248.0
 offset_right = 1064.0
 offset_bottom = 416.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_q1yn2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5krt2")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
