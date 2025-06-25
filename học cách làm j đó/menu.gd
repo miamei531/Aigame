@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var buttons: Array[Button] = [$Button, $Button2, $Button3, $Button5]
+@onready var buttons: Array[Button] = [$Button, $Button2, $Button3, $Button5,$Button4]
 @onready var bgms: AudioStreamPlayer = $AudioStreamPlayer
 
 # Các vị trí hiển thị

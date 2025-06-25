@@ -1,47 +1,53 @@
-[gd_scene load_steps=6 format=3 uid="uid://brnpaju50tkwo"]
+[gd_scene load_steps=8 format=3 uid="uid://brnpaju50tkwo"]
 
 [ext_resource type="Script" path="res://oanquan/broad.gd" id="1_l6h5y"]
-[ext_resource type="Texture2D" uid="uid://cf63v42q4xrd5" path="res://oanquan/dohoaoanquan/z. grass field.png" id="2_fc7ew"]
+[ext_resource type="Texture2D" uid="uid://bd84wklajxrwq" path="res://oanquan/dohoaoanquan/grass field (less detailed).png" id="2_bp8h7"]
 [ext_resource type="Texture2D" uid="uid://gvcymei7e0k" path="res://oanquan/dohoaoanquan/bàn cờ ô ăn quan.png" id="3_q7uim"]
 [ext_resource type="Texture2D" uid="uid://dqpqubt61vt7s" path="res://oanquan/dohoaoanquan/quan xanh dương.png" id="4_t48ju"]
 [ext_resource type="Texture2D" uid="uid://cyx6rqlexhjmg" path="res://oanquan/dohoaoanquan/quan hồng.png" id="5_1asdr"]
+[ext_resource type="Texture2D" uid="uid://bxyfjs2ttxaex" path="res://oanquan/dohoaoanquan/quan xanh lá.png" id="6_4op78"]
+[ext_resource type="Texture2D" uid="uid://cyh7jr88w4amy" path="res://oanquan/dohoaoanquan/quan vàng.png" id="7_mmxr7"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_l6h5y")
 
 [node name="diem1" type="Label" parent="."]
-offset_left = 302.0
-offset_top = 65.0
-offset_right = 398.0
-offset_bottom = 137.0
+offset_left = 256.0
+offset_top = 72.0
+offset_right = 352.0
+offset_bottom = 144.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "0"
 metadata/_edit_use_anchors_ = true
 
 [node name="diem2" type="Label" parent="."]
-offset_left = 992.0
+offset_left = 888.0
 offset_top = 552.0
-offset_right = 1104.0
+offset_right = 1000.0
 offset_bottom = 624.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "0"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 149.0
-offset_top = 64.0
-offset_right = 381.0
-offset_bottom = 144.0
+offset_left = 224.0
+offset_top = 56.0
+offset_right = 456.0
+offset_bottom = 136.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Điểm người chơi 1: "
+theme_override_font_sizes/font_size = 50
+text = ": "
 metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 832.0
-offset_top = 552.0
-offset_right = 977.0
-offset_bottom = 575.0
+offset_left = 912.0
+offset_top = 536.0
+offset_right = 1057.0
+offset_bottom = 605.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Điểm người chơi 2:"
+theme_override_font_sizes/font_size = 50
+text = ":"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -49,9 +55,9 @@ text = "Điểm người chơi 2:"
 
 [node name="GrassField(lessDetailed)" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 z_index = -1
-position = Vector2(576, 324)
-scale = Vector2(0.624324, 0.625)
-texture = ExtResource("2_fc7ew")
+position = Vector2(576, 312)
+scale = Vector2(0.631351, 0.625)
+texture = ExtResource("2_bp8h7")
 
 [node name="BànCờÔĂnQuan" type="Sprite2D" parent="."]
 position = Vector2(576, 352)
@@ -67,3 +73,13 @@ texture = ExtResource("4_t48ju")
 position = Vector2(219, 340)
 scale = Vector2(0.0644532, 0.0652343)
 texture = ExtResource("5_1asdr")
+
+[node name="QuanXanhLá" type="Sprite2D" parent="."]
+position = Vector2(128, 104)
+scale = Vector2(0.135156, 0.113281)
+texture = ExtResource("6_4op78")
+
+[node name="QuanVàng" type="Sprite2D" parent="."]
+position = Vector2(1032, 552)
+scale = Vector2(0.140625, 0.142187)
+texture = ExtResource("7_mmxr7")
