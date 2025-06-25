@@ -5,7 +5,6 @@
 [node name="Rom" type="Node2D"]
 
 [node name="(mànChoThúCưngĂn)Pate" type="Sprite2D" parent="."]
-texture_filter = 1
 position = Vector2(4.76837e-07, -16)
 scale = Vector2(0.049125, 0.0494583)
 texture = ExtResource("1_ulhk0")
