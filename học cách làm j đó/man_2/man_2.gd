@@ -30,9 +30,9 @@ func _ready():
 	spawn_unique_mob()
 	spawn_items()
 	ans=randi_range(0,2)
-	var loai = "bò" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "chuột"
-	var food = " bó rơm" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " hạt thóc"
-	chat = "Bé hãy cho con " + loai + " ăn " + str(count[ans]) + food+" nhé."
+	var loai = "mèo" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "chó con"
+	var food = " hộp pate" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " cục xúc xích"
+	chat = "Bé hãy cho chú " + loai + " ăn " + str(count[ans]) + food+" nhé."
 	show_dialogue(chat)
 
 		
@@ -56,9 +56,9 @@ func _process(_delta):
 		spawn_items()
 		ans= randi_range(0,2)
 		dialogue_label.visible = false
-		var loai = "ếch" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "chuột"
-		var food = " con muỗi" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " hạt thóc"
-		chat = "Bé hãy cho con " + loai + " ăn " + str(count[ans]) + food+" nhé."
+		var loai = "mèo" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "chó con"
+		var food = " hộp pate" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " cục xúc xích"
+		chat = "Bé hãy cho chú " + loai + " ăn " + str(count[ans]) + food+" nhé."
 		show_dialogue(chat)
 		player.turn= true
 	if Input.is_action_just_pressed("ui_down") and player.position.y == 460:
@@ -80,9 +80,9 @@ func _on_timer_timeout():
 	spawn_items()
 	ans=randi_range(0,2)
 	dialogue_label.visible = false
-	var loai = "bò" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "chuột"
-	var food = " bó rơm" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " hạt thóc"
-	chat = "Bé hãy cho con " + loai + " ăn " + str(count[ans]) + food+" nhé."
+	var loai = "mèo" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "chó con"
+	var food = " hộp pate" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " cục xúc xích"
+	chat = "Bé hãy cho chú " + loai + " ăn " + str(count[ans]) + food+" nhé."
 	show_dialogue(chat)
 	
 # Spawn mob duy nhất

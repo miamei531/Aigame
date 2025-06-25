@@ -1,59 +1,86 @@
 extends Node2D
 
-@onready var bgms := $AudioStreamPlayer
-@onready var buttons := [$Button, $Button2, $Button3,$Button5]
-var selected_index := 0
+@onready var buttons: Array[Button] = [$Button, $Button2, $Button3, $Button5]
+@onready var bgms: AudioStreamPlayer = $AudioStreamPlayer
 
-var center := Vector2()
+# Các vị trí hiển thị
+var positions: Array[Vector2] = [
+	Vector2(462 - 2.3 * 180, 220+ 1.65 *20),  # 0: ngoài trái
+	Vector2(462 - 1.2 * 180, 220+ 1 *20),  # 1: trái
+	Vector2(462, 220),            # 2: giữa (nút được chọn)
+	Vector2(462 + 1.3925 * 180, 220+ 1 *20),  # 3: phải
+	Vector2(462 + 2.7 * 180, 220+ 1.65 *20)   # 4: ngoài phải
+]
+
+var selected_index: int = 1  # vị trí nút được chọn trong mảng buttons, là 1 hoặc 2
 
 func _ready():
-	center = Vector2(450, 210)
-	await get_tree().create_timer(0.5).timeout
-	update_button_slide()
+	update_buttons()
 
-func _process(_delta):
-	up_date_music_start()
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_left"):
+		if selected_index == 2:
+			selected_index = 1
+		elif selected_index == 1 and buttons.size() > 3:
+			rotate_right(buttons)
+		update_buttons()
 
-	if Input.is_action_just_pressed("ui_right"):
-		selected_index = (selected_index + 1) % buttons.size()
-		update_button_slide()
-	elif Input.is_action_just_pressed("ui_left"):
-		selected_index = (selected_index - 1 + buttons.size()) % buttons.size()
-		update_button_slide()
-
-	if Input.is_action_just_pressed("ui_accept"):
-		await get_tree().create_timer(0.2)
+	elif Input.is_action_just_pressed("ui_right"):
+		if selected_index == 1:
+			selected_index = 2
+		elif selected_index == 2 and buttons.size() > 3:
+			rotate_left(buttons)
+		update_buttons()
+	elif Input.is_action_just_pressed("ui_accept"):
 		buttons[selected_index].emit_signal("pressed")
 
-func update_button_slide():
-	for i in range(buttons.size()):
-		var btn = buttons[i]
-		var tween = create_tween()
 
-		if i == selected_index:
-			btn.visible = true
-			tween.tween_property(btn, "position", center, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-			tween.tween_property(btn, "scale", Vector2(1.4, 1.4), 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-			tween.tween_property(btn, "modulate", Color(1, 1, 1, 1), 0.3)
-		else:
-			tween.tween_property(btn, "modulate", Color(1, 1, 1, 0), 0.3)
-			await tween.finished
-			btn.visible = false
+func update_buttons():
+	var center_pos: int = 2
+	var scale_step: float = 0.2
+	var alpha_step: float = 0.3
 
-func up_date_music_start():
-	if !bgms.playing:
-		bgms.play()
+	# Ẩn tất cả trước
+	for btn: Button in buttons:
+		btn.visible = false
 
+	# Duyệt qua vị trí hiển thị
+	for i: int in range(positions.size()):
+		var btn_index: int = i - center_pos + selected_index
+		if btn_index < 0 or btn_index >= buttons.size():
+			continue
 
+		var btn: Button = buttons[btn_index]
+		var pos: Vector2 = positions[i]
+		var offset: int = abs(i - center_pos)
 
-func _on_button_pressed():
+		btn.visible = true
+		btn.z_index = -offset
+
+		var scale: Vector2 = Vector2(1.2 - offset * scale_step, 1.25 - offset * scale_step)
+		var alpha: float = clamp(1.0 - offset * alpha_step, 0.0, 1.0)
+
+		var tween: Tween = create_tween()
+		tween.tween_property(btn, "position", pos, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tween.tween_property(btn, "scale", scale, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tween.tween_property(btn, "modulate", Color(1, 1, 1, alpha), 0.3)
+
+# Xoay mảng sang trái
+func rotate_left(arr: Array) -> void:
+	var first = arr.pop_front()
+	arr.append(first)
+
+# Xoay mảng sang phải
+func rotate_right(arr: Array) -> void:
+	var last = arr.pop_back()
+	arr.insert(0, last)
+
+# Chuyển cảnh theo nút
+func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://dohoa/node_2d.tscn")
 
-
-func _on_button_2_pressed():
+func _on_button_2_pressed() -> void:
 	get_tree().change_scene_to_file("res://man_2/man_2.tscn")
 
-
-
-func _on_button_3_pressed():
+func _on_button_3_pressed() -> void:
 	get_tree().change_scene_to_file("res://lv/man3.tscn")

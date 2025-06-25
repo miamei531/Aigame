@@ -5,6 +5,7 @@
 [node name="Hat" type="Node2D"]
 
 [node name="(mànChoThúCưngĂn)XúcXích" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(-4.76837e-07, -16)
 scale = Vector2(0.0491667, 0.0518333)
 texture = ExtResource("1_foy4i")
