@@ -1,6 +1,9 @@
 extends Node2D
 @onready var QuanXanh = $QuanXanh
 @onready var QuanHong = $QuanHong
+@onready var QuanXanhla = $"QuanXanhLá"
+@onready var QuanVang = $"QuanVàng"
+@onready var bgms =$AudioStreamPlayer
 # === 1. HẰNG SỐ VÀ BIẾN TOÀN CỤC ===
 const CELL_SCENE := preload("res://oanquan/cell.tscn")
 const PIECE_SCENE := preload("res://oanquan/piece.tscn")
@@ -31,6 +34,7 @@ func _ready():
 	var total_cells = 7   # 5 ô Dân + 2 Quan (xem như 7 ô dài)
 	var total_width = total_cells * cell_size.x + (total_cells - 1) * spacing
 	var start_x = (screen_width - total_width) / 2
+	start_game()
 
 	pieces_by_cell.resize(12)
 	for i in range(12):
@@ -62,6 +66,7 @@ func _ready():
 			if label:
 				label.position.y += 160   # Dịch xuống dưới 30 pixels (tùy bạn điều chỉnh)
 	_highlight_selected()
+	_update_quan_visuals() 
 
 # === 3. XỬ LÝ INPUT BÀN PHÍM ===
 func _unhandled_input(event: InputEvent):
@@ -154,6 +159,7 @@ func _play_turn(index: int, clockwise: bool) -> void:
 			break
 	
 	current_player = 2 if current_player == 1 else 1
+	_update_quan_visuals()
 	# Kiểm tra kết thúc game tại đây
 	if _is_game_over():
 		_show_game_over()
@@ -366,3 +372,24 @@ func _move_one_piece(from_cell: Node, to_cell: Node) -> void:
 		to_area.add_child(piece)
 		piece.position = to_area.to_local(target)
 		pieces_by_cell[to_index].append(piece)
+#---ĐỔI KÍCH THƯỚC QUAN MỖI LƯỢT---#
+func _update_quan_visuals():
+	var tween = create_tween()
+
+	if current_player == 1:
+		if QuanXanhla:
+			tween.tween_property(QuanXanhla, "scale", Vector2(0.18, 0.15), 0.3)
+			tween.tween_property(QuanXanhla, "modulate", Color(0, 1, 0, 1), 0.3)  # Xanh lá đậm
+		if QuanVang:
+			tween.tween_property(QuanVang, "scale", Vector2(0.141, 0.142), 0.3)
+			tween.tween_property(QuanVang, "modulate", Color(1, 1, 1, 0.5), 0.3)
+	else:
+		if QuanXanhla:
+			tween.tween_property(QuanXanhla, "scale", Vector2(0.135, 0.114), 0.3)
+			tween.tween_property(QuanXanhla, "modulate", Color(1, 1, 1, 0.5), 0.3)
+		if QuanVang:
+			tween.tween_property(QuanVang, "scale", Vector2(0.17, 0.17), 0.3)
+			tween.tween_property(QuanVang, "modulate", Color(1, 1, 0, 1), 0.3)  # Vàng đậm
+func start_game():
+	bgms.play()
+	print("🔊 Hướng dẫn đã phát xong.")

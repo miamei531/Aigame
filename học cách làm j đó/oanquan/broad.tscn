@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://brnpaju50tkwo"]
+[gd_scene load_steps=9 format=3 uid="uid://brnpaju50tkwo"]
 
 [ext_resource type="Script" path="res://oanquan/broad.gd" id="1_l6h5y"]
 [ext_resource type="Texture2D" uid="uid://bd84wklajxrwq" path="res://oanquan/dohoaoanquan/grass field (less detailed).png" id="2_bp8h7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cyx6rqlexhjmg" path="res://oanquan/dohoaoanquan/quan hồng.png" id="5_1asdr"]
 [ext_resource type="Texture2D" uid="uid://bxyfjs2ttxaex" path="res://oanquan/dohoaoanquan/quan xanh lá.png" id="6_4op78"]
 [ext_resource type="Texture2D" uid="uid://cyh7jr88w4amy" path="res://oanquan/dohoaoanquan/quan vàng.png" id="7_mmxr7"]
+[ext_resource type="AudioStream" uid="uid://bxhqy04x17gd1" path="res://StockTune-Playground Melodic Jingles_1747297500.mp3" id="8_rjecb"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_l6h5y")
@@ -83,3 +84,6 @@ texture = ExtResource("6_4op78")
 position = Vector2(1032, 552)
 scale = Vector2(0.140625, 0.142187)
 texture = ExtResource("7_mmxr7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_rjecb")
