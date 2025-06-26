@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://n4qhp3j5sv6p"]
+[gd_scene load_steps=14 format=3 uid="uid://n4qhp3j5sv6p"]
 
 [ext_resource type="Script" path="res://man_2/man_2.gd" id="1_2axho"]
 [ext_resource type="PackedScene" uid="uid://bv5ouvbd2f1r2" path="res://man_2/Player_man_2.tscn" id="2_jglgw"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dbhylj0te8ov5" path="res://man_2/assets/FA - Structures & Item.png" id="4_wwbdh"]
 [ext_resource type="AudioStream" uid="uid://7qi233rigavl" path="res://man_2/46871cc0e78b14513476957ca92df99e.mp3" id="6_g1vwi"]
 [ext_resource type="AudioStream" uid="uid://b5tht3i028mto" path="res://man_2/8472f50b1b34864eafcfabb80ac83934.mp3" id="7_ckyrb"]
+[ext_resource type="AudioStream" uid="uid://cml00wa72pd0m" path="res://audio/sound_effect/correct-answer-sound.mp3" id="8_4a8pv"]
 [ext_resource type="AudioStream" uid="uid://csm4cnhphitay" path="res://audio/StockTune-Playground Melodic Jingles_1747297500.mp3" id="8_qlusb"]
+[ext_resource type="AudioStream" uid="uid://dsx1vteqsrog6" path="res://audio/sound_effect/wrong_sound.mp3" id="9_2pxsg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8t15u"]
 texture = ExtResource("4_wwbdh")
@@ -65,19 +67,6 @@ text = "aaaaaaaaaaaaaaa"
 
 [node name="Timer" type="Timer" parent="chat"]
 
-[node name="end_of_round" type="Label" parent="."]
-visible = false
-z_index = 2
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 1160.0
-offset_bottom = 656.0
-theme_override_font_sizes/font_size = 52
-theme_override_styles/normal = SubResource("StyleBoxFlat_mnx42")
-text = "aaaaaa"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="sound_chuc_mung_dung" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("6_g1vwi")
@@ -100,6 +89,30 @@ offset_top = 560.0
 offset_right = 728.0
 offset_bottom = 592.0
 text = "vỗ tay để về màn hình chính"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dung" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_4a8pv")
+volume_db = 15.0
+
+[node name="sai" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("9_2pxsg")
+volume_db = 11.0
+pitch_scale = 1.26
+
+[node name="end_of_round" type="Label" parent="."]
+visible = false
+z_index = 2
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 1160.0
+offset_bottom = 656.0
+theme_override_font_sizes/font_size = 52
+theme_override_styles/normal = SubResource("StyleBoxFlat_mnx42")
+text = "aaaaaa"
 horizontal_alignment = 1
 vertical_alignment = 1
 

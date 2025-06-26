@@ -1,44 +1,40 @@
 extends Node2D
 
-@onready var buttons: Array[Button] = [$Button, $Button2, $Button3, $Button5,$Button4]
+@onready var buttons: Array[Button] = [$Button, $Button2, $Button3, $Button5, $Button4]
 @onready var bgms: AudioStreamPlayer = $AudioStreamPlayer
 
 # Các vị trí hiển thị
 var positions: Array[Vector2] = [
-	Vector2(462 - 2.3 * 180, 220+ 1.65 *20),  # 0: ngoài trái
-	Vector2(462 - 1.2 * 180, 220+ 1 *20),  # 1: trái
-	Vector2(462, 220),            # 2: giữa (nút được chọn)
-	Vector2(462 + 1.3925 * 180, 220+ 1 *20),  # 3: phải
-	Vector2(462 + 2.7 * 180, 220+ 1.65 *20)   # 4: ngoài phải
+	Vector2(462 - 2.3 * 180, 220 + 1.65 * 20),  # 0: ngoài trái
+	Vector2(462 - 1.2 * 180, 220 + 1 * 20),     # 1: trái
+	Vector2(462, 220),                          # 2: giữa (nút được chọn)
+	Vector2(462 + 1.3925 * 180, 220 + 1 * 20),  # 3: phải
+	Vector2(462 + 2.7 * 180, 220 + 1.65 * 20)   # 4: ngoài phải
 ]
 
-var selected_index: int = 1  # vị trí nút được chọn trong mảng buttons, là 1 hoặc 2
+var selected_index: int = 2  # LUÔN luôn là 2
 
 func _ready():
+	for btn in buttons:
+		btn.set_size(Vector2(180, 180))  # Hoặc kích thước bạn mong muốn
 	update_buttons()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_left"):
-		if selected_index == 2:
-			selected_index = 1
-		elif selected_index == 1 and buttons.size() > 3:
-			rotate_right(buttons)
+		rotate_right(buttons)
 		update_buttons()
 
 	elif Input.is_action_just_pressed("ui_right"):
-		if selected_index == 1:
-			selected_index = 2
-		elif selected_index == 2 and buttons.size() > 3:
-			rotate_left(buttons)
+		rotate_left(buttons)
 		update_buttons()
-	elif Input.is_action_just_pressed("ui_accept"):
-		buttons[selected_index].emit_signal("pressed")
 
+	elif Input.is_action_just_pressed("ui_accept"):
+		buttons[selected_index].emit_signal("pressed")  # luôn là nút giữa
 
 func update_buttons():
 	var center_pos: int = 2
 	var scale_step: float = 0.2
-	var alpha_step: float = 0.3
+	var alpha_step: float = 0.4
 
 	# Ẩn tất cả trước
 	for btn: Button in buttons:

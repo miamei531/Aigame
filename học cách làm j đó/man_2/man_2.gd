@@ -6,6 +6,8 @@ extends Node2D
 @onready var end_notice= $end_of_round
 @onready var sai=$sound_chuc_mung_sai
 @onready var dung = $sound_chuc_mung_dung
+@onready var dung_effect =$dung
+@onready var sai_effect = $sai
 var round = 0           # Đếm số hiệp hiện tại (bắt đầu từ 1)
 var max_round = 3       # Tổng số hiệp muốn chơi (giới hạn là 10)
 var correct_answers = 0  # Đếm số câu bé làm đúng
@@ -23,9 +25,11 @@ var dem=0
 var check = false
 var ans
 var nhat = true
+var stylebox
 func _ready():
 	$Label.visible= false
 	end_notice.visible= false
+	stylebox = end_notice.get_theme_stylebox("normal") as StyleBoxFlat
 	randomize()
 	spawn_unique_mob()
 	spawn_items()
@@ -165,16 +169,22 @@ func show_dialogue(text: String):
 func chuc_mung():
 	# Hiển thị thông báo chúc mừng
 	if check:
+		if stylebox:
+			stylebox.bg_color = Color(0, 1, 0, 1)  # Xanh lá cây
 		end_notice.visible= true
 		var chuc_mung_text = "Chúc mừng bé! bé đã cho ăn xong rồi!"
+		dung_effect.play()
 		dung.play()
 		end_notice.text=chuc_mung_text
 		check = false
 		correct_answers +=1
 	else:
+		if stylebox:
+			stylebox.bg_color = Color(1, 0, 0, 1)  # Đỏ
 		end_notice.visible= true
 		var chuc_mung_text = "Cố lên lần tới sẽ làm được"
 	#	$Label.visible = true
+		sai_effect.play()
 		sai.play()
 		end_notice.text=chuc_mung_text
 	get_tree().paused = true
@@ -197,6 +207,7 @@ func get_player_area():
 	else:  # Khu 3
 		return khu_3_positions
 func finish():
+	stylebox.bg_color = Color(0.15, 0.15, 0.15, 0.9)
 	var result_text="📊 Tổng điểm:"+ str(correct_answers) +"\n"
 	if correct_answers > max_round / 2:
 		result_text += "Hoan hô! Bé thật giỏi!"

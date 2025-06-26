@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://brnpaju50tkwo"]
+[gd_scene load_steps=12 format=3 uid="uid://brnpaju50tkwo"]
 
 [ext_resource type="Script" path="res://oanquan/broad.gd" id="1_l6h5y"]
 [ext_resource type="Texture2D" uid="uid://bd84wklajxrwq" path="res://oanquan/dohoaoanquan/grass field (less detailed).png" id="2_bp8h7"]
@@ -8,44 +8,47 @@
 [ext_resource type="Texture2D" uid="uid://bxyfjs2ttxaex" path="res://oanquan/dohoaoanquan/quan xanh lá.png" id="6_4op78"]
 [ext_resource type="Texture2D" uid="uid://cyh7jr88w4amy" path="res://oanquan/dohoaoanquan/quan vàng.png" id="7_mmxr7"]
 [ext_resource type="AudioStream" uid="uid://bxhqy04x17gd1" path="res://StockTune-Playground Melodic Jingles_1747297500.mp3" id="8_rjecb"]
+[ext_resource type="AudioStream" uid="uid://dnjviqpcibbjk" path="res://audio/sound_effect/change_turn.mp3" id="9_55qtq"]
+[ext_resource type="AudioStream" uid="uid://c7336et3ln4c" path="res://audio/sound_effect/rai_quan.mp3" id="10_oxm0b"]
+[ext_resource type="AudioStream" uid="uid://b4wgy1y6txs48" path="res://audio/sound_effect/an_quan.mp3" id="11_71tf6"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_l6h5y")
 
 [node name="diem1" type="Label" parent="."]
 offset_left = 256.0
-offset_top = 72.0
+offset_top = 75.0
 offset_right = 352.0
-offset_bottom = 144.0
+offset_bottom = 147.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 36
 text = "0"
 metadata/_edit_use_anchors_ = true
 
 [node name="diem2" type="Label" parent="."]
-offset_left = 888.0
-offset_top = 552.0
-offset_right = 1000.0
-offset_bottom = 624.0
+offset_left = 877.0
+offset_top = 559.0
+offset_right = 989.0
+offset_bottom = 631.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 36
 text = "0"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 224.0
-offset_top = 56.0
-offset_right = 456.0
-offset_bottom = 136.0
+offset_left = 231.0
+offset_top = 61.0
+offset_right = 463.0
+offset_bottom = 141.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = ": "
 metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 912.0
-offset_top = 536.0
-offset_right = 1057.0
-offset_bottom = 605.0
+offset_left = 905.0
+offset_top = 545.0
+offset_right = 1050.0
+offset_bottom = 614.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = ":"
@@ -56,8 +59,8 @@ text = ":"
 
 [node name="GrassField(lessDetailed)" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 z_index = -1
-position = Vector2(576, 312)
-scale = Vector2(0.631351, 0.625)
+position = Vector2(574.5, 359)
+scale = Vector2(0.622162, 0.519106)
 texture = ExtResource("2_bp8h7")
 
 [node name="BànCờÔĂnQuan" type="Sprite2D" parent="."]
@@ -87,3 +90,16 @@ texture = ExtResource("7_mmxr7")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_rjecb")
+
+[node name="change_turn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_55qtq")
+volume_db = 14.0
+
+[node name="rai_quan" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_oxm0b")
+volume_db = 11.0
+pitch_scale = 1.3
+
+[node name="an_quan" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_71tf6")
+volume_db = 11.0

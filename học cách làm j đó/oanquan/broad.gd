@@ -4,6 +4,9 @@ extends Node2D
 @onready var QuanXanhla = $"QuanXanhLá"
 @onready var QuanVang = $"QuanVàng"
 @onready var bgms =$AudioStreamPlayer
+@onready var change_turn = $change_turn
+@onready var eat_sound = $an_quan
+@onready var rai_quan = $rai_quan
 # === 1. HẰNG SỐ VÀ BIẾN TOÀN CỤC ===
 const CELL_SCENE := preload("res://oanquan/cell.tscn")
 const PIECE_SCENE := preload("res://oanquan/piece.tscn")
@@ -159,6 +162,7 @@ func _play_turn(index: int, clockwise: bool) -> void:
 			break
 	
 	current_player = 2 if current_player == 1 else 1
+	change_turn.play()
 	_update_quan_visuals()
 	# Kiểm tra kết thúc game tại đây
 	if _is_game_over():
@@ -174,6 +178,8 @@ func _play_turn(index: int, clockwise: bool) -> void:
 
 # === 6. ĂN QUÂN ===
 func _eat(i: int):
+	eat_sound.play()
+	await get_tree().create_timer(eat_sound.stream.get_length()).timeout
 	var earned = cells[i]
 	cells[i] = 0
 	if current_player == 1:
@@ -367,7 +373,7 @@ func _move_one_piece(from_cell: Node, to_cell: Node) -> void:
 		var target = to_area.to_global(offset)
 
 		await create_tween().tween_property(piece, "global_position", target, 0.25).finished
-
+		rai_quan.play()
 		remove_child(piece)
 		to_area.add_child(piece)
 		piece.position = to_area.to_local(target)
