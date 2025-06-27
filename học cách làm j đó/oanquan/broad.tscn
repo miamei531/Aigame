@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cyh7jr88w4amy" path="res://oanquan/dohoaoanquan/quan vàng.png" id="7_mmxr7"]
 [ext_resource type="AudioStream" uid="uid://bxhqy04x17gd1" path="res://StockTune-Playground Melodic Jingles_1747297500.mp3" id="8_rjecb"]
 [ext_resource type="AudioStream" uid="uid://dnjviqpcibbjk" path="res://audio/sound_effect/change_turn.mp3" id="9_55qtq"]
-[ext_resource type="AudioStream" uid="uid://c7336et3ln4c" path="res://audio/sound_effect/rai_quan.mp3" id="10_oxm0b"]
+[ext_resource type="AudioStream" uid="uid://diupm7lrge1fa" path="res://stone-dropping-6843.mp3" id="10_v0fvr"]
 [ext_resource type="AudioStream" uid="uid://b4wgy1y6txs48" path="res://audio/sound_effect/an_quan.mp3" id="11_71tf6"]
 
 [node name="Node2D" type="Node2D"]
@@ -96,8 +96,8 @@ stream = ExtResource("9_55qtq")
 volume_db = 14.0
 
 [node name="rai_quan" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_oxm0b")
-volume_db = 11.0
+stream = ExtResource("10_v0fvr")
+volume_db = -8.713
 pitch_scale = 1.3
 
 [node name="an_quan" type="AudioStreamPlayer" parent="."]
