@@ -18,6 +18,7 @@ func _ready():
 	for btn in buttons:
 		btn.set_size(Vector2(180, 180))  # Hoặc kích thước bạn mong muốn
 	update_buttons()
+	up_date_music_start()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_left"):
@@ -30,7 +31,8 @@ func _process(_delta: float) -> void:
 
 	elif Input.is_action_just_pressed("ui_accept"):
 		buttons[selected_index].emit_signal("pressed")  # luôn là nút giữa
-
+	elif Input.is_action_just_pressed("ui_down"):
+		buttons[selected_index].emit_signal("pressed")
 func update_buttons():
 	var center_pos: int = 2
 	var scale_step: float = 0.2
@@ -80,3 +82,11 @@ func _on_button_2_pressed() -> void:
 
 func _on_button_3_pressed() -> void:
 	get_tree().change_scene_to_file("res://lv/man3.tscn")
+func up_date_music_start():
+	if not bgms.playing:
+		bgms.play()
+		print("🎵 Nhạc nền phát...")
+
+
+func _on_button_5_pressed():
+	get_tree().change_scene_to_file("res://oanquan/broad.tscn")

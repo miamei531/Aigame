@@ -111,6 +111,7 @@ func _move_selection(offset: int):
 
 # === 5. CHƠI MỘT LƯỢT ===
 func _play_turn(index: int, clockwise: bool) -> void:
+	print(current_player)
 	is_playing = true
 	# Nếu game chưa kết thúc thì bắt đầu lượt chơi
 	var num = cells[index]
@@ -154,7 +155,7 @@ func _play_turn(index: int, clockwise: bool) -> void:
 					_eat(next_next)
 					idx = next_next
 				else:
-					break 
+					break
 			else:
 				_eat(next_next)
 				idx = next_next
@@ -179,7 +180,7 @@ func _play_turn(index: int, clockwise: bool) -> void:
 # === 6. ĂN QUÂN ===
 func _eat(i: int):
 	eat_sound.play()
-	await get_tree().create_timer(eat_sound.stream.get_length()).timeout
+	#await get_tree().create_timer(eat_sound.stream.get_length()).timeout
 	var earned = cells[i]
 	cells[i] = 0
 	if current_player == 1:
@@ -197,9 +198,11 @@ func _eat(i: int):
 	if (i == 6):
 		if QuanXanh:
 			remove_child(QuanXanh)
+			QuanXanh = null 
 	if (i == 0):
 		if QuanHong:
 			remove_child(QuanHong)
+			QuanHong = null 
 	var area := cell_nodes[i].get_node("Area2D")
 	for piece in pieces_by_cell[i]:
 		area.remove_child(piece)

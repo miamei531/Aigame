@@ -7,7 +7,7 @@ extends Node2D
 var slots = [100, 300, 500, 700]  # Các vị trí nền tảng cố định
 
 func _process(delta):
-	if randf() < 0.005:  # Điều chỉnh tỷ lệ xuất hiện chữ cái
+	if randf() < 0.01:  # Điều chỉnh tỷ lệ xuất hiện chữ cái
 		spawn_letter()
 
 func spawn_letter():
