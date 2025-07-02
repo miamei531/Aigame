@@ -26,7 +26,11 @@ var check = false
 var ans
 var nhat = true
 var stylebox
+var voice_cache = {}  # Dictionary preload toàn bộ âm thanh
+var is_celebrating= false
+var is_game_finished = false
 func _ready():
+	load_voice_assets()
 	$Label.visible= false
 	end_notice.visible= false
 	stylebox = end_notice.get_theme_stylebox("normal") as StyleBoxFlat
@@ -165,32 +169,57 @@ func clear_spawned_items():
 func show_dialogue(text: String):
 	dialogue_label.text = text
 	dialogue_label.visible = true
+	await wait_until_not_celebrating()
+	# >>> TÁCH CÂU THOẠI để đọc giọng nói <<<
+	var loai = ""
+	var do_an = ""
+	var so_luong = 1
+
+	if text.find("chó con") != -1:
+		loai = "cho"
+	else:
+		loai = "meo"
+
+	for i in range(1, 10):
+		if str(i) in text:
+			so_luong = i
+			break
+
+	if text.find("xúc xích") != -1:
+		do_an = "xucxich"
+	else:
+		do_an = "pate"
+
+	doc_chat(loai, so_luong, do_an)
+
 # Hàm chúc mừng khi check = true
 func chuc_mung():
-	# Hiển thị thông báo chúc mừng
+	is_celebrating = true
+
 	if check:
 		if stylebox:
-			stylebox.bg_color = Color(0, 1, 0, 1)  # Xanh lá cây
-		end_notice.visible= true
-		var chuc_mung_text = "Chúc mừng bé! bé đã cho ăn xong rồi!"
+			stylebox.bg_color = Color(0, 1, 0, 1)
+		end_notice.visible = true
+		end_notice.text = "Chúc mừng bé! bé đã cho ăn xong rồi!"
 		dung_effect.play()
 		dung.play()
-		end_notice.text=chuc_mung_text
 		check = false
-		correct_answers +=1
+		correct_answers += 1
 	else:
 		if stylebox:
-			stylebox.bg_color = Color(1, 0, 0, 1)  # Đỏ
-		end_notice.visible= true
-		var chuc_mung_text = "Cố lên lần tới sẽ làm được"
-	#	$Label.visible = true
+			stylebox.bg_color = Color(1, 0, 0, 1)
+		end_notice.visible = true
+		end_notice.text = "Cố lên lần tới sẽ làm được"
 		sai_effect.play()
 		sai.play()
-		end_notice.text=chuc_mung_text
+
 	get_tree().paused = true
 	await get_tree().create_timer(3).timeout
 	get_tree().paused = false
-	end_notice.visible=false
+	end_notice.visible = false
+
+	is_celebrating = false
+
 # Hàm xóa tất cả vật phẩm trong khu vực người chơi
 func remove_items_in_area():
 	var khu_vuc = get_player_area()
@@ -207,6 +236,7 @@ func get_player_area():
 	else:  # Khu 3
 		return khu_3_positions
 func finish():
+	is_game_finished = true
 	stylebox.bg_color = Color(0.15, 0.15, 0.15, 0.9)
 	var result_text="📊 Tổng điểm:"+ str(correct_answers) +"\n"
 	if correct_answers > max_round / 2:
@@ -219,3 +249,54 @@ func finish():
 	if Input.is_action_just_pressed("ui_select") :
 		get_tree().change_scene_to_file("res://menu.tscn")
 
+func doc_chat(loai: String, so_luong: int, do_an: String) -> void:
+	if loai == "cho":
+		await play_voice("Bé-hãy-cho-chú-chó-con-ăn")
+	else:
+		await play_voice("Bé-hãy-cho-chú-mèo-con-ăn")
+
+	await play_voice(str(so_luong))
+
+	if do_an == "xucxich":
+		await play_voice("Cây-xúc-xích-nhé")
+	else:
+		await play_voice("Hộp-pate-nhé")
+
+func load_voice_assets():
+	var folder_path = "res://man_2/assets/voice/"
+	var filenames = [
+		"Bé-hãy-cho-chú-chó-con-ăn", "Bé-hãy-cho-chú-mèo-con-ăn",
+		"Hộp-pate-nhé", "Cây-xúc-xích-nhé"
+	]
+
+	# Thêm số từ 1–9
+	for i in range(1, 10):
+		filenames.append(str(i))
+
+	# Load toàn bộ vào voice_cache
+	for name in filenames:
+		var path = folder_path + name + ".mp3"
+		if ResourceLoader.exists(path):
+			voice_cache[name] = load(path)
+		else:
+			push_error("❌ Không tìm thấy file voice: " + path)
+func play_voice(file_name: String) -> void:
+	if is_celebrating or round>max_round :
+		return
+	if not voice_cache.has(file_name):
+		push_error("❌ Voice chưa preload: " + file_name)
+		return
+
+	var temp_player := AudioStreamPlayer.new()
+	temp_player.stream = voice_cache[file_name]
+	temp_player.volume_db = 15
+	add_child(temp_player)
+	temp_player.play()
+
+	var duration = temp_player.stream.get_length()
+	await get_tree().create_timer(duration).timeout
+
+	temp_player.queue_free()
+func wait_until_not_celebrating():
+	while is_celebrating and not is_game_finished:
+		await get_tree().process_frame
