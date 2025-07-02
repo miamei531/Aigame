@@ -35,7 +35,7 @@ func _ready():
 	spawn_items()
 	ans=randi_range(0,2)
 	var loai = "mèo" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "chó con"
-	var food = " hộp pate" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " cục xúc xích"
+	var food = " hộp pate" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " cây xúc xích"
 	chat = "Bé hãy cho chú " + loai + " ăn " + str(count[ans]) + food+" nhé."
 	show_dialogue(chat)
 
@@ -61,7 +61,7 @@ func _process(_delta):
 		ans= randi_range(0,2)
 		dialogue_label.visible = false
 		var loai = "mèo" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "chó con"
-		var food = " hộp pate" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " cục xúc xích"
+		var food = " hộp pate" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " cây xúc xích"
 		chat = "Bé hãy cho chú " + loai + " ăn " + str(count[ans]) + food+" nhé."
 		show_dialogue(chat)
 		player.turn= true
@@ -85,7 +85,7 @@ func _on_timer_timeout():
 	ans=randi_range(0,2)
 	dialogue_label.visible = false
 	var loai = "mèo" if current_mob.scene_file_path == "res://man_2/cow.tscn" else "chó con"
-	var food = " hộp pate" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " cục xúc xích"
+	var food = " hộp pate" if current_mob.scene_file_path == "res://man_2/cow.tscn" else " cây xúc xích"
 	chat = "Bé hãy cho chú " + loai + " ăn " + str(count[ans]) + food+" nhé."
 	show_dialogue(chat)
 	
