@@ -4,24 +4,54 @@ extends Node2D
 @onready var target_label = $"../Targetletter"
 @onready var diem = $"../diem"
 @onready var screen_width = get_viewport_rect().size.x
-var slots = [100, 300, 500, 700]  # Các vị trí nền tảng cố định
+var slots = [100, 300, 500, 700]
+var used_slots: Array = []
+
+var viet_letters = ['a', 'ă', 'â', 'b', 'c', 'd', 'đ', 'e', 'ê', 'g', 'h', 'i', 'k', 'l', 'm',
+					'n' , 'o', 'ô', 'ơ', 'p', 'q', 'r', 's', 't', 'u', 'ư', 'v', 'x', 'y',
+					 ]
+
+var min_letters_on_screen := 3  # Luôn đảm bảo có ít nhất 3 chữ đang rơi
+var spawn_interval := 0.9  # Tạo chữ mới mỗi 0.6s để tránh spam
+var time_accumulator := 0.0
 
 func _process(delta):
-	if randf() < 0.01:  # Điều chỉnh tỷ lệ xuất hiện chữ cái
+	time_accumulator += delta
+
+	# Tạo chữ đều đặn
+	if time_accumulator >= spawn_interval:
+		time_accumulator -= spawn_interval
+		spawn_letter()
+
+	# Nếu số lượng chữ trên màn hình quá ít, thêm vào để không bị trống
+	if get_active_letters_count() < min_letters_on_screen:
 		spawn_letter()
 
 func spawn_letter():
 	var letter_instance = letter_scene.instantiate()
-	var random_char = char(randi() % 3 + 97)  # 'a' đến 'c'
+
+	# Chọn ký tự tiếng Việt ngẫu nhiên
+	var random_char = viet_letters.pick_random()
 	letter_instance.letter = random_char
 	letter_instance.target_letter_label = target_label
 	letter_instance.diem_label = diem
-	
-	# Lấy một vị trí ngẫu nhiên từ các platform
-	var random_x = slots.pick_random()  # Lấy ngẫu nhiên một giá trị x từ các vị trí đã xác định
 
-	# Đảm bảo chữ cái bắt đầu từ trên cùng và rơi xuống
-	letter_instance.position = Vector2(random_x, -50)  # Y = -50 sẽ đảm bảo nó bắt đầu từ trên
+	# Tránh spawn trùng vị trí
+	var available_slots = slots.filter(func(x): return not used_slots.has(x))
+	if available_slots.is_empty():
+		used_slots.clear()
+		available_slots = slots.duplicate()
 
-	# Thêm đối tượng vào scene
+	var random_x = available_slots.pick_random()
+	used_slots.append(random_x)
+
+	# Spawn từ trên đỉnh rơi xuống
+	letter_instance.position = Vector2(random_x, -50)
 	add_child(letter_instance)
+
+func get_active_letters_count() -> int:
+	var count := 0
+	for child in get_children():
+		if "letter" in child:
+			count += 1
+	return count
