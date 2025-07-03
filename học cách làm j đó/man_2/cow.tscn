@@ -41,7 +41,7 @@ texture_filter = 1
 position = Vector2(-0.633403, 0.774991)
 scale = Vector2(0.0139678, 0.0165169)
 sprite_frames = SubResource("SpriteFrames_hb8xw")
-frame_progress = 0.43007
+frame_progress = 0.764819
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

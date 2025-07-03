@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://brnpaju50tkwo"]
+[gd_scene load_steps=17 format=3 uid="uid://brnpaju50tkwo"]
 
 [ext_resource type="Script" path="res://oanquan/broad.gd" id="1_l6h5y"]
 [ext_resource type="Texture2D" uid="uid://bd84wklajxrwq" path="res://oanquan/dohoaoanquan/grass field (less detailed).png" id="2_bp8h7"]
@@ -11,6 +11,25 @@
 [ext_resource type="AudioStream" uid="uid://dnjviqpcibbjk" path="res://audio/sound_effect/change_turn.mp3" id="9_55qtq"]
 [ext_resource type="AudioStream" uid="uid://diupm7lrge1fa" path="res://stone-dropping-6843.mp3" id="10_v0fvr"]
 [ext_resource type="AudioStream" uid="uid://b4wgy1y6txs48" path="res://audio/sound_effect/an_quan.mp3" id="11_71tf6"]
+[ext_resource type="Texture2D" uid="uid://cysotpqbeei74" path="res://oanquan/dohoaoanquan/kkkkk-removebg-preview.png" id="12_da5cx"]
+[ext_resource type="Texture2D" uid="uid://dsxi6r65upcx6" path="res://oanquan/dohoaoanquan/ô_ô_ăn_quan-removebg-preview.png" id="13_5ek8w"]
+[ext_resource type="AudioStream" uid="uid://ceg6qcitigjmo" path="res://oanquan/dohoaoanquan/select-003-337609.mp3" id="14_5c7xi"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_u47ko"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eihqg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_da5cx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5ek8w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_l6h5y")
@@ -103,3 +122,16 @@ pitch_scale = 1.3
 [node name="an_quan" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_71tf6")
 volume_db = 11.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("ViewportTexture_u47ko")
+
+[node name="selected" type="AnimatedSprite2D" parent="."]
+position = Vector2(809, 281)
+scale = Vector2(0.4, 0.368)
+sprite_frames = SubResource("SpriteFrames_eihqg")
+frame_progress = 0.0924796
+
+[node name="select" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_5c7xi")
+volume_db = 15.634

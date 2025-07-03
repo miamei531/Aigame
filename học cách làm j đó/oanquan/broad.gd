@@ -4,9 +4,11 @@ extends Node2D
 @onready var QuanXanhla = $"QuanXanhLá"
 @onready var QuanVang = $"QuanVàng"
 @onready var bgms =$AudioStreamPlayer
+@onready var select_s =$select
 @onready var change_turn = $change_turn
 @onready var eat_sound = $an_quan
 @onready var rai_quan = $rai_quan
+@onready var selected = $selected
 # === 1. HẰNG SỐ VÀ BIẾN TOÀN CỤC ===
 const CELL_SCENE := preload("res://oanquan/cell.tscn")
 const PIECE_SCENE := preload("res://oanquan/piece.tscn")
@@ -21,8 +23,10 @@ var debt_p1 := 0
 var debt_p2 := 0
 var pieces_by_cell := []  # Mỗi phần tử là một Array chứa các Piece của ô tương ứng
 var is_playing := false
-
-
+var select_pos= [
+	Vector2(2,2),Vector2(341, 281),Vector2(458, 281),Vector2(576, 281),Vector2(693, 281),Vector2(809, 281),Vector2(2,2),
+	Vector2(341, 389),Vector2(458, 389),Vector2(576, 389),Vector2(693, 389),Vector2(809, 389),
+]
 # === 2. KHỞI TẠO BÀN CHƠI ===
 func _ready():
 	var screen_width = get_viewport_rect().size.x
@@ -83,6 +87,7 @@ func _unhandled_input(event: InputEvent):
 				elif event.keycode == KEY_A:
 					_move_selection(1)
 				elif event.keycode == KEY_S and _is_valid_move(selected_index):
+					select_s.play()
 					waiting_for_direction = true
 			elif current_player == 1:
 				if event.keycode == KEY_LEFT:
@@ -90,6 +95,7 @@ func _unhandled_input(event: InputEvent):
 				elif event.keycode == KEY_RIGHT:
 					_move_selection(1)
 				elif event.keycode == KEY_DOWN and _is_valid_move(selected_index):
+					select_s.play()
 					waiting_for_direction = true
 		else:
 			if event.keycode == KEY_UP or event.keycode == KEY_W:
@@ -295,6 +301,7 @@ func _highlight_selected():
 		var label = cell_nodes[selected_index].get_node("Label")
 		if label:
 			label.modulate = Color.RED
+	selected.position= select_pos[selected_index]
 # === KẾT GAME===
 func _is_game_over() -> bool:
 	# Nếu cả hai ô quan đều trống
