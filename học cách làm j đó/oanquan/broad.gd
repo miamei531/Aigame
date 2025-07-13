@@ -25,7 +25,7 @@ var pieces_by_cell := []  # Mỗi phần tử là một Array chứa các Piece 
 var is_playing := false
 var select_pos= [
 	Vector2(2,2),Vector2(341, 281),Vector2(458, 281),Vector2(576, 281),Vector2(693, 281),Vector2(809, 281),Vector2(2,2),
-	Vector2(341, 389),Vector2(458, 389),Vector2(576, 389),Vector2(693, 389),Vector2(809, 389),
+	Vector2(809, 389),Vector2(693, 389),Vector2(576, 389),Vector2(458, 389),Vector2(341, 389),
 ]
 # === 2. KHỞI TẠO BÀN CHƠI ===
 func _ready():
