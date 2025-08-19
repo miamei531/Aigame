@@ -413,10 +413,9 @@ func start_game():
 	print("🔊 Hướng dẫn đã phát xong.")
 # Hàm lượng giá (điểm số)
 func _evaluate_state(cells_state: Array, score1: int, score2: int) -> int:
-	return score1 - score2
+	return score2 - score1
 
-
-# Kiểm tra game đã kết thúc chưa (cả 2 bên hết quân dân)
+# Kiểm tra game đã kết thúc chưa
 func _is_terminal_state(cells_state: Array) -> bool:
 	var side1_empty = true
 	for i in range(1, 6):
@@ -429,74 +428,140 @@ func _is_terminal_state(cells_state: Array) -> bool:
 	return side1_empty or side2_empty
 
 
-# Hàm mô phỏng nước đi (không ảnh hưởng board chính)
-func _simulate_move(cells_state: Array, index: int, clockwise: bool, is_ai: bool, score1: int, score2: int) -> void:
+# Hàm mô phỏng nước đi (trả về state mới)
+func _simulate_move(
+	cells_state: Array, index: int, clockwise: bool, is_ai: bool,
+	score1: int, score2: int, Quanhongstate: bool, Quanxanhstate: bool
+) -> Dictionary:
+
 	var num = cells_state[index]
 	cells_state[index] = 0
 	var idx = index
 
+	# Rải quân
 	while num > 0:
 		idx = (idx + (1 if clockwise else -1) + 12) % 12
 		cells_state[idx] += 1
 		num -= 1
 
-	# Giả lập ăn quân
-	var next = (idx + (1 if clockwise else -1) + 12) % 12
-	var next_next = (next + (1 if clockwise else -1) + 12) % 12
-	if cells_state[next] == 0 and cells_state[next_next] > 0 and next not in [0, 6]:
-		if is_ai:
-			score1 += cells_state[next_next]
+	# Nếu ô tiếp theo có quân → bốc tiếp
+	while true:
+		var next_idx = (idx + (1 if clockwise else -1) + 12) % 12
+		if cells_state[next_idx] > 0 and next_idx != 0 and next_idx != 6:
+			num = cells_state[next_idx]
+			cells_state[next_idx] = 0
+			idx = next_idx
+			while num > 0:
+				idx = (idx + (1 if clockwise else -1) + 12) % 12
+				cells_state[idx] += 1
+				num -= 1
 		else:
-			score2 += cells_state[next_next]
-		cells_state[next_next] = 0
+			break
+
+	# Kiểm tra ăn
+	while true:
+		var next = (idx + (1 if clockwise else -1) + 12) % 12
+		var next_next = (next + (1 if clockwise else -1) + 12) % 12
+
+		if cells_state[next] == 0 and cells_state[next_next] > 0 and next != 0 and next != 6:
+			if (next_next == 0 and Quanhongstate) or (next_next == 6 and Quanxanhstate):
+				if cells_state[next_next] >= 15:
+					var earned = cells_state[next_next]
+					cells_state[next_next] = 0
+					if is_ai:
+						score2 += earned
+					else:
+						score1 += earned
+					idx = next_next
+					# Sau khi ăn quan thì quan mất
+					if next_next == 0: Quanhongstate = false
+					if next_next == 6: Quanxanhstate = false
+				else:
+					break
+			else:
+				var earned = cells_state[next_next]
+				cells_state[next_next] = 0
+				if is_ai:
+					score2 += earned
+				else:
+					score1 += earned
+				idx = next_next
+		else:
+			break
+
+	# trả về state mới
+	return {
+		"cells": cells_state,
+		"score1": score1,
+		"score2": score2,
+		"quanhong": Quanhongstate,
+		"quanxanh": Quanxanhstate
+	}
 
 
 # Thuật toán Minimax
-func _minimax(cells_state: Array, depth: int, maximizing: bool, score1: int, score2: int) -> int:
+func _minimax(
+	cells_state: Array, depth: int, maximizing: bool,
+	score1: int, score2: int, Quanhongstate: bool, Quanxanhstate: bool
+) -> int:
 	if depth == 0 or _is_terminal_state(cells_state):
 		return _evaluate_state(cells_state, score1, score2)
 
-	if maximizing: # lượt máy (player 1)
+	if maximizing: # lượt máy (AI side 7..11)
 		var max_eval = -99999
-		for i in range(1, 6):
-			if cells_state[i] > 0:
-				for clockwise in [true, false]:
-					var new_cells = cells_state.duplicate()
-					var new_score1 = score1
-					var new_score2 = score2
-					_simulate_move(new_cells, i, clockwise, true, new_score1, new_score2)
-					var eval = _minimax(new_cells, depth - 1, false, new_score1, new_score2)
-					max_eval = max(max_eval, eval)
-		return max_eval
-	else: # lượt người (player 2)
-		var min_eval = 99999
 		for i in range(7, 12):
 			if cells_state[i] > 0:
 				for clockwise in [true, false]:
 					var new_cells = cells_state.duplicate()
-					var new_score1 = score1
-					var new_score2 = score2
-					_simulate_move(new_cells, i, clockwise, false, new_score1, new_score2)
-					var eval = _minimax(new_cells, depth - 1, true, new_score1, new_score2)
+					var res = _simulate_move(new_cells, i, clockwise, true,
+						score1, score2, Quanhongstate, Quanxanhstate)
+					var eval = _minimax(
+						res["cells"], depth - 1, false,
+						res["score1"], res["score2"],
+						res["quanhong"], res["quanxanh"]
+					)
+					max_eval = max(max_eval, eval)
+		return max_eval
+	else: # lượt người (Human side 1..5)
+		var min_eval = 99999
+		for i in range(1, 6):
+			if cells_state[i] > 0:
+				for clockwise in [true, false]:
+					var new_cells = cells_state.duplicate()
+					var res = _simulate_move(new_cells, i, clockwise, false,
+						score1, score2, Quanhongstate, Quanxanhstate)
+					var eval = _minimax(
+						res["cells"], depth - 1, true,
+						res["score1"], res["score2"],
+						res["quanhong"], res["quanxanh"]
+					)
 					min_eval = min(min_eval, eval)
 		return min_eval
-#----AI CHỌN NƯỚC ĐI---#
+
+
+# AI chọn nước đi
 func ai_move():
 	var best_score = -99999
-	var best_index = 1
+	var best_index = 7
 	var best_dir = true
+	var Quanhongstate = true if QuanHong else false
+	var Quanxanhstate = true if QuanXanh else false
 
 	for i in range(7, 12):
 		if cells[i] > 0:
 			for clockwise in [true, false]:
 				var new_cells = cells.duplicate()
-				var new_score1 = score_p1
-				var new_score2 = score_p2
-				_simulate_move(new_cells, i, clockwise, true, new_score1, new_score2)
-				var eval = _minimax(new_cells, 3, false, new_score1, new_score2) # depth = 3
+				var res = _simulate_move(new_cells, i, clockwise, true, score_p1, score_p2, Quanhongstate, Quanxanhstate) 
+				var eval = _minimax(
+					res["cells"], 3, false,
+					res["score1"], res["score2"],
+					res["quanhong"], res["quanxanh"]
+				)
 				if eval > best_score:
 					best_score = eval
 					best_index = i
 					best_dir = clockwise
-	
+
 	await _play_turn(best_index, best_dir)
+
+
