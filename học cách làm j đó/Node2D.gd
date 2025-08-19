@@ -7,8 +7,7 @@ extends Node2D
 var slots = [100, 300, 500, 700]
 var used_slots: Array = []
 
-var viet_letters = ['a', 'ă', 'â', 'b', 'c', 'd', 'đ', 'e', 'ê', 'g', 'h', 'i', 'k', 'l', 'm',
-					'n' , 'o', 'ô', 'ơ', 'p', 'q', 'r', 's', 't', 'u', 'ư', 'v', 'x', 'y',
+var viet_letters = ['a', 'ă', 'â', 'b', 'c', 'd', 'a','a'
 					 ]
 
 var min_letters_on_screen := 3  # Luôn đảm bảo có ít nhất 3 chữ đang rơi

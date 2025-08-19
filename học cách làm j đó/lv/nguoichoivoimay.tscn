@@ -1,0 +1,139 @@
+[gd_scene load_steps=17 format=3 uid="uid://ylimjbrgeyo1"]
+
+[ext_resource type="Script" path="res://lv/nguoichoivoimay.gd" id="1_nipme"]
+[ext_resource type="Texture2D" uid="uid://bd84wklajxrwq" path="res://oanquan/dohoaoanquan/grass field (less detailed).png" id="2_1cj22"]
+[ext_resource type="Texture2D" uid="uid://gvcymei7e0k" path="res://oanquan/dohoaoanquan/bàn cờ ô ăn quan.png" id="3_tkxdf"]
+[ext_resource type="Texture2D" uid="uid://dqpqubt61vt7s" path="res://oanquan/dohoaoanquan/quan xanh dương.png" id="4_5ssvo"]
+[ext_resource type="Texture2D" uid="uid://cyx6rqlexhjmg" path="res://oanquan/dohoaoanquan/quan hồng.png" id="5_nso8j"]
+[ext_resource type="Texture2D" uid="uid://bxyfjs2ttxaex" path="res://oanquan/dohoaoanquan/quan xanh lá.png" id="6_7ubn7"]
+[ext_resource type="Texture2D" uid="uid://cyh7jr88w4amy" path="res://oanquan/dohoaoanquan/quan vàng.png" id="7_mdjdk"]
+[ext_resource type="AudioStream" uid="uid://bxhqy04x17gd1" path="res://StockTune-Playground Melodic Jingles_1747297500.mp3" id="8_xuvrv"]
+[ext_resource type="AudioStream" uid="uid://dnjviqpcibbjk" path="res://audio/sound_effect/change_turn.mp3" id="9_l2n2f"]
+[ext_resource type="AudioStream" uid="uid://diupm7lrge1fa" path="res://stone-dropping-6843.mp3" id="10_almf2"]
+[ext_resource type="AudioStream" uid="uid://b4wgy1y6txs48" path="res://audio/sound_effect/an_quan.mp3" id="11_v50sk"]
+[ext_resource type="Texture2D" uid="uid://cysotpqbeei74" path="res://oanquan/dohoaoanquan/kkkkk-removebg-preview.png" id="12_gvnpw"]
+[ext_resource type="Texture2D" uid="uid://dsxi6r65upcx6" path="res://oanquan/dohoaoanquan/ô_ô_ăn_quan-removebg-preview.png" id="13_id2fh"]
+[ext_resource type="AudioStream" uid="uid://ceg6qcitigjmo" path="res://oanquan/dohoaoanquan/select-003-337609.mp3" id="14_ipndk"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_u47ko"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eihqg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_gvnpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_id2fh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_nipme")
+
+[node name="diem1" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 75.0
+offset_right = 352.0
+offset_bottom = 147.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="diem2" type="Label" parent="."]
+offset_left = 877.0
+offset_top = 559.0
+offset_right = 989.0
+offset_bottom = 631.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 231.0
+offset_top = 61.0
+offset_right = 463.0
+offset_bottom = 141.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = ": "
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 905.0
+offset_top = 545.0
+offset_right = 1050.0
+offset_bottom = 614.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = ":"
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="GrassField(lessDetailed)" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+z_index = -1
+position = Vector2(574.5, 359)
+scale = Vector2(0.622162, 0.519106)
+texture = ExtResource("2_1cj22")
+
+[node name="BànCờÔĂnQuan" type="Sprite2D" parent="."]
+position = Vector2(576, 352)
+scale = Vector2(0.313884, 0.293557)
+texture = ExtResource("3_tkxdf")
+
+[node name="QuanXanh" type="Sprite2D" parent="."]
+position = Vector2(939, 340)
+scale = Vector2(0.0579217, 0.0534043)
+texture = ExtResource("4_5ssvo")
+
+[node name="QuanHong" type="Sprite2D" parent="."]
+position = Vector2(219, 340)
+scale = Vector2(0.0644532, 0.0652343)
+texture = ExtResource("5_nso8j")
+
+[node name="QuanXanhLá" type="Sprite2D" parent="."]
+position = Vector2(128, 104)
+scale = Vector2(0.135156, 0.113281)
+texture = ExtResource("6_7ubn7")
+
+[node name="QuanVàng" type="Sprite2D" parent="."]
+position = Vector2(1032, 552)
+scale = Vector2(0.140625, 0.142187)
+texture = ExtResource("7_mdjdk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_xuvrv")
+
+[node name="change_turn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_l2n2f")
+volume_db = 14.0
+
+[node name="rai_quan" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_almf2")
+volume_db = -8.713
+pitch_scale = 1.3
+
+[node name="an_quan" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_v50sk")
+volume_db = 11.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("ViewportTexture_u47ko")
+
+[node name="selected" type="AnimatedSprite2D" parent="."]
+position = Vector2(809, 281)
+scale = Vector2(0.4, 0.368)
+sprite_frames = SubResource("SpriteFrames_eihqg")
+frame_progress = 0.0924796
+
+[node name="select" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_ipndk")
+volume_db = 15.634

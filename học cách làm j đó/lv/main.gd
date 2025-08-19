@@ -10,7 +10,7 @@ extends Node2D
 @onready var Dungr = $Dungr
 
 var thoi_gian_choi = 0.0
-const THOI_GIAN_GIOI_HAN = 180.0  # 3 phút = 180 giây
+const THOI_GIAN_GIOI_HAN = 80000 # 3 phút = 180 giây
 var choi_xong = false
 
 func _ready():
