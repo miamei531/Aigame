@@ -594,5 +594,3 @@ func ai_move():
 						best_dir = clockwise
 
 	await _play_turn(best_index, best_dir)
-
-
