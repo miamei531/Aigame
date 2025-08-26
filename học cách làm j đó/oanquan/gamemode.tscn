@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhgivikro4cj4"]
+
+[ext_resource type="Script" path="res://oanquan/gamemode.gd" id="1_mla0q"]
+[ext_resource type="Texture2D" uid="uid://cf63v42q4xrd5" path="res://oanquan/dohoaoanquan/z. grass field.png" id="2_08iii"]
+[ext_resource type="Texture2D" uid="uid://cysotpqbeei74" path="res://oanquan/dohoaoanquan/kkkkk-removebg-preview.png" id="3_ly0g6"]
+[ext_resource type="Texture2D" uid="uid://bxyfjs2ttxaex" path="res://oanquan/dohoaoanquan/quan xanh lá.png" id="4_nqy6y"]
+[ext_resource type="Texture2D" uid="uid://dqpqubt61vt7s" path="res://oanquan/dohoaoanquan/quan xanh dương.png" id="5_0lkav"]
+[ext_resource type="Texture2D" uid="uid://cyx6rqlexhjmg" path="res://oanquan/dohoaoanquan/quan hồng.png" id="6_bgojr"]
+[ext_resource type="Texture2D" uid="uid://bjvo3exgd3suf" path="res://oanquan/dohoaoanquan/ô ô ăn quan.png" id="7_472wh"]
+
+[node name="Gamemode" type="Node2D"]
+script = ExtResource("1_mla0q")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 408.0
+offset_top = 368.0
+offset_right = 744.0
+offset_bottom = 499.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Hai người chơi"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 408.0
+offset_top = 165.545
+offset_right = 744.0
+offset_bottom = 296.543
+size_flags_vertical = 4
+text = "Một người chơi"
+
+[node name="Z_GrassField" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(572, 324)
+scale = Vector2(0.627027, 0.623077)
+texture = ExtResource("2_08iii")
+
+[node name="Kkkkk-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(560, 228)
+scale = Vector2(1.312, 0.528)
+texture = ExtResource("3_ly0g6")
+
+[node name="QuanXanhLá" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(720, 256)
+scale = Vector2(0.115625, 0.103125)
+texture = ExtResource("4_nqy6y")
+
+[node name="QuanXanhDương" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(728, 472)
+scale = Vector2(0.0783645, 0.0705319)
+texture = ExtResource("5_0lkav")
+
+[node name="QuanHồng" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(424, 472)
+scale = Vector2(0.078125, 0.075)
+texture = ExtResource("6_bgojr")
+
+[node name="ÔÔĂnQuan2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(560, 432)
+scale = Vector2(0.238113, 0.0987296)
+texture = ExtResource("7_472wh")
+
+[node name="ÔÔĂnQuan3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(560, 228.58)
+scale = Vector2(0.238113, 0.0987296)
+texture = ExtResource("7_472wh")
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 536.0
+offset_top = 568.0
+offset_right = 632.0
+offset_bottom = 600.0
+text = "Quay về"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

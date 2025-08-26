@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://ylimjbrgeyo1"]
 
-[ext_resource type="Script" path="res://lv/nguoichoivoimay.gd" id="1_nipme"]
+[ext_resource type="Script" path="res://oanquan/nguoichoivoimay.gd" id="1_nipme"]
 [ext_resource type="Texture2D" uid="uid://bd84wklajxrwq" path="res://oanquan/dohoaoanquan/grass field (less detailed).png" id="2_1cj22"]
 [ext_resource type="Texture2D" uid="uid://gvcymei7e0k" path="res://oanquan/dohoaoanquan/bàn cờ ô ăn quan.png" id="3_tkxdf"]
 [ext_resource type="Texture2D" uid="uid://dqpqubt61vt7s" path="res://oanquan/dohoaoanquan/quan xanh dương.png" id="4_5ssvo"]
