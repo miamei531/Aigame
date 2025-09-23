@@ -53,7 +53,7 @@ scale = Vector2(0.627027, 0.623077)
 texture = ExtResource("2_sqf21")
 
 [node name="Kkkkk-removebg-preview" type="Sprite2D" parent="."]
-position = Vector2(560, 132)
+position = Vector2(560, 129)
 scale = Vector2(1.312, 0.528)
 texture = ExtResource("3_kb2p2")
 
