@@ -1,0 +1,137 @@
+[gd_scene load_steps=8 format=3 uid="uid://cttaiqjy8pa1v"]
+
+[ext_resource type="Script" path="res://oanquan/gamemode.gd" id="1_kalv6"]
+[ext_resource type="Texture2D" uid="uid://cf63v42q4xrd5" path="res://oanquan/dohoaoanquan/z. grass field.png" id="2_sqf21"]
+[ext_resource type="Texture2D" uid="uid://cysotpqbeei74" path="res://oanquan/dohoaoanquan/kkkkk-removebg-preview.png" id="3_kb2p2"]
+[ext_resource type="Texture2D" uid="uid://bxyfjs2ttxaex" path="res://oanquan/dohoaoanquan/quan xanh lá.png" id="4_k167u"]
+[ext_resource type="Texture2D" uid="uid://dqpqubt61vt7s" path="res://oanquan/dohoaoanquan/quan xanh dương.png" id="5_t8810"]
+[ext_resource type="Texture2D" uid="uid://cyx6rqlexhjmg" path="res://oanquan/dohoaoanquan/quan hồng.png" id="6_stnja"]
+[ext_resource type="Texture2D" uid="uid://bjvo3exgd3suf" path="res://oanquan/dohoaoanquan/ô ô ăn quan.png" id="7_f0uia"]
+
+[node name="Gamemode" type="Node2D"]
+script = ExtResource("1_kalv6")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 408.0
+offset_top = 272.0
+offset_right = 744.0
+offset_bottom = 403.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "CẤP ĐỘ 2"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.21429
+anchor_top = -0.671756
+anchor_right = -1.21429
+anchor_bottom = -0.671756
+offset_left = 408.0
+offset_top = 272.0
+offset_right = 744.0
+offset_bottom = 403.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "CẤP ĐỘ 3"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 408.0
+offset_top = 69.545
+offset_right = 744.0
+offset_bottom = 200.543
+size_flags_vertical = 4
+text = "CẤP ĐỘ 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="Z_GrassField" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 320)
+scale = Vector2(0.627027, 0.623077)
+texture = ExtResource("2_sqf21")
+
+[node name="Kkkkk-removebg-preview" type="Sprite2D" parent="."]
+position = Vector2(560, 132)
+scale = Vector2(1.312, 0.528)
+texture = ExtResource("3_kb2p2")
+
+[node name="QuanXanhLá" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(720, 160)
+scale = Vector2(0.115625, 0.103125)
+texture = ExtResource("4_k167u")
+
+[node name="QuanXanhDương" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(728, 376)
+scale = Vector2(0.0783645, 0.0705319)
+texture = ExtResource("5_t8810")
+
+[node name="QuanHồng" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(424, 376)
+scale = Vector2(0.078125, 0.075)
+texture = ExtResource("6_stnja")
+
+[node name="ÔÔĂnQuan2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(560, 336)
+scale = Vector2(0.238113, 0.0987296)
+texture = ExtResource("7_f0uia")
+
+[node name="ÔÔĂnQuan3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(560, 136)
+scale = Vector2(0.238113, 0.0987296)
+texture = ExtResource("7_f0uia")
+
+[node name="ÔÔĂnQuan3" type="Sprite2D" parent="ÔÔĂnQuan3"]
+z_index = -1
+position = Vector2(560, 136)
+scale = Vector2(0.238113, 0.0987296)
+texture = ExtResource("7_f0uia")
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 48.0
+offset_top = 56.0
+offset_right = 144.0
+offset_bottom = 88.0
+text = "Quay về"
+metadata/_edit_use_anchors_ = true
+
+[node name="ÔÔĂnQuan4" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(560, 520)
+scale = Vector2(0.238113, 0.0987296)
+texture = ExtResource("7_f0uia")
+
+[node name="ÔÔĂnQuan3" type="Sprite2D" parent="ÔÔĂnQuan4"]
+z_index = -1
+position = Vector2(560, 136)
+scale = Vector2(0.238113, 0.0987296)
+texture = ExtResource("7_f0uia")
+
+[node name="QuanHồng2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(424, 560)
+scale = Vector2(0.078125, 0.075)
+texture = ExtResource("6_stnja")
+
+[node name="QuanXanhLá2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(735, 549)
+scale = Vector2(0.0890624, 0.0828125)
+texture = ExtResource("4_k167u")
+
+[node name="QuanXanhDương2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(472, 552)
+scale = Vector2(0.0783645, 0.0705319)
+texture = ExtResource("5_t8810")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

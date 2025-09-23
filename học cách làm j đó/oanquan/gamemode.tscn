@@ -19,6 +19,7 @@ offset_bottom = 499.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "Hai người chơi"
+metadata/_edit_use_anchors_ = true
 
 [node name="Button2" type="Button" parent="."]
 offset_left = 408.0
@@ -27,6 +28,7 @@ offset_right = 744.0
 offset_bottom = 296.543
 size_flags_vertical = 4
 text = "Một người chơi"
+metadata/_edit_use_anchors_ = true
 
 [node name="Z_GrassField" type="Sprite2D" parent="."]
 z_index = -1
@@ -75,6 +77,7 @@ offset_top = 568.0
 offset_right = 632.0
 offset_bottom = 600.0
 text = "Quay về"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
