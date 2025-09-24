@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cttaiqjy8pa1v"]
 
-[ext_resource type="Script" path="res://oanquan/gamemode.gd" id="1_kalv6"]
+[ext_resource type="Script" path="res://oanquan/dokho.gd" id="1_n58qj"]
 [ext_resource type="Texture2D" uid="uid://cf63v42q4xrd5" path="res://oanquan/dohoaoanquan/z. grass field.png" id="2_sqf21"]
 [ext_resource type="Texture2D" uid="uid://cysotpqbeei74" path="res://oanquan/dohoaoanquan/kkkkk-removebg-preview.png" id="3_kb2p2"]
 [ext_resource type="Texture2D" uid="uid://bxyfjs2ttxaex" path="res://oanquan/dohoaoanquan/quan xanh lá.png" id="4_k167u"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bjvo3exgd3suf" path="res://oanquan/dohoaoanquan/ô ô ăn quan.png" id="7_f0uia"]
 
 [node name="Gamemode" type="Node2D"]
-script = ExtResource("1_kalv6")
+script = ExtResource("1_n58qj")
 
 [node name="Button" type="Button" parent="."]
 offset_left = 408.0

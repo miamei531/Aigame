@@ -28,9 +28,11 @@ func handle_input():
 	# Thay đổi hướng mặt
 	if Input.is_action_just_pressed("ui_left"):
 		sprite.flip_h = true
+		$Conveyor.flip_h = true
 		facing_direction = -1
 	elif Input.is_action_just_pressed("ui_right"):
 		sprite.flip_h = false
+		$Conveyor.flip_h = false
 		facing_direction = 1
 
 	# Nhảy + Dịch chuyển vị trí nếu đang đứng trên mặt đất

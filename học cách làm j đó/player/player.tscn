@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c30143yiiiuj6"]
+[gd_scene load_steps=45 format=3 uid="uid://c30143yiiiuj6"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ga5do"]
 [ext_resource type="Texture2D" uid="uid://b6lkccvdf4dnu" path="res://player/Dancing Girl Files/sprites/Balancing/balancing1.png" id="2_h4ccf"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://cbnsgoogop38l" path="res://player/Dancing Girl Files/sprites/slide/slide6.png" id="31_v4ubx"]
 [ext_resource type="Texture2D" uid="uid://bo6stsx3m2c6j" path="res://player/Dancing Girl Files/sprites/slide/slide7.png" id="32_ucxp8"]
 [ext_resource type="Texture2D" uid="uid://dblg76qx3p0gy" path="res://player/Dancing Girl Files/sprites/slide/slide8.png" id="33_hetkd"]
+[ext_resource type="Texture2D" uid="uid://dsu3rqogxeiec" path="res://dohoa/Sprites/Tiles/Default/conveyor.png" id="36_5gn6x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8c2aa"]
 size = Vector2(20, 120)
@@ -328,11 +329,10 @@ shape = SubResource("RectangleShape2D_8c2aa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-2, -32)
+position = Vector2(-3, -26)
 scale = Vector2(1.5625, 1.40625)
 sprite_frames = SubResource("SpriteFrames_o736m")
 animation = &"skip"
-frame = 1
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -342,3 +342,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+
+[node name="Conveyor" type="Sprite2D" parent="."]
+position = Vector2(-4, -111)
+scale = Vector2(1.07813, 1.0625)
+texture = ExtResource("36_5gn6x")
+flip_h = true

@@ -253,16 +253,19 @@ rotation = 0.0208175
 position = Vector2(496, 352)
 
 [node name="BlockPlanks" type="Sprite2D" parent="StaticBody2D"]
+visible = false
 position = Vector2(-202, 2.99999)
 scale = Vector2(3.3125, 0.34375)
 texture = ExtResource("8_qrnc6")
 
 [node name="BlockPlanks2" type="Sprite2D" parent="StaticBody2D"]
+visible = false
 position = Vector2(48, 4)
 scale = Vector2(3, 0.375)
 texture = ExtResource("8_qrnc6")
 
 [node name="BlockPlanks3" type="Sprite2D" parent="StaticBody2D"]
+visible = false
 position = Vector2(288, 4)
 scale = Vector2(3, 0.374999)
 texture = ExtResource("8_qrnc6")
