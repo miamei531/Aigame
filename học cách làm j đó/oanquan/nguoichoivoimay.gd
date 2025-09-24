@@ -10,6 +10,7 @@ extends Node2D
 @onready var rai_quan = $rai_quan
 @onready var selected = $selected
 # === 1. HẰNG SỐ VÀ BIẾN TOÀN CỤC ===
+var diff = 3
 const CELL_SCENE := preload("res://oanquan/cell.tscn")
 const PIECE_SCENE := preload("res://oanquan/piece.tscn")
 var cells: Array[int] = [10, 5, 5, 5, 5, 5, 10, 5, 5, 5, 5, 5]
@@ -29,6 +30,9 @@ var select_pos= [
 ]
 # === 2. KHỞI TẠO BÀN CHƠI ===
 func _ready():
+	diff = get_tree().get_meta("difficulty")
+	if( diff==null):
+		diff=3
 	var screen_width = get_viewport_rect().size.x
 	var screen_height = get_viewport_rect().size.y
 
@@ -330,6 +334,7 @@ func _show_game_over():
 		winner = "Người chơi 2 thắng!"
 	else:
 		winner = "Hòa!"
+	$Panel.visible=true
 
 	var popup = Label.new()
 	popup.text = "Trò chơi kết thúc!\n" + winner
@@ -574,6 +579,7 @@ func ai_move():
 	var Quanxanhstate = true if QuanXanh else false
 	var alpha =-99999
 	var beta =99999
+	print(diff)
 	for i in range(7, 12):
 		if cells[i] > 0:
 			for clockwise in [true, false]:
@@ -581,7 +587,7 @@ func ai_move():
 				if alpha<=beta: 
 					var res = _simulate_move(new_cells, i, clockwise, true, score_p1, score_p2, Quanhongstate, Quanxanhstate) 
 					var eval = _minimax(
-						res["cells"], 3, false,
+						res["cells"], diff, false,
 						res["score1"], res["score2"],
 						res["quanhong"], res["quanxanh"],
 						alpha, beta

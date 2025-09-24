@@ -137,3 +137,8 @@ frame_progress = 0.0924796
 [node name="select" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_ipndk")
 volume_db = 15.634
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_right = 1154.0
+offset_bottom = 682.0

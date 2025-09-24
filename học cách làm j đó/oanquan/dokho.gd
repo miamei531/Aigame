@@ -1,9 +1,10 @@
 extends Node2D
-@onready var buttons: Array[Button] = [$Button, $Button2, $Button3]
+@onready var buttons: Array[Button] = [$Button2,$Button, $Button4 ,$Button3]
 @onready var khung= $"Kkkkk-removebg-preview"
 var vitri=[Vector2(560,132),Vector2(560,336),Vector2(560,514),Vector2(89.5,71.5)]
 var size = [Vector2(1.312,0.528),Vector2(1.312,0.528),Vector2(1.312,0.528),Vector2(0.398,0.144)]
 var idx= 0
+var dokho 
 func _unhandled_input(event: InputEvent):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_DOWN:
@@ -17,10 +18,13 @@ func _unhandled_input(event: InputEvent):
 		elif event.keycode == KEY_SPACE:     
 			buttons[idx].emit_signal("pressed")
 func _on_button_pressed() -> void:
+	get_tree().set_meta("difficulty", 2)
 	get_tree().change_scene_to_file("res://oanquan/nguoichoivoimay.tscn")    
-
 func _on_button_2_pressed() -> void:
+	get_tree().set_meta("difficulty", 1)
 	get_tree().change_scene_to_file("res://oanquan/broad.tscn")
-
+func _on_button_4_pressed() -> void:
+	get_tree().set_meta("difficulty", 3)
+	get_tree().change_scene_to_file("res://oanquan/broad.tscn")
 func _on_button_3_pressed() -> void:
 	get_tree().change_scene_to_file("res://menu.tscn")
