@@ -17,7 +17,9 @@ extends Node2D
 @onready var label_ky_luc = $"kỷ lục"
 @onready var label_tung_vong = $tungvong
 @onready var thong_bao_dung = $Dungr
+@onready var nen_dung = $nenxanh
 @onready var thong_bao_sai = $Sai
+@onready var nen_sai = $nendo
 
 var score := 0
 var high_score := 0
@@ -41,7 +43,10 @@ func _ready():
 	label_ky_luc.visible = false
 	label_tung_vong.visible = false
 	thong_bao_dung.visible = false
+	nen_dung.visible = false
+	nen_sai.visible = false
 	thong_bao_sai.visible = false
+	$nencuoi.visible = false
 	up_date_music_start()
 	randomize()
 	await start_game()
@@ -139,19 +144,24 @@ func end_round():
 	if success:
 		print("✅ Bạn an toàn!")
 		thong_bao_dung.visible = true
+		nen_dung.visible = true
+		
 		sound_correct.play()
 		round_score = 10
 		await get_tree().create_timer(1).timeout
 		thong_bao_dung.visible = false
+		nen_dung.visible = false
 	else:
 		print("❌ Sai rồi, rơi xuống!")
 		if platform:
 			platform.queue_free()
 			platform = null
 		thong_bao_sai.visible = true
+		nen_sai.visible = true
 		sound_wrong.play()
 		await get_tree().create_timer(1).timeout
 		thong_bao_sai.visible = false
+		nen_sai.visible = false
 
 	score += round_score
 	scores_per_round.append(round_score)
@@ -184,6 +194,7 @@ func show_end_summary():
 	label_ky_luc.visible = true
 	label_tung_vong.visible = false
 	$Button.visible = true
+	$nencuoi.visible = true
 
 	game_running = false
 	can_countdown = false
