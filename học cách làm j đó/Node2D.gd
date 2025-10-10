@@ -9,7 +9,7 @@ var slots = [100, 300, 500, 700]
 var used_slots: Array = []
 
 # Danh sách chữ cái tiếng Việt
-var viet_letters = ['a', 'ă', 'â', 'b', 'c', 'd', 'a','a']
+var viet_letters = ['a', 'ă', 'â', 'b', 'c', 'd', 'a']
 
 var min_letters_on_screen := 3   # Luôn có ít nhất 3 chữ
 var spawn_interval := 0.9        # Chu kỳ spawn (giây)
