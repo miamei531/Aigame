@@ -56,7 +56,7 @@ func _process(delta):
 	if not game_running or not can_countdown:
 		return
 
-	timer -= delta
+	timer = max(timer - delta, 0)
 	clock.text = str(round(timer))
 
 	if timer <= 0 or Input.is_action_just_pressed("ui_accept"):
