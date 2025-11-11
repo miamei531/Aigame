@@ -31,8 +31,6 @@ func _process(_delta: float) -> void:
 
 	elif Input.is_action_just_pressed("ui_accept"):
 		buttons[selected_index].emit_signal("pressed")  # luôn là nút giữa
-	elif Input.is_action_just_pressed("ui_down"):
-		buttons[selected_index].emit_signal("pressed")
 func update_buttons():
 	var center_pos: int = 2
 	var scale_step: float = 0.2
