@@ -9,6 +9,7 @@ extends Node2D
 @onready var eat_sound = $an_quan
 @onready var rai_quan = $rai_quan
 @onready var selected = $selected
+@onready var baoend=$Label3
 # === 1. HẰNG SỐ VÀ BIẾN TOÀN CỤC ===
 const CELL_SCENE := preload("res://oanquan/cell.tscn")
 const PIECE_SCENE := preload("res://oanquan/piece.tscn")
@@ -27,6 +28,7 @@ var select_pos= [
 	Vector2(2,2),Vector2(341, 281),Vector2(458, 281),Vector2(576, 281),Vector2(693, 281),Vector2(809, 281),Vector2(2,2),
 	Vector2(809, 389),Vector2(693, 389),Vector2(576, 389),Vector2(458, 389),Vector2(341, 389),
 ]
+var end = false
 # === 2. KHỞI TẠO BÀN CHƠI ===
 func _ready():
 	var screen_width = get_viewport_rect().size.x
@@ -77,6 +79,10 @@ func _ready():
 
 # === 3. XỬ LÝ INPUT BÀN PHÍM ===
 func _unhandled_input(event: InputEvent):
+	if end:
+		if event is InputEventKey and event.pressed:
+			if event.keycode == KEY_SPACE:
+				get_tree().change_scene_to_file("res://menu.tscn")
 	if is_playing:
 		return
 	if event is InputEventKey and event.pressed:
@@ -321,6 +327,7 @@ func _is_game_over() -> bool:
 			return true
 	return false
 func _show_game_over():
+	end = true
 	var winner = ""
 	if score_p1 > score_p2:
 		winner = "Người chơi 1 thắng!"
@@ -329,15 +336,19 @@ func _show_game_over():
 	else:
 		winner = "Hòa!"
 
+		# Tạo nền đen mờ phủ toàn màn hình
+	var overlay = ColorRect.new()
+	overlay.color = Color(0, 0, 0, 0.7) # đen, độ mờ 60%
+	overlay.size = get_viewport_rect().size
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE # không chặn phím hoặc chuột
+	add_child(overlay)
 	var popup = Label.new()
 	popup.text = "Trò chơi kết thúc!\n" + winner
-	popup.position = Vector2(get_viewport_rect().size.x / 2 - 100, get_viewport_rect().size.y / 2 - 50)
-	popup.set("theme_override_colors/font_color", Color.RED)
-	popup.add_theme_font_size_override("font_size", 24)
+	popup.position = Vector2(get_viewport_rect().size.x / 2 -185, get_viewport_rect().size.y / 2 - 100)
+	popup.set("theme_override_colors/font_color", Color.WHITE)
+	popup.add_theme_font_size_override("font_size", 40)
 	add_child(popup)
-
-	# Ngăn không cho tiếp tục chơi
-	set_process_unhandled_input(false)
+	baoend.visible =true
 # ĐỒ HỌA ỰAAAAAAAAAA
 # SPAWN QUÂN LÚC BẮT ĐẦU
 func _spawn_pieces(cell_node: Node, index: int, count: int = 5):

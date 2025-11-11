@@ -142,3 +142,11 @@ volume_db = 15.634
 visible = false
 offset_right = 1154.0
 offset_bottom = 682.0
+
+[node name="Label3" type="Label" parent="."]
+visible = false
+offset_left = 456.0
+offset_top = 570.0
+offset_right = 703.0
+offset_bottom = 593.0
+text = "Vỗ tay để trở lại màn hình chính"

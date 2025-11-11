@@ -137,3 +137,12 @@ frame_progress = 0.0924796
 [node name="select" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_5c7xi")
 volume_db = 15.634
+
+[node name="Label3" type="Label" parent="."]
+visible = false
+z_index = 2
+offset_left = 468.0
+offset_top = 578.0
+offset_right = 715.0
+offset_bottom = 601.0
+text = "Vỗ tay để trở lại màn hình chính"
