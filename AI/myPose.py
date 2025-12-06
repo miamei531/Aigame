@@ -58,8 +58,8 @@ class myPose():
 
         centerShoulder_y = abs(leftShoulder_y + rightShoulder_y) // 2
 
-        jump_threshold = 25
-        down_threshold = 25
+        jump_threshold = 50
+        down_threshold = 80
 
         if (centerShoulder_y < self.shoudler_line_y - jump_threshold):
             JSD = "J"
@@ -85,7 +85,7 @@ class myPose():
 
         distance = int(math.hypot(left_hand[0] - right_hand[0], left_hand[1] - right_hand[1]))
 
-        clap_threshold = 100
+        clap_threshold = 120
         if distance < clap_threshold:
             CLAP = "C"
         else:
@@ -104,3 +104,20 @@ class myPose():
 
         self.shoudler_line_y = abs(leftShoulder_y + rightShoulder_y) // 2
         return
+    def checkPose_Hands_up(self, image, results):
+        image_height, image_width, _ = image.shape
+
+        left_hand = (results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_WRIST].x * image_width,
+                     results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_WRIST].y * image_height)
+
+        right_hand = (results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_WRIST].x * image_width,
+                      results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_WRIST].y * image_height)   
+        Hands_up_threshold = 150
+        if left_hand[1] <  self.shoudler_line_y - Hands_up_threshold  and right_hand[1] < Hands_up_threshold + self.shoudler_line_y :
+            Hands_up = "Hands_UP"
+        else:
+            Hands_up = "Hands_DOWN"
+
+        cv2.putText(image, Hands_up, (30, 30), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 0), 3)
+
+        return image, Hands_up
