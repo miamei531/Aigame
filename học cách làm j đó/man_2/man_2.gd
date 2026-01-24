@@ -46,6 +46,7 @@ func _ready():
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	thoat()
 	print(round)
 	if round > max_round:
 		print('bbbbb')
@@ -75,7 +76,9 @@ func _process(_delta):
 			nhat=false
 			if player.position== player.positions_ngang[ans]:
 				check=true
-
+func thoat():
+	if Input.is_action_just_pressed("ui_thoat"):
+		get_tree().change_scene_to_file("res://menu.tscn")
 func _on_timer_timeout():
 	player.check=0
 	player.current_index=0
