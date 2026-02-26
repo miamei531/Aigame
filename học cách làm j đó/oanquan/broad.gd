@@ -174,7 +174,7 @@ func _play_turn(index: int, clockwise: bool) -> void:
 		else:
 			break
 	
-	current_player = 2 if current_player == 1 else 1
+	current_player = 3 - current_player
 	change_turn.play()
 	_update_quan_visuals()
 	# Kiểm tra kết thúc game tại đây
