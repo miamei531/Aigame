@@ -46,7 +46,8 @@ func _ready():
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	thoat()
+	if Input.is_action_just_pressed("ui_thoat"):
+		thoat()
 	print(round)
 	if round > max_round:
 		print('bbbbb')
@@ -77,8 +78,8 @@ func _process(_delta):
 			if player.position== player.positions_ngang[ans]:
 				check=true
 func thoat():
-	if Input.is_action_just_pressed("ui_thoat"):
-		get_tree().change_scene_to_file("res://menu.tscn")
+	print("Thoat scene")
+	get_tree().change_scene_to_file("res://menu.tscn")
 func _on_timer_timeout():
 	player.check=0
 	player.current_index=0
@@ -303,3 +304,7 @@ func play_voice(file_name: String) -> void:
 func wait_until_not_celebrating():
 	while is_celebrating and not is_game_finished:
 		await get_tree().process_frame
+func ai_press_thoat():
+	Input.action_press("ui_thoat")
+	await get_tree().process_frame
+	Input.action_release("ui_thoat")
