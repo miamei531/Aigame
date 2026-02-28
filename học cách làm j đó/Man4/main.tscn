@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cde2iqbwruiui"]
+[gd_scene load_steps=12 format=3 uid="uid://cde2iqbwruiui"]
 
 [ext_resource type="Script" path="res://Man4/main.gd" id="1_rjq66"]
 [ext_resource type="PackedScene" uid="uid://c0err7xcf6him" path="res://Man4/hoa.tscn" id="2_7l2ns"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://btvaff8qciy3q" path="res://icon.svg" id="3_lx52r"]
 [ext_resource type="Script" path="res://Man4/Camera2D.gd" id="4_2auut"]
 [ext_resource type="PackedScene" uid="uid://b1fb0wbr1emog" path="res://Man4/tao.tscn" id="5_s3wkx"]
+[ext_resource type="Texture2D" uid="uid://bsrib8toniiwy" path="res://Man4/caytao.png" id="7_qnwrm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m51dv"]
 radius = 48.0
@@ -101,3 +102,15 @@ position = Vector2(-576, 200)
 position = Vector2(-904, 128)
 
 [node name="TargetPosition" type="Marker2D" parent="Apple3"]
+
+[node name="Caytao" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-763, 264)
+scale = Vector2(0.509505, 0.361665)
+texture = ExtResource("7_qnwrm")
+
+[node name="Caytao2" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-262, 280)
+scale = Vector2(0.276562, 0.319461)
+texture = ExtResource("7_qnwrm")

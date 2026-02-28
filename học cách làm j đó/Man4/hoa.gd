@@ -31,3 +31,6 @@ func set_color(color: FlowerColor):
 
 		FlowerColor.YELLOW:
 			sprite.play("yellow")
+		
+		FlowerColor.NONE:
+			sprite.play("NONE")

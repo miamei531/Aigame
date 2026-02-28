@@ -1,46 +1,102 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0err7xcf6him"]
+[gd_scene load_steps=15 format=3 uid="uid://c0err7xcf6him"]
 
-[ext_resource type="Texture2D" uid="uid://btvaff8qciy3q" path="res://icon.svg" id="1_g1anf"]
 [ext_resource type="Script" path="res://Man4/hoa.gd" id="1_x1n24"]
-[ext_resource type="Texture2D" uid="uid://cgr4s3s2mpd8r" path="res://logogame.png" id="2_wf2ox"]
+[ext_resource type="Texture2D" uid="uid://c84mxosk26hnu" path="res://Man4/hoa/flover for exel(2)_î«¡Γáª¡á «í½áßΓ∞ 1.png" id="2_p6vp1"]
+[ext_resource type="Texture2D" uid="uid://d4kqx1r46007p" path="res://Man4/hoa/flover for exel(2)-02.png" id="3_ryok8"]
+[ext_resource type="Texture2D" uid="uid://c1vtollelx3ou" path="res://Man4/hoa/flover for exel(2)-03.png" id="4_dg2sw"]
+[ext_resource type="Texture2D" uid="uid://8gfeg745vbpj" path="res://Man4/hoa/flover for exel(2)-04.png" id="5_0huss"]
+[ext_resource type="Texture2D" uid="uid://crjfnu5eid34a" path="res://Man4/hoa/xanhh.png" id="6_4orht"]
+[ext_resource type="Texture2D" uid="uid://0jg0jsd861j8" path="res://Man4/hoa/flover for exel(2)-05.png" id="6_c64vh"]
+[ext_resource type="Texture2D" uid="uid://cdfdcpsp2nlif" path="res://Man4/hoa/flover for exel(2)-06.png" id="7_cvnlt"]
+[ext_resource type="Texture2D" uid="uid://dkx0oqdlx1yuj" path="res://Man4/hoa/xanh.png" id="7_wu053"]
+[ext_resource type="Texture2D" uid="uid://tvmbrbflc7kj" path="res://Man4/hoa/vang.png" id="10_vi7g2"]
+[ext_resource type="Texture2D" uid="uid://46724nw6rtql" path="res://Man4/hoa/vangg.png" id="11_b8wnc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ddpfo"]
 radius = 24.0
+
+[sub_resource type="GDScript" id="GDScript_c5v6m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1oqfj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_wf2ox")
+"texture": ExtResource("2_p6vp1")
 }],
 "loop": true,
+"name": &"NONE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p6vp1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ryok8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dg2sw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0huss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4orht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wu053")
+}],
+"loop": false,
 "name": &"blue",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_g1anf")
-}],
-"loop": true,
-"name": &"grey",
-"speed": 5.0
+"texture": ExtResource("2_p6vp1")
 }, {
-"frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_wf2ox")
+"texture": ExtResource("3_ryok8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dg2sw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0huss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c64vh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cvnlt")
 }],
-"loop": true,
+"loop": false,
 "name": &"red",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_wf2ox")
+"texture": ExtResource("2_p6vp1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ryok8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dg2sw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0huss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vi7g2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_b8wnc")
 }],
-"loop": true,
+"loop": false,
 "name": &"yellow",
-"speed": 5.0
+"speed": 6.0
 }]
+script = SubResource("GDScript_c5v6m")
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_x1n24")
@@ -49,8 +105,8 @@ script = ExtResource("1_x1n24")
 shape = SubResource("CircleShape2D_ddpfo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.643137, 1, 0.384314, 1)
-position = Vector2(8, 1.90735e-06)
+position = Vector2(-13, -24)
 scale = Vector2(0.226415, 0.246575)
 sprite_frames = SubResource("SpriteFrames_1oqfj")
-animation = &"red"
+animation = &"NONE"
+speed_scale = 0.75
