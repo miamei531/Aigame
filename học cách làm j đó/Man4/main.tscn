@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=3 uid="uid://cde2iqbwruiui"]
+
+[ext_resource type="Script" path="res://Man4/main.gd" id="1_rjq66"]
+[ext_resource type="PackedScene" uid="uid://c0err7xcf6him" path="res://Man4/hoa.tscn" id="2_7l2ns"]
+[ext_resource type="Script" path="res://Man4/CharacterBody2D.gd" id="2_pl0ih"]
+[ext_resource type="Texture2D" uid="uid://btvaff8qciy3q" path="res://icon.svg" id="3_lx52r"]
+[ext_resource type="Script" path="res://Man4/Camera2D.gd" id="4_2auut"]
+[ext_resource type="PackedScene" uid="uid://b1fb0wbr1emog" path="res://Man4/tao.tscn" id="5_s3wkx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m51dv"]
+radius = 48.0
+height = 160.0
+
+[sub_resource type="Animation" id="Animation_uotbs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1032, 488)]
+}
+
+[sub_resource type="Animation" id="Animation_77qj8"]
+resource_name = "di"
+length = 10.0
+step = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1032, 488), Vector2(-2064, 488)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qovfd"]
+_data = {
+"RESET": SubResource("Animation_uotbs"),
+"di": SubResource("Animation_77qj8")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_rjq66")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(1032, 488)
+script = ExtResource("2_pl0ih")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_m51dv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_qovfd")
+}
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(16, 24)
+texture = ExtResource("3_lx52r")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+script = ExtResource("4_2auut")
+
+[node name="Flower1" parent="." instance=ExtResource("2_7l2ns")]
+position = Vector2(912, 256)
+
+[node name="TargetPosition" type="Marker2D" parent="Flower1"]
+
+[node name="Flower3" parent="." instance=ExtResource("2_7l2ns")]
+position = Vector2(208, 256)
+
+[node name="TargetPosition" type="Marker2D" parent="Flower3"]
+
+[node name="Flower2" parent="." instance=ExtResource("2_7l2ns")]
+position = Vector2(576, 256)
+
+[node name="TargetPosition" type="Marker2D" parent="Flower2"]
+
+[node name="Apple1" parent="." instance=ExtResource("5_s3wkx")]
+position = Vector2(-240, 128)
+
+[node name="TargetPosition" type="Marker2D" parent="Apple1"]
+
+[node name="Apple2" parent="." instance=ExtResource("5_s3wkx")]
+position = Vector2(-576, 200)
+
+[node name="TargetPosition" type="Marker2D" parent="Apple2"]
+
+[node name="Apple3" parent="." instance=ExtResource("5_s3wkx")]
+position = Vector2(-904, 128)
+
+[node name="TargetPosition" type="Marker2D" parent="Apple3"]

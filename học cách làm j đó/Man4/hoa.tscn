@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0err7xcf6him"]
+
+[ext_resource type="Texture2D" uid="uid://btvaff8qciy3q" path="res://icon.svg" id="1_g1anf"]
+[ext_resource type="Script" path="res://Man4/hoa.gd" id="1_x1n24"]
+[ext_resource type="Texture2D" uid="uid://cgr4s3s2mpd8r" path="res://logogame.png" id="2_wf2ox"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ddpfo"]
+radius = 24.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1oqfj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wf2ox")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g1anf")
+}],
+"loop": true,
+"name": &"grey",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wf2ox")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wf2ox")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_x1n24")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ddpfo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.643137, 1, 0.384314, 1)
+position = Vector2(8, 1.90735e-06)
+scale = Vector2(0.226415, 0.246575)
+sprite_frames = SubResource("SpriteFrames_1oqfj")
+animation = &"red"
