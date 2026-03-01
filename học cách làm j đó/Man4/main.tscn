@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cde2iqbwruiui"]
+[gd_scene load_steps=13 format=3 uid="uid://cde2iqbwruiui"]
 
 [ext_resource type="Script" path="res://Man4/main.gd" id="1_rjq66"]
 [ext_resource type="PackedScene" uid="uid://c0err7xcf6him" path="res://Man4/hoa.tscn" id="2_7l2ns"]
@@ -7,10 +7,11 @@
 [ext_resource type="Script" path="res://Man4/Camera2D.gd" id="4_2auut"]
 [ext_resource type="PackedScene" uid="uid://b1fb0wbr1emog" path="res://Man4/tao.tscn" id="5_s3wkx"]
 [ext_resource type="Texture2D" uid="uid://bsrib8toniiwy" path="res://Man4/caytao.png" id="7_qnwrm"]
+[ext_resource type="Texture2D" uid="uid://c1u141c2xmee" path="res://man_2/assets/(màn cho thú cưng ăn) cảnh vườn nhà.png" id="8_l23vo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m51dv"]
-radius = 48.0
-height = 160.0
+radius = 0.0
+height = 32.0
 
 [sub_resource type="Animation" id="Animation_uotbs"]
 length = 0.001
@@ -58,7 +59,7 @@ position = Vector2(1032, 488)
 script = ExtResource("2_pl0ih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, -16)
+position = Vector2(8, 16)
 shape = SubResource("CapsuleShape2D_m51dv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
@@ -67,24 +68,30 @@ libraries = {
 }
 
 [node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(16, 24)
+z_index = 2
+position = Vector2(20, 24)
+scale = Vector2(0.5625, 1.25)
 texture = ExtResource("3_lx52r")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(8, 8)
 script = ExtResource("4_2auut")
 
 [node name="Flower1" parent="." instance=ExtResource("2_7l2ns")]
-position = Vector2(912, 256)
+z_index = -1
+position = Vector2(920, 464)
 
 [node name="TargetPosition" type="Marker2D" parent="Flower1"]
 
 [node name="Flower3" parent="." instance=ExtResource("2_7l2ns")]
-position = Vector2(208, 256)
+z_index = -1
+position = Vector2(224, 464)
 
 [node name="TargetPosition" type="Marker2D" parent="Flower3"]
 
 [node name="Flower2" parent="." instance=ExtResource("2_7l2ns")]
-position = Vector2(576, 256)
+z_index = -1
+position = Vector2(592, 464)
 
 [node name="TargetPosition" type="Marker2D" parent="Flower2"]
 
@@ -114,3 +121,16 @@ z_index = -2
 position = Vector2(-262, 280)
 scale = Vector2(0.276562, 0.319461)
 texture = ExtResource("7_qnwrm")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="(mànChoThúCưngĂn)CảnhVườnNhà" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(752, 360)
+texture = ExtResource("8_l23vo")
+
+[node name="(mànChoThúCưngĂn)CảnhVườnNhà2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-1160, 360)
+texture = ExtResource("8_l23vo")
+flip_h = true

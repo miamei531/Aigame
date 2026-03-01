@@ -105,8 +105,8 @@ script = ExtResource("1_x1n24")
 shape = SubResource("CircleShape2D_ddpfo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-13, -24)
-scale = Vector2(0.226415, 0.246575)
+position = Vector2(-40, -112)
+scale = Vector2(0.788732, 0.839779)
 sprite_frames = SubResource("SpriteFrames_1oqfj")
 animation = &"NONE"
 speed_scale = 0.75
