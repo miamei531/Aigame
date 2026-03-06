@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cde2iqbwruiui"]
+[gd_scene load_steps=18 format=3 uid="uid://cde2iqbwruiui"]
 
 [ext_resource type="Script" path="res://Man4/main.gd" id="1_rjq66"]
 [ext_resource type="PackedScene" uid="uid://c0err7xcf6him" path="res://Man4/hoa.tscn" id="2_7l2ns"]
@@ -17,44 +17,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m51dv"]
 radius = 8.0
 height = 32.0
-
-[sub_resource type="Animation" id="Animation_uotbs"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1032, 488)]
-}
-
-[sub_resource type="Animation" id="Animation_77qj8"]
-resource_name = "di"
-length = 10.0
-step = 10.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1032, 488), Vector2(-2064, 488)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qovfd"]
-_data = {
-"RESET": SubResource("Animation_uotbs"),
-"di": SubResource("Animation_77qj8")
-}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b2ktk"]
 animations = [{
@@ -93,23 +55,22 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2i17i"]
-size = Vector2(2536, 202)
+size = Vector2(4194, 202)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_maexs"]
+bg_color = Color(0.054902, 0.054902, 0.054902, 0.733333)
+corner_detail = 6
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_rjq66")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(1032, 488)
+position = Vector2(-1552, 472)
 script = ExtResource("2_pl0ih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(8, 112)
 shape = SubResource("CapsuleShape2D_m51dv")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
-libraries = {
-"": SubResource("AnimationLibrary_qovfd")
-}
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(8, 8)
@@ -124,46 +85,46 @@ frame_progress = 0.452203
 
 [node name="Flower1" parent="." instance=ExtResource("2_7l2ns")]
 z_index = -1
-position = Vector2(920, 464)
+position = Vector2(-697, 484)
 
 [node name="TargetPosition" type="Marker2D" parent="Flower1"]
 
 [node name="Flower3" parent="." instance=ExtResource("2_7l2ns")]
 z_index = -1
-position = Vector2(224, 464)
+position = Vector2(-1241, 480)
 
 [node name="TargetPosition" type="Marker2D" parent="Flower3"]
 
 [node name="Flower2" parent="." instance=ExtResource("2_7l2ns")]
 z_index = -1
-position = Vector2(592, 464)
+position = Vector2(-962, 418)
 
 [node name="TargetPosition" type="Marker2D" parent="Flower2"]
 
 [node name="Apple1" parent="." instance=ExtResource("5_s3wkx")]
-position = Vector2(-240, 128)
+position = Vector2(-300, 175)
 
 [node name="TargetPosition" type="Marker2D" parent="Apple1"]
 
 [node name="Apple2" parent="." instance=ExtResource("5_s3wkx")]
-position = Vector2(-576, 200)
+position = Vector2(-49, 227)
 
 [node name="TargetPosition" type="Marker2D" parent="Apple2"]
 
 [node name="Apple3" parent="." instance=ExtResource("5_s3wkx")]
-position = Vector2(-904, 128)
+position = Vector2(346, 188)
 
 [node name="TargetPosition" type="Marker2D" parent="Apple3"]
 
 [node name="Caytao" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(-763, 264)
-scale = Vector2(0.509505, 0.361665)
+position = Vector2(-186.375, 302.5)
+scale = Vector2(0.520442, 0.372216)
 texture = ExtResource("7_qnwrm")
 
 [node name="Caytao2" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(-262, 280)
+position = Vector2(297.124, 274)
 scale = Vector2(0.276562, 0.319461)
 texture = ExtResource("7_qnwrm")
 
@@ -183,8 +144,40 @@ flip_h = true
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-120, 720)
+position = Vector2(-16, 720)
 shape = SubResource("RectangleShape2D_2i17i")
 
 [node name="nen" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_yoayt")
+
+[node name="Flower6" parent="." instance=ExtResource("2_7l2ns")]
+z_index = -2
+position = Vector2(772, 540)
+
+[node name="TargetPosition" type="Marker2D" parent="Flower6"]
+z_index = -2
+
+[node name="Flower5" parent="." instance=ExtResource("2_7l2ns")]
+z_index = -2
+position = Vector2(1075, 487)
+
+[node name="TargetPosition" type="Marker2D" parent="Flower5"]
+
+[node name="Flower4" parent="." instance=ExtResource("2_7l2ns")]
+z_index = -2
+position = Vector2(1361, 521)
+
+[node name="TargetPosition" type="Marker2D" parent="Flower4"]
+
+[node name="Label" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(10.41, 4.495)
+offset_left = 228.0
+offset_top = -192.0
+offset_right = 1951.53
+offset_bottom = 898.235
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxFlat_maexs")
+text = "Giỏi lắm! Vỗ tay để quay về màn hình chính nhé. 👏"
+horizontal_alignment = 1
+vertical_alignment = 1

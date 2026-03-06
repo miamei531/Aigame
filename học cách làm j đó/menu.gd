@@ -88,3 +88,6 @@ func up_date_music_start():
 
 func _on_button_5_pressed():
 	get_tree().change_scene_to_file("res://oanquan/gamemode.tscn")
+	
+func _on_button_4_pressed():
+	get_tree().change_scene_to_file("res://Man4/main.tscn")
