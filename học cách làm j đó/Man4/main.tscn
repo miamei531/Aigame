@@ -1,16 +1,21 @@
-[gd_scene load_steps=13 format=3 uid="uid://cde2iqbwruiui"]
+[gd_scene load_steps=20 format=3 uid="uid://cde2iqbwruiui"]
 
 [ext_resource type="Script" path="res://Man4/main.gd" id="1_rjq66"]
 [ext_resource type="PackedScene" uid="uid://c0err7xcf6him" path="res://Man4/hoa.tscn" id="2_7l2ns"]
 [ext_resource type="Script" path="res://Man4/CharacterBody2D.gd" id="2_pl0ih"]
-[ext_resource type="Texture2D" uid="uid://btvaff8qciy3q" path="res://icon.svg" id="3_lx52r"]
 [ext_resource type="Script" path="res://Man4/Camera2D.gd" id="4_2auut"]
+[ext_resource type="Texture2D" uid="uid://73r3vfy327py" path="res://dohoa/Sprites/Characters/Default/character_green_front.png" id="5_mnx4p"]
 [ext_resource type="PackedScene" uid="uid://b1fb0wbr1emog" path="res://Man4/tao.tscn" id="5_s3wkx"]
+[ext_resource type="Texture2D" uid="uid://crxgoemmlet48" path="res://dohoa/Sprites/Characters/Default/character_green_idle.png" id="6_fr71u"]
+[ext_resource type="Texture2D" uid="uid://b7dwfmfcq551g" path="res://dohoa/Sprites/Characters/Default/character_green_jump.png" id="7_fv3t2"]
 [ext_resource type="Texture2D" uid="uid://bsrib8toniiwy" path="res://Man4/caytao.png" id="7_qnwrm"]
 [ext_resource type="Texture2D" uid="uid://c1u141c2xmee" path="res://man_2/assets/(màn cho thú cưng ăn) cảnh vườn nhà.png" id="8_l23vo"]
+[ext_resource type="Texture2D" uid="uid://g57h5nqae32e" path="res://dohoa/Sprites/Characters/Default/character_green_walk_b.png" id="8_pvtxs"]
+[ext_resource type="Texture2D" uid="uid://culputhkkyf5n" path="res://dohoa/Sprites/Characters/Default/character_green_walk_a.png" id="9_ihiie"]
+[ext_resource type="AudioStream" uid="uid://bxhqy04x17gd1" path="res://StockTune-Playground Melodic Jingles_1747297500.mp3" id="13_yoayt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m51dv"]
-radius = 0.0
+radius = 8.0
 height = 32.0
 
 [sub_resource type="Animation" id="Animation_uotbs"]
@@ -51,6 +56,45 @@ _data = {
 "di": SubResource("Animation_77qj8")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2ktk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_mnx4p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fr71u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fv3t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mnx4p")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_pvtxs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ihiie")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2i17i"]
+size = Vector2(2536, 202)
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_rjq66")
 
@@ -59,7 +103,7 @@ position = Vector2(1032, 488)
 script = ExtResource("2_pl0ih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(8, 16)
+position = Vector2(8, 112)
 shape = SubResource("CapsuleShape2D_m51dv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
@@ -67,15 +111,16 @@ libraries = {
 "": SubResource("AnimationLibrary_qovfd")
 }
 
-[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
-z_index = 2
-position = Vector2(20, 24)
-scale = Vector2(0.5625, 1.25)
-texture = ExtResource("3_lx52r")
-
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(8, 8)
 script = ExtResource("4_2auut")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(8.00002, 40)
+scale = Vector2(1.5625, 1.5)
+sprite_frames = SubResource("SpriteFrames_b2ktk")
+animation = &"walk"
+frame_progress = 0.452203
 
 [node name="Flower1" parent="." instance=ExtResource("2_7l2ns")]
 z_index = -1
@@ -127,10 +172,19 @@ texture = ExtResource("7_qnwrm")
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="(mànChoThúCưngĂn)CảnhVườnNhà" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(752, 360)
+position = Vector2(760, 360)
 texture = ExtResource("8_l23vo")
 
 [node name="(mànChoThúCưngĂn)CảnhVườnNhà2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(-1160, 360)
 texture = ExtResource("8_l23vo")
 flip_h = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-120, 720)
+shape = SubResource("RectangleShape2D_2i17i")
+
+[node name="nen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_yoayt")

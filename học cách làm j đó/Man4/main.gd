@@ -1,6 +1,6 @@
 extends Node2D
 @onready var player = $CharacterBody2D
-
+@onready var nen = $nen
 @onready var flowersp = [
 	$Flower1/TargetPosition,
 	$Flower2/TargetPosition,
@@ -48,6 +48,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("ui_up"):
 			if player.moving:
 				return
+			player.play_jump()
 			_handle_apple()
 func _handle_flower():
 	match current_flower:
