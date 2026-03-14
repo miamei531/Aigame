@@ -1,12 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://bxog5hq36j021"]
+[gd_scene load_steps=24 format=3 uid="uid://bxog5hq36j021"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_h6f8b"]
 [ext_resource type="AudioStream" uid="uid://csm4cnhphitay" path="res://audio/StockTune-Playground Melodic Jingles_1747297500.mp3" id="2_cc71j"]
 [ext_resource type="Texture2D" uid="uid://dfpq7411oiq0a" path="res://dohoa/Spritesheets/494820436_1048500647408628_8012935812552322247_n.png" id="2_dxqaa"]
 [ext_resource type="Texture2D" uid="uid://by1ry76ykctfi" path="res://dohoa/Spritesheets/504332428_729845829541217_6671927301257117307_n.png" id="3_ob3vq"]
 [ext_resource type="Texture2D" uid="uid://duhtrueeuoeio" path="res://dohoa/Spritesheets/494576201_1771073496814393_6487802105468765430_n.png" id="5_h6c6p"]
-[ext_resource type="Texture2D" uid="uid://cby06kcqvlhhy" path="res://dohoa/Vector/Enemies/saw_rest.svg" id="8_nucwx"]
-[ext_resource type="Texture2D" uid="uid://dr8qn2m7h74a5" path="res://dohoa/Vector/Enemies/saw_a.svg" id="9_evh1w"]
+[ext_resource type="Texture2D" uid="uid://dio6x12gqnnrq" path="res://hoavatao2.png" id="6_6odo7"]
 [ext_resource type="Texture2D" uid="uid://bwrevg4k5x17h" path="res://menu.png" id="9_owsj3"]
 [ext_resource type="Texture2D" uid="uid://cp3m3ulkwgke5" path="res://oanquan/dohoaoanquan/(màn ô ăn quan) icon ô ăn quan.png" id="10_axuuh"]
 
@@ -53,16 +52,16 @@ region_rect = Rect2(351.843, 0, 1370.9, 1365)
 modulate_color = Color(0.47451, 0.47451, 0.47451, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f8wkm"]
-texture = ExtResource("8_nucwx")
+texture = ExtResource("6_6odo7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_27he7"]
-texture = ExtResource("9_evh1w")
+texture = ExtResource("6_6odo7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cmnga"]
-texture = ExtResource("9_evh1w")
+texture = ExtResource("6_6odo7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1o2h3"]
-texture = ExtResource("9_evh1w")
+texture = ExtResource("6_6odo7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q1yn2"]
 texture = ExtResource("10_axuuh")
