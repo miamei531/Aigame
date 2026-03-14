@@ -22,9 +22,9 @@ func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://oanquan/nguoichoivoimay.tscn")    
 func _on_button_2_pressed() -> void:
 	get_tree().set_meta("difficulty", 1)
-	get_tree().change_scene_to_file("res://oanquan/broad.tscn")
+	get_tree().change_scene_to_file("res://oanquan/nguoichoivoimay.tscn")
 func _on_button_4_pressed() -> void:
 	get_tree().set_meta("difficulty", 3)
-	get_tree().change_scene_to_file("res://oanquan/broad.tscn")
+	get_tree().change_scene_to_file("res://oanquan/nguoichoivoimay.tscn")
 func _on_button_3_pressed() -> void:
 	get_tree().change_scene_to_file("res://menu.tscn")
