@@ -52,6 +52,8 @@ func _ready():
 	await start_game()
 
 func _process(delta):
+	if Input.is_action_just_pressed("ui_thoat"):
+		thoat()
 	print($player/player.position)
 	if not game_running or not can_countdown:
 		return
@@ -63,7 +65,9 @@ func _process(delta):
 		end_round()
 		await get_tree().create_timer(1).timeout
 		start_new_round()
-
+func thoat():
+	print("Thoat scene")
+	get_tree().change_scene_to_file("res://menu.tscn")
 func up_date_music_start():
 	if not bgms.playing:
 		bgms.play()

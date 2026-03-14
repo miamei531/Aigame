@@ -23,6 +23,8 @@ func _ready():
 	Dungr.visible = false
 
 func _process(delta):
+	if Input.is_action_just_pressed("ui_thoat"):
+		thoat()
 	if choi_xong:
 		return
 	
@@ -36,7 +38,9 @@ func _process(delta):
 		ket_thuc_man_choi()
 	#if Input.is_action_just_pressed("ui_down"):
 		
-
+func thoat():
+	print("Thoat scene")
+	get_tree().change_scene_to_file("res://menu.tscn")
 func up_date_music_start():
 	if !bgms.playing:
 		bgms.play()

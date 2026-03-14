@@ -80,7 +80,12 @@ func _ready():
 				label.position.y += 160   # Dịch xuống dưới 30 pixels (tùy bạn điều chỉnh)
 	_highlight_selected()
 	_update_quan_visuals() 
-
+func _process(delta):
+	if Input.is_action_just_pressed("ui_thoat"):
+		thoat()
+func thoat():
+	print("Thoat scene")
+	get_tree().change_scene_to_file("res://menu.tscn")
 # === 3. XỬ LÝ INPUT BÀN PHÍM ===
 func _unhandled_input(event: InputEvent):
 	if end:

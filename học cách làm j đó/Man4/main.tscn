@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cde2iqbwruiui"]
+[gd_scene load_steps=21 format=3 uid="uid://cde2iqbwruiui"]
 
 [ext_resource type="Script" path="res://Man4/main.gd" id="1_rjq66"]
 [ext_resource type="PackedScene" uid="uid://c0err7xcf6him" path="res://Man4/hoa.tscn" id="2_7l2ns"]
@@ -12,7 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://c1u141c2xmee" path="res://man_2/assets/(màn cho thú cưng ăn) cảnh vườn nhà.png" id="8_l23vo"]
 [ext_resource type="Texture2D" uid="uid://g57h5nqae32e" path="res://dohoa/Sprites/Characters/Default/character_green_walk_b.png" id="8_pvtxs"]
 [ext_resource type="Texture2D" uid="uid://culputhkkyf5n" path="res://dohoa/Sprites/Characters/Default/character_green_walk_a.png" id="9_ihiie"]
+[ext_resource type="AudioStream" uid="uid://tsuhgvj6rlb8" path="res://Man4/Laytao_1.mp3" id="13_8gk4w"]
 [ext_resource type="AudioStream" uid="uid://bxhqy04x17gd1" path="res://StockTune-Playground Melodic Jingles_1747297500.mp3" id="13_yoayt"]
+[ext_resource type="AudioStream" uid="uid://dmip7yvqx0stv" path="res://Man4/Hoathucday_1.mp3" id="14_ceftc"]
+[ext_resource type="AudioStream" uid="uid://dnupjoksp67lu" path="res://Man4/Begioiqua_1.mp3" id="15_7lwwn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m51dv"]
 radius = 8.0
@@ -147,8 +150,19 @@ flip_h = true
 position = Vector2(-16, 720)
 shape = SubResource("RectangleShape2D_2i17i")
 
+[node name="Haitao" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_8gk4w")
+
+[node name="Hoathucday" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_ceftc")
+
+[node name="begioiqua" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_7lwwn")
+
 [node name="nen" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("13_yoayt")
+volume_db = -7.0
 
 [node name="Flower6" parent="." instance=ExtResource("2_7l2ns")]
 z_index = -2
