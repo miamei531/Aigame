@@ -11,7 +11,8 @@ class Player:
         self.y_position = 1  # 0: xuống, 1: đứng, 2: nhảy
         self.clap_duration = 0
         self.clapable = True
-
+        self.Hands_UP_duration = 0
+        self.T_Pose_duration = 0
     def move_LRC(self, LRC):
         if LRC == "L":
             for _ in range(0, self.x_position, 1):
@@ -33,6 +34,14 @@ class Player:
             self.y_position = 0
         elif JSD == "S" and self.y_position != 1:
             self.y_position = 1
+
+    def move_T_Pose(self, T_pose):
+        if T_pose == "T_Pose" :
+            self.T_Pose_duration += 1
+            if self.T_Pose_duration == 20 :
+                 pyautogui.press("t")
+        else :
+            self.T_Pose_duration =0
 
     def move_LRC_2(self, LRC):
         if LRC == "L":
@@ -83,6 +92,9 @@ class myGame:
 
                         image, JSD = self.player1.pose.checkPose_JSD(image, results)
                         self.player1.move_JSD(JSD)
+
+                        image, T_Pose = self.player1.pose.checkPose_T(image, results)
+                        self.player1.move_T_Pose(T_Pose)
                     else:
                         cv2.putText(image, "Clap your hand to start!",
                                     (5, image_height - 10),
@@ -102,6 +114,7 @@ class myGame:
                         self.player1.clapable = True
 
                     image, Hands = self.player1.pose.checkPose_Hands_up(image, results)
+                    
                 cv2.imshow("Game", image)
 
             else:
@@ -118,6 +131,9 @@ class myGame:
 
                         left_img, JSD1 = self.player1.pose.checkPose_JSD(left_img, results1)
                         self.player1.move_JSD(JSD1)
+
+                        left_img, T_Pose = self.player1.pose.checkPose_T(left_img, results1)
+                        self.player1.move_T_Pose(T_Pose)
                     else:
                         cv2.putText(left_img, "Clap to start!",
                                     (10, image_height - 10),
@@ -167,19 +183,25 @@ class myGame:
 
                 cv2.imshow("Player 1", left_img)
                 cv2.imshow("Player 2", right_img)           
+            if  self.player1.game_started:
+                if Hands == "Hands_UP" :
+                    self.player1.Hands_UP_duration += 1
+                    if self.player1.Hands_UP_duration == 30 :
+                        if self.multiplay:
+                            cv2.destroyWindow("Player 1")
+                            cv2.destroyWindow("Player 2")
+                            self.player1.game_started = False
+                        else:
+                            cv2.destroyWindow("Game")
+                            self.player1.game_started = False
+                            self.player2.game_started = False
+                        self.multiplay = not self.multiplay
+                else :
+                    self.player1.Hands_UP_duration =0
+
             key = cv2.waitKey(1)
             if key == ord('q'):
                 break
-            elif Hands == "Hands_UP" and self.player1.game_started:
-                if self.multiplay:
-                    cv2.destroyWindow("Player 1")
-                    cv2.destroyWindow("Player 2")
-                    self.player1.game_started = False
-                else:
-                    cv2.destroyWindow("Game")
-                    self.player1.game_started = False
-                    self.player2.game_started = False
-                self.multiplay = not self.multiplay
 
 
         cap.release()

@@ -104,6 +104,7 @@ class myPose():
 
         self.shoudler_line_y = abs(leftShoulder_y + rightShoulder_y) // 2
         return
+    
     def checkPose_Hands_up(self, image, results):
         image_height, image_width, _ = image.shape
 
@@ -118,6 +119,33 @@ class myPose():
         else:
             Hands_up = "Hands_DOWN"
 
-        cv2.putText(image, Hands_up, (30, 30), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 0), 3)
+        cv2.putText(image, Hands_up, (250, 30), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 0), 3)
 
         return image, Hands_up
+    
+    def checkPose_T(self, image, results):
+        image_height, image_width, _ = image.shape
+        left_hand_y = int(results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_WRIST].y * image_height)
+        right_hand_y = int(results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_WRIST].y * image_height)
+        
+        leftShoulder_y = int(results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_SHOULDER].y * image_height)
+        rightShoulder_y = int(results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_SHOULDER].y * image_height)
+        
+        avg_shoulder_y = (leftShoulder_y + rightShoulder_y)/2
+
+        left_hand_x = int(results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_WRIST].x * image_width)
+        right_hand_x = int(results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_WRIST].x * image_width)
+        
+        leftShoulder_x = int(results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.LEFT_SHOULDER].x * image_width)
+        rightShoulder_x = int(results.pose_landmarks.landmark[self.mp_pose.PoseLandmark.RIGHT_SHOULDER].x * image_width)
+        
+        pose_threshold = 80
+
+        if abs(left_hand_y - avg_shoulder_y) < pose_threshold and abs(right_hand_y - avg_shoulder_y) < pose_threshold and abs(left_hand_x - right_hand_x) > abs(leftShoulder_x - rightShoulder_x) :
+            T_Pose = "T_Pose"
+        else:
+            T_Pose = "Non_T_Pose"
+
+        cv2.putText(image, T_Pose, (30, 30), cv2.FONT_HERSHEY_PLAIN, 2, (255, 255, 0), 3)
+        
+        return image, T_Pose 
